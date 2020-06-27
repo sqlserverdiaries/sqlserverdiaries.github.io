@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2020 -->
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Date and Time data types</title>
+  
+  
+  <meta name="author" content="Reuben Sultana">
+  
+  
+  
+
+  <link rel="alternate" type="application/rss+xml" title="SQL Server Diaries - A personal take on SQL Server solutions" href="http://0.0.0.0:4000/feed.xml">
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/main.css">
+    
+  
+
+  
+
+  
+
+  <!-- Facebook OpenGraph tags -->
+  
+
+  
+  <meta property="og:title" content="Date and Time data types">
+  
+
+   
+  <meta property="og:description" content="Someone asked me why storing datetime values seem to allow a maximum year of 2079. The limit mentioned exists for the SQL Server smalldatetime data type. This is because of the values’ data range supported, accuracy and data size associated with different data types where: Data type Range Accuracy Size...">
+  
+
+
+  <meta property="og:type" content="website">
+
+  
+  <meta property="og:url" content="http://0.0.0.0:4000/blog/index.php/2011/01/08/date-and-time-data-types/">
+  <link rel="canonical" href="http://0.0.0.0:4000/blog/index.php/2011/01/08/date-and-time-data-types/">
+  
+
+  
+
+
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@reubensultana">
+  <meta name="twitter:creator" content="@reubensultana">
+
+  
+  <meta name="twitter:title" content="Date and Time data types">
+  
+
+  
+  <meta name="twitter:description" content="Someone asked me why storing datetime values seem to allow a maximum year of 2079. The limit mentioned exists for the SQL Server smalldatetime data type. This is because of the values’ data range supported, accuracy and data size associated with different data types where: Data type Range Accuracy Size...">
+  
+
+  
+
+  
+
+  
+
+</head>
+
+
+  <body>
+
+    
+
+  
+    <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-custom "><a class="navbar-brand" href="http://0.0.0.0:4000/">SQL Server Diaries</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tags">Tags</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://reubensultana.com">Author's home</a>
+          </li></ul>
+  </div>
+
+  
+
+</nav>
+
+
+    <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Date and Time data types</h1>
+      
+      
+      
+          <span class="post-meta">Posted on January 8, 2011</span>
+          
+            <!--- "ReadTime on GitHub Jekyll" (c) 2020 Ruby Griffith Ramirez, MIT License -->
+
+
+
+
+
+
+  
+  <span class="reader-time post-meta"><span class="d-none d-md-inline middot">&middot;</span> &lt; 1 minute read</span>
+
+
+          
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class="container-md">
+  <div class="row">
+    <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+
+      
+
+      <article role="main" class="blog-post">
+        <p>Someone asked me why storing datetime values seem to allow a maximum year of 2079.</p>
+
+<p>The limit mentioned exists for the SQL Server smalldatetime data type. This is because of the values’ data range supported, accuracy and data size associated with different data types where:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Data type</th>
+      <th>Range</th>
+      <th>Accuracy</th>
+      <th>Size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>datetime</td>
+      <td>Jan 1, 1753 to Dec 31, 9999</td>
+      <td>3.33 milliseconds</td>
+      <td>8 bytes</td>
+    </tr>
+    <tr>
+      <td>smalldatetime</td>
+      <td>Jan 1, 1900 to Jun 6, 2079</td>
+      <td>1 minute</td>
+      <td>4 bytes</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The SQL Server 2005 documentation titled <a href="http://msdn.microsoft.com/en-us/library/ms187819(v=SQL.90).aspx">Date and Time (Transact-SQL)</a> provides full information about this topic.</p>
+
+<p>SQL Server versions prior and up to 2005 do not allow storing date values earlier than 01/01/1753 in datetime data type columns. If the need arises, one alternative could be to store these values in a character-type column, storing the data in the <a href="http://msdn.microsoft.com/en-us/library/ms190977(v=SQL.90).aspx">ISO 8601 Format</a>.</p>
+
+<p>SQL Server 2008 introduced a number of new date and time data types which give greater flexibility in the storage of such values. More in another blog post though!</p>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          Tags:
+          
+          
+            <a href="/tags#datetime">datetime</a>
+          
+            <a href="/tags#data types">data types</a>
+          
+            <a href="/tags#SQL Server 2005">SQL Server 2005</a>
+          
+            <a href="/tags#Coding Practices">Coding Practices</a>
+          
+            <a href="/tags#T-SQL Programming">T-SQL Programming</a>
+          
+            <a href="/tags#Database Design">Database Design</a>
+          
+            <a href="/tags#Development">Development</a>
+          
+            <a href="/tags#SQL Server 2000">SQL Server 2000</a>
+          
+            <a href="/tags#T-SQL Programming">T-SQL Programming</a>
+          
+            <a href="/tags#Database Migration">Database Migration</a>
+          
+          
+        </div>
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+<section id = "social-share-section">
+  <span class="sr-only">Share: </span>
+
+  
+    <a href="https://twitter.com/intent/tweet?text=Date+and+Time+data+types&url=http%3A%2F%2F0.0.0.0%3A4000%2Fblog%2Findex.php%2F2011%2F01%2F08%2Fdate-and-time-data-types%2F"
+      class="btn btn-social-icon btn-twitter" title="Share on Twitter">
+      <span class="fab fa-fw fa-twitter" aria-hidden="true"></span>
+      <span class="sr-only">Twitter</span>
+    </a>
+  
+
+  
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2Fblog%2Findex.php%2F2011%2F01%2F08%2Fdate-and-time-data-types%2F"
+      class="btn btn-social-icon btn-facebook" title="Share on Facebook">
+      <span class="fab fa-fw fa-facebook" aria-hidden="true"></span>
+      <span class="sr-only">Facebook</span>
+    </a>
+  
+
+  
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2Fblog%2Findex.php%2F2011%2F01%2F08%2Fdate-and-time-data-types%2F"
+      class="btn btn-social-icon btn-linkedin" title="Share on LinkedIn">
+      <span class="fab fa-fw fa-linkedin" aria-hidden="true"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  
+
+  
+
+</section>
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/blog/index.php/2010/12/30/the-first-record/" data-toggle="tooltip" data-placement="top" title="The First Record">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/blog/index.php/2011/01/15/protecting-against-sql-injection-attacks/" data-toggle="tooltip" data-placement="top" title="Protecting against SQL Injection attacks">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+      
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="/feed.xml" title="RSS">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">RSS</span>
+    </a>
+  </li><li class="list-inline-item">
+    <a href="mailto:info@sqlserverdiaries.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/reubensultana" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://twitter.com/reubensultana" title="Twitter">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Twitter</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://linkedin.com/in/reubensultana" title="LinkedIn">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">LinkedIn</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Reuben Sultana
+        &nbsp;&bull;&nbsp;
+      
+      2020
+
+      
+        &nbsp;&bull;&nbsp;
+        <a href="http://0.0.0.0:4000/">sqlserverdiaries.com</a>
+      
+
+      
+      </p>
+      <!-- Please don't remove this, keep my open source work credited :) -->
+<!--
+      <p class="theme-by text-muted">
+        Theme by
+        <a href="https://beautifuljekyll.com">beautiful-jekyll</a>
+      </p>
+-->
+    </div>
+    </div>
+  </div>
+</footer>
+
+  
+    
+  
+    
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/main.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  </body>
+</html>

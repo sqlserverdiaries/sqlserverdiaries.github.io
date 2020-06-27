@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2020 -->
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Script Logins from Database Users</title>
+  
+  
+  <meta name="author" content="Reuben Sultana">
+  
+  
+  
+
+  <link rel="alternate" type="application/rss+xml" title="SQL Server Diaries - A personal take on SQL Server solutions" href="http://0.0.0.0:4000/feed.xml">
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/main.css">
+    
+  
+
+  
+
+  
+
+  <!-- Facebook OpenGraph tags -->
+  
+
+  
+  <meta property="og:title" content="Script Logins from Database Users">
+  
+
+   
+  <meta property="og:description" content="When performing a database migration from one SQL Server instance to another, the DBA has to transfer all logins which have access to the database.  The transfer will only be successful if the logins retain the same passwords to reduce the impact on the end users, and more specifically, the...">
+  
+
+
+  <meta property="og:type" content="website">
+
+  
+  <meta property="og:url" content="http://0.0.0.0:4000/blog/index.php/2011/03/19/script-logins-from-database-users/">
+  <link rel="canonical" href="http://0.0.0.0:4000/blog/index.php/2011/03/19/script-logins-from-database-users/">
+  
+
+  
+
+
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@reubensultana">
+  <meta name="twitter:creator" content="@reubensultana">
+
+  
+  <meta name="twitter:title" content="Script Logins from Database Users">
+  
+
+  
+  <meta name="twitter:description" content="When performing a database migration from one SQL Server instance to another, the DBA has to transfer all logins which have access to the database.  The transfer will only be successful if the logins retain the same passwords to reduce the impact on the end users, and more specifically, the...">
+  
+
+  
+
+  
+
+  
+
+</head>
+
+
+  <body>
+
+    
+
+  
+    <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-custom "><a class="navbar-brand" href="http://0.0.0.0:4000/">SQL Server Diaries</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tags">Tags</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://reubensultana.com">Author's home</a>
+          </li></ul>
+  </div>
+
+  
+
+</nav>
+
+
+    <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Script Logins from Database Users</h1>
+      
+      
+      
+          <span class="post-meta">Posted on March 19, 2011</span>
+          
+            <!--- "ReadTime on GitHub Jekyll" (c) 2020 Ruby Griffith Ramirez, MIT License -->
+
+
+
+
+
+
+  
+  <span class="reader-time post-meta"><span class="d-none d-md-inline middot">&middot;</span> 15 minute read</span>
+
+
+          
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class="container-md">
+  <div class="row">
+    <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+
+      
+
+      <article role="main" class="blog-post">
+        <p>When performing a database migration from one SQL Server instance to another, the DBA has to transfer all logins which have access to the database.  The transfer will only be successful if the logins retain the same passwords to reduce the impact on the end users, and more specifically, the logins have to be created with the same Security IDentifier (SID) as the original one.  The SID is a varbinay value and can be retrieved by querying the <em>dbo.syslogins</em> view in SQL Server 2000, or the <em>sys.server_principals</em> catalog view in SQL Server 2005 and 2008.</p>
+
+<p>Generating a script to recreate all the logins created in an instance or one-by-one is possible by implementing and using the <em>sp_help_revlogin</em> stored procedure as shown in the Microsoft KB articles <a href="http://support.microsoft.com/kb/246133">246133</a> or <a href="http://support.microsoft.com/kb/918992">918992</a>.  The trouble with these versions is that the logins have to be transferred in bulk or individually.  Transferring only the logins which have access to a specific database can be time-consuming if the database has a large number of users.</p>
+
+<p>Another option is to use the “Transfer Logins Task” component in an SQL Server Integration Services (2005 and later) package as shown in the below screenshot.  Personally, I prefer to generate a script which can be transferred between DBAs, reused during testing, or simply retained for records and auditing purposes.</p>
+
+<p><img src="/assets/article_files/2011-03-19-script-logins-from-database-users/SSIS_Transfer_Logins_Task.jpg" alt="SSIS Transfer Logins Task component" /></p>
+
+<p>Building on the concept of the <em>sp_help_revlogin</em> stored procedure, I created the <em>sp_migrate_logins</em> stored procedure.  Since the source DBMS’s being managed are SQL Server 2000, 2007 and 2008 ﻿﻿environments two versions of the stored procedure were created - one for SQL Server 2000 and another for SQL Server 2005 and later.  This object is created in the master database to allow it to be called from any database in the instance and has a number of input parameters as described below.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Data Type</th>
+      <th>Default Value</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>@dbname</td>
+      <td>sysname</td>
+      <td>NULL</td>
+      <td>Database whose logins are to be migrated; if not set the current database will be used</td>
+    </tr>
+    <tr>
+      <td>@default_database</td>
+      <td>sysname</td>
+      <td>NULL</td>
+      <td>Which database will be set as default; if not set the login’s default will be used</td>
+    </tr>
+    <tr>
+      <td>@login_name</td>
+      <td>sysname</td>
+      <td>NULL</td>
+      <td>The (single) login to migrate</td>
+    </tr>
+    <tr>
+      <td>@sqlserverversion</td>
+      <td>tinyint</td>
+      <td>80 (or 90) depending on the version</td>
+      <td>The destination SQL Server version (allowed: 80, 90)</td>
+    </tr>
+    <tr>
+      <td>@check_policy</td>
+      <td>bit</td>
+      <td>NULL</td>
+      <td>Parameter used when @sqlserverversion value is 90 or greater</td>
+    </tr>
+    <tr>
+      <td>@check_expiration</td>
+      <td>bit</td>
+      <td>NULL</td>
+      <td>Parameter used when @sqlserverversion value is 90 or greater</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The first check in the stored procedure is to verify that only members of the <em>sysadmins</em> fixed server role can execute it.  The reason being because since we shall be migrating logins, and although the passwords are stored in a non-reversibile encryption (hashed), access to this information should be limited.  Of course once the script to re-create the logins is extracted this should be protected from falling into the wrong hands!</p>
+
+<p>Back to the stored procedure.  The next few checks verify that the database name is valid, the default database name is valid, that the login is valid, the destination SQL Server version number is one of the allowed ranges, etc.</p>
+
+<p>The main body of the stored procedure then extracts the required information from the <em>dbo.syslogins</em> or the <em>sys.server_principals</em> objects depending on which version is being executed.</p>
+
+<p>The stored procedure also makes use of the <em>sp_hexadecimal</em> stored procedure which is distributed as part of the original Microsoft scripts mentioned earlier.  This stored procedure has been included in the final scripts which are available for download below.</p>
+
+<p>The target was to ease off part of the burden such a mudane task from a DBA’s duties.  The complete script for both versions of the stored procedure is shown below:</p>
+
+<h3 id="sp_migrate_logins---sql-server-2000-version">sp_migrate_logins - SQL Server 2000 version</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">USE</span> <span class="p">[</span><span class="n">master</span><span class="p">]</span>
+<span class="k">GO</span>
+
+<span class="n">IF</span> <span class="n">OBJECT_ID</span><span class="p">(</span><span class="s1">'dbo.sp_migrate_logins'</span><span class="p">)</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span>
+    <span class="k">DROP</span> <span class="k">PROCEDURE</span> <span class="n">dbo</span><span class="p">.</span><span class="n">sp_migrate_logins</span>
+<span class="k">GO</span>
+
+<span class="k">CREATE</span> <span class="k">PROCEDURE</span> <span class="n">dbo</span><span class="p">.</span><span class="n">sp_migrate_logins</span>
+    <span class="o">@</span><span class="n">dbname</span> <span class="n">SYSNAME</span> <span class="o">=</span> <span class="k">NULL</span><span class="p">,</span>             <span class="c1">-- database whose logins are to be migrated; if not set the current database will be used</span>
+    <span class="o">@</span><span class="n">default_database</span> <span class="n">SYSNAME</span> <span class="o">=</span> <span class="k">NULL</span><span class="p">,</span>   <span class="c1">-- which database will be set as default; if not set the login's default will be used</span>
+    <span class="o">@</span><span class="n">login_name</span> <span class="n">SYSNAME</span> <span class="o">=</span> <span class="k">NULL</span><span class="p">,</span>         <span class="c1">-- the (single) login to migrate</span>
+    <span class="o">@</span><span class="n">sqlserverversion</span> <span class="nb">tinyint</span> <span class="o">=</span> <span class="mi">80</span><span class="p">,</span>     <span class="c1">-- the destination SQL Server version (allowed: 80, 90)</span>
+    <span class="o">@</span><span class="n">check_policy</span> <span class="nb">bit</span> <span class="o">=</span> <span class="k">NULL</span><span class="p">,</span>           <span class="c1">-- parameter used when @sqlserverversion value is 90 or greater</span>
+    <span class="o">@</span><span class="n">check_expiration</span> <span class="nb">bit</span> <span class="o">=</span> <span class="k">NULL</span>        <span class="c1">-- parameter used when @sqlserverversion value is 90 or greater</span>
+<span class="k">AS</span>
+<span class="cm">/*
+----------------------------------------------------------------------------
+-- Object Name:             dbo.sp_migrate_logins
+-- Project:                 N/A
+-- Business Process:        N/A
+-- Purpose:                 Transfer logins which are authorised users in a database.
+-- Detailed Description:    Transfer logins which are authorised users in a database between instances of SQL Server 2000 or to 2005.
+--                          NOTE: SQL Server 2000 ONLY!
+-- Database:                master
+-- Dependent Objects:       None
+-- Called By:               SysAdmin
+--
+--------------------------------------------------------------------------------------
+-- Rev   | CMR      | Date Modified  | Developer             | Change Summary
+--------------------------------------------------------------------------------------
+--   1.0 |          | 01/03/2011     | Reuben Sultana        | First implementation
+--       |          |                |                       |
+--
+*/</span>
+<span class="k">BEGIN</span>
+    <span class="k">SET</span> <span class="n">NOCOUNT</span> <span class="k">ON</span><span class="p">;</span>
+    <span class="k">DECLARE</span> <span class="o">@</span><span class="n">sqlcmd</span> <span class="n">NVARCHAR</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+
+    <span class="k">SET</span> <span class="o">@</span><span class="n">sqlcmd</span> <span class="o">=</span><span class="s1">''</span><span class="p">;</span>
+    <span class="n">PRINT</span> <span class="s1">'/* ***** Login Migration Script ***** */'</span><span class="p">;</span>
+
+    <span class="cm">/* ***** preliminary checks ***** */</span>
+    <span class="c1">-- verify that a sysadmin is executing this stored procedure</span>
+    <span class="n">IF</span> <span class="p">(</span><span class="n">IS_SRVROLEMEMBER</span><span class="p">(</span><span class="s1">'sysadmin'</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">BEGIN</span>
+        <span class="n">RAISERROR</span><span class="p">(</span><span class="s1">'Only members of the </span><span class="se">''</span><span class="s1">sysadmin</span><span class="se">''</span><span class="s1"> fixed server role can execute this stored procedure.'</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="k">RETURN</span><span class="p">;</span>
+    <span class="k">END</span>
+
+    <span class="cm">/* ***** check values of input variables ***** */</span>
+    <span class="c1">-- @dbname</span>
+    <span class="n">IF</span> <span class="p">(</span><span class="o">@</span><span class="n">dbname</span> <span class="k">IS</span> <span class="k">NULL</span><span class="p">)</span>
+    <span class="k">BEGIN</span>
+        <span class="k">SET</span> <span class="o">@</span><span class="n">dbname</span> <span class="o">=</span> <span class="n">DB_NAME</span><span class="p">();</span>
+        <span class="n">PRINT</span> <span class="s1">'-- Setting default database to the current database.'</span><span class="p">;</span>
+    <span class="k">END</span>
+    <span class="c1">--</span>
+    <span class="n">IF</span> <span class="p">(</span><span class="o">@</span><span class="n">dbname</span> <span class="k">IN</span> <span class="p">(</span><span class="s1">'master'</span><span class="p">,</span> <span class="s1">'model'</span><span class="p">,</span> <span class="s1">'msdb'</span><span class="p">,</span> <span class="s1">'tempdb'</span><span class="p">))</span>
+    <span class="k">BEGIN</span>
+        <span class="n">RAISERROR</span><span class="p">(</span><span class="s1">'System databases cannot be migrated. Please select another database.'</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="k">RETURN</span><span class="p">;</span>
+    <span class="k">END</span>
+    <span class="c1">--</span>
+    <span class="n">IF</span> <span class="k">NOT</span> <span class="k">EXISTS</span><span class="p">(</span><span class="k">SELECT</span> <span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="k">FROM</span> <span class="p">[</span><span class="n">master</span><span class="p">].</span><span class="n">dbo</span><span class="p">.</span><span class="n">sysdatabases</span> <span class="k">WHERE</span> <span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">=@</span><span class="n">dbname</span><span class="p">)</span>
+    <span class="k">BEGIN</span>
+        <span class="n">RAISERROR</span><span class="p">(</span><span class="s1">'Database </span><span class="se">''</span><span class="s1">%s</span><span class="se">''</span><span class="s1"> does not exist.'</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">@</span><span class="n">dbname</span><span class="p">);</span>
+        <span class="k">RETURN</span><span class="p">;</span>
+    <span class="k">END</span>
+
+    <span class="n">PRINT</span> <span class="s1">'-- Generated '</span> <span class="o">+</span> <span class="k">CONVERT</span><span class="p">(</span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span> <span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span> <span class="mi">113</span><span class="p">)</span> <span class="o">+</span> <span class="s1">' on '</span> <span class="o">+</span> <span class="k">ISNULL</span><span class="p">(</span><span class="o">@@</span><span class="n">SERVERNAME</span><span class="p">,</span> <span class="k">CAST</span><span class="p">(</span><span class="n">SERVERPROPERTY</span><span class="p">(</span><span class="s1">'ServerName'</span><span class="p">)</span> <span class="k">AS</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)))</span> <span class="o">+</span> <span class="s1">' for database </span><span class="se">''</span><span class="s1">'</span> <span class="o">+</span> <span class="o">@</span><span class="n">dbname</span> <span class="o">+</span> <span class="s1">''</span><span class="p">;</span>
+    <span class="n">PRINT</span> <span class="s1">''</span><span class="p">;</span>
+
+    <span class="c1">-- @default_database</span>
+    <span class="n">IF</span> <span class="p">(</span><span class="o">@</span><span class="n">default_database</span> <span class="k">IN</span> <span class="p">(</span><span class="s1">'master'</span><span class="p">,</span> <span class="s1">'model'</span><span class="p">,</span> <span class="s1">'msdb'</span><span class="p">,</span> <span class="s1">'tempdb'</span><span class="p">))</span>
+    <span class="k">BEGIN</span>
+        <span class="n">RAISERROR</span><span class="p">(</span><span class="s1">'Cannot set a system database as the default database. Please select another database.'</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="k">RETURN</span><span class="p">;</span>
+    <span class="k">END</span>
+    <span class="c1">--</span>
+    <span class="n">IF</span> <span class="p">(</span><span class="o">@</span><span class="n">default_database</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">)</span> <span class="k">AND</span> <span class="k">NOT</span> <span class="k">EXISTS</span><span class="p">(</span><span class="k">SELECT</span> <span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="k">FROM</span> <span class="p">[</span><span class="n">master</span><span class="p">].</span><span class="n">dbo</span><span class="p">.</span><span class="n">sysdatabases</span> <span class="k">WHERE</span> <span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">=@</span><span class="n">default_database</span><span class="p">)</span>
+    <span class="k">BEGIN</span>
+        <span class="n">RAISERROR</span><span class="p">(</span><span class="s1">'Database </span><span class="se">''</span><span class="s1">%s</span><span class="se">''</span><span class="s1"> does not exist.'</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">@</span><span class="n">default_database</span><span class="p">);</span>
+        <span class="k">RETURN</span><span class="p">;</span>
+    <span class="k">END</span>
+
+    <span class="c1">-- @login_name</span>
+    <span class="n">IF</span> <span class="p">(</span><span class="o">@</span><span class="n">login_name</span> <span class="k">IS</span> <span class="k">NULL</span><span class="p">)</span>
+    <span class="k">BEGIN</span>
+        <span class="n">PRINT</span> <span class="s1">'-- A single login was not defined.  All logins authorised to access database </span><span class="se">''</span><span class="s1">'</span> <span class="o">+</span> <span class="o">@</span><span class="n">dbname</span> <span class="o">+</span> <span class="s1">'</span><span class="se">''</span><span class="s1"> will be extracted.'</span><span class="p">;</span>
+    <span class="k">END</span>
+    <span class="k">ELSE</span>
+    <span class="n">IF</span> <span class="k">NOT</span> <span class="k">EXISTS</span><span class="p">(</span><span class="k">SELECT</span> <span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="k">FROM</span> <span class="p">[</span><span class="n">master</span><span class="p">].</span><span class="n">dbo</span><span class="p">.</span><span class="n">syslogins</span> <span class="k">WHERE</span> <span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">=@</span><span class="n">login_name</span><span class="p">)</span>
+    <span class="k">BEGIN</span>
+        <span class="n">RAISERROR</span><span class="p">(</span><span class="s1">'Login </span><span class="se">''</span><span class="s1">%s</span><span class="se">''</span><span class="s1"> does not exist.'</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">@@</span><span class="n">login_name</span><span class="p">);</span>
+        <span class="k">RETURN</span><span class="p">;</span>
+    <span class="k">END</span>
+
+    <span class="c1">-- @sqlserverversion</span>
+    <span class="n">IF</span> <span class="p">(</span><span class="o">@</span><span class="n">sqlserverversion</span> <span class="k">NOT</span> <span class="k">IN</span> <span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">90</span><span class="p">))</span>
+    <span class="k">BEGIN</span>
+        <span class="n">RAISERROR</span><span class="p">(</span><span class="s1">'The supplied SQL Server version </span><span class="se">''</span><span class="s1">%d</span><span class="se">''</span><span class="s1"> is not valid.'</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">@</span><span class="n">sqlserverversion</span><span class="p">);</span>
+        <span class="k">RETURN</span><span class="p">;</span>
+    <span class="k">END</span>
+
+    <span class="cm">/* ***** the nitty-gritty... ***** */</span>
+    <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">#</span><span class="n">LoginList</span> <span class="p">(</span><span class="n">login_name</span> <span class="n">SYSNAME</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> <span class="n">login_sid</span> <span class="nb">VARBINARY</span><span class="p">(</span><span class="mi">85</span><span class="p">));</span>
+
+    <span class="k">DECLARE</span> <span class="o">@</span><span class="n">name</span> <span class="n">SYSNAME</span>
+    <span class="k">DECLARE</span> <span class="o">@</span><span class="n">xstatus</span> <span class="nb">INT</span>
+    <span class="k">DECLARE</span> <span class="o">@</span><span class="n">binpwd</span> <span class="nb">VARBINARY</span><span class="p">(</span><span class="mi">256</span><span class="p">)</span>
+    <span class="k">DECLARE</span> <span class="o">@</span><span class="n">txtpwd</span> <span class="n">SYSNAME</span>
+    <span class="k">DECLARE</span> <span class="o">@</span><span class="n">tmpstr</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">256</span><span class="p">)</span>
+    <span class="k">DECLARE</span> <span class="o">@</span><span class="n">SID_varbinary</span> <span class="nb">VARBINARY</span><span class="p">(</span><span class="mi">85</span><span class="p">)</span>
+    <span class="k">DECLARE</span> <span class="o">@</span><span class="n">SID_string</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">256</span><span class="p">)</span>
+
+    <span class="k">DECLARE</span> <span class="o">@</span><span class="n">defaultdb</span> <span class="n">SYSNAME</span><span class="p">;</span>
+
+    <span class="k">DECLARE</span> <span class="o">@</span><span class="n">curLogins</span> <span class="k">CURSOR</span><span class="p">;</span>
+    <span class="k">DECLARE</span> <span class="o">@</span><span class="n">outputstring</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>
+
+    <span class="n">IF</span> <span class="p">(</span><span class="o">@</span><span class="n">login_name</span> <span class="k">IS</span> <span class="k">NULL</span><span class="p">)</span>
+        <span class="k">SET</span> <span class="o">@</span><span class="n">sqlcmd</span> <span class="o">=</span> <span class="s1">'SELECT [name], [sid] FROM '</span> <span class="o">+</span> <span class="n">QUOTENAME</span><span class="p">(</span><span class="o">@</span><span class="n">dbname</span><span class="p">,</span> <span class="s1">'['</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'.dbo.sysusers WHERE [uid]&gt;2 AND [islogin]=1 ORDER BY [name] ASC;'</span>
+    <span class="k">ELSE</span>
+        <span class="k">SET</span> <span class="o">@</span><span class="n">sqlcmd</span> <span class="o">=</span> <span class="s1">'SELECT [name], [sid] FROM '</span> <span class="o">+</span> <span class="n">QUOTENAME</span><span class="p">(</span><span class="o">@</span><span class="n">dbname</span><span class="p">,</span> <span class="s1">'['</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'.dbo.sysusers WHERE [name]=</span><span class="se">''</span><span class="s1">'</span> <span class="o">+</span> <span class="o">@</span><span class="n">login_name</span> <span class="o">+</span> <span class="s1">'</span><span class="se">''</span><span class="s1">;'</span>
+
+    <span class="k">INSERT</span> <span class="k">INTO</span> <span class="o">#</span><span class="n">LoginList</span> <span class="k">EXEC</span> <span class="n">sp_executesql</span> <span class="o">@</span><span class="n">sqlcmd</span><span class="p">;</span>
+    <span class="n">IF</span> <span class="p">(</span><span class="o">@@</span><span class="n">ROWCOUNT</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">BEGIN</span>
+        <span class="n">RAISERROR</span><span class="p">(</span><span class="s1">'No logins authorised to access database </span><span class="se">''</span><span class="s1">%s</span><span class="se">''</span><span class="s1"> were found.'</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">@</span><span class="n">dbname</span><span class="p">);</span>
+        <span class="k">RETURN</span><span class="p">;</span>
+    <span class="k">END</span>
+
+    <span class="n">PRINT</span> <span class="s1">'USE [master]'</span><span class="p">;</span>
+    <span class="n">PRINT</span> <span class="s1">'GO'</span><span class="p">;</span>
+
+    <span class="n">IF</span> <span class="p">(</span><span class="o">@</span><span class="n">sqlserverversion</span> <span class="o">=</span> <span class="mi">80</span><span class="p">)</span>
+    <span class="k">BEGIN</span>
+        <span class="n">PRINT</span> <span class="s1">''</span><span class="p">;</span>
+        <span class="n">PRINT</span> <span class="s1">'DECLARE @pwd sysname;'</span><span class="p">;</span>
+        <span class="n">PRINT</span> <span class="s1">''</span><span class="p">;</span>
+    <span class="k">END</span>
+
+    <span class="k">SET</span> <span class="o">@</span><span class="n">curLogins</span> <span class="o">=</span> <span class="k">CURSOR</span> <span class="k">FOR</span>
+        <span class="k">SELECT</span> <span class="n">l</span><span class="p">.[</span><span class="n">sid</span><span class="p">],</span> <span class="n">l</span><span class="p">.[</span><span class="n">name</span><span class="p">],</span> <span class="n">l</span><span class="p">.[</span><span class="n">xstatus</span><span class="p">],</span> <span class="n">l</span><span class="p">.[</span><span class="n">password</span><span class="p">],</span> <span class="k">ISNULL</span><span class="p">(</span><span class="n">DB_NAME</span><span class="p">(</span><span class="n">l</span><span class="p">.[</span><span class="n">dbid</span><span class="p">]),</span> <span class="s1">'master'</span><span class="p">)</span>
+        <span class="k">FROM</span> <span class="p">[</span><span class="n">master</span><span class="p">]..</span><span class="n">sysxlogins</span> <span class="n">l</span>
+            <span class="k">INNER</span> <span class="k">JOIN</span> <span class="o">#</span><span class="n">LoginList</span> <span class="n">u</span> <span class="k">ON</span> <span class="n">l</span><span class="p">.[</span><span class="n">sid</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span><span class="p">.[</span><span class="n">login_sid</span><span class="p">]</span>
+        <span class="k">WHERE</span> <span class="n">l</span><span class="p">.[</span><span class="n">srvid</span><span class="p">]</span> <span class="k">IS</span> <span class="k">NULL</span><span class="p">;</span>  <span class="c1">-- copied from 'syslogins' view to remove extra login names (?)</span>
+
+    <span class="k">OPEN</span> <span class="o">@</span><span class="n">curLogins</span><span class="p">;</span>
+    <span class="k">FETCH</span> <span class="k">NEXT</span> <span class="k">FROM</span> <span class="o">@</span><span class="n">curLogins</span> <span class="k">INTO</span> <span class="o">@</span><span class="n">SID_varbinary</span><span class="p">,</span> <span class="o">@</span><span class="n">name</span><span class="p">,</span> <span class="o">@</span><span class="n">xstatus</span><span class="p">,</span> <span class="o">@</span><span class="n">binpwd</span><span class="p">,</span> <span class="o">@</span><span class="n">defaultdb</span><span class="p">;</span>
+    <span class="n">WHILE</span> <span class="p">(</span><span class="o">@@</span><span class="n">FETCH_STATUS</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">BEGIN</span>
+        <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+
+        <span class="n">IF</span> <span class="p">(</span><span class="o">@</span><span class="n">sqlserverversion</span> <span class="o">=</span> <span class="mi">80</span><span class="p">)</span>  <span class="c1">-- SQL Server 2000</span>
+        <span class="k">BEGIN</span>
+            <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="s1">'IF NOT EXISTS(SELECT [name] FROM [master].dbo.syslogins WHERE [name]=</span><span class="se">''</span><span class="s1">'</span> <span class="o">+</span> <span class="o">@</span><span class="n">name</span> <span class="o">+</span> <span class="s1">'</span><span class="se">''</span><span class="s1">)'</span> <span class="o">+</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+            <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">'BEGIN'</span> <span class="o">+</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+
+            <span class="n">IF</span> <span class="p">((</span><span class="o">@</span><span class="n">xstatus</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">-- Windows Authenticated account/group</span>
+            <span class="k">BEGIN</span>
+                <span class="n">IF</span> <span class="p">((</span><span class="o">@</span><span class="n">xstatus</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">-- NT login is denied access</span>
+                    <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">'   EXEC [master].dbo.sp_denylogin @loginame=</span><span class="se">''</span><span class="s1">'</span> <span class="o">+</span> <span class="o">@</span><span class="n">name</span> <span class="o">+</span> <span class="s1">'</span><span class="se">''</span><span class="s1">'</span> <span class="o">+</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+                <span class="k">ELSE</span> <span class="c1">-- NT login has access</span>
+                    <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">'   EXEC [master].dbo.sp_grantlogin @loginame=</span><span class="se">''</span><span class="s1">'</span> <span class="o">+</span> <span class="o">@</span><span class="n">name</span> <span class="o">+</span> <span class="s1">'</span><span class="se">''</span><span class="s1">'</span> <span class="o">+</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+            <span class="k">END</span>
+            <span class="k">ELSE</span>
+            <span class="k">BEGIN</span> <span class="c1">-- SQL Server authentication</span>
+                <span class="k">EXEC</span> <span class="p">[</span><span class="n">master</span><span class="p">].</span><span class="n">dbo</span><span class="p">.</span><span class="n">sp_hexadecimal</span> <span class="o">@</span><span class="n">SID_varbinary</span><span class="p">,</span> <span class="o">@</span><span class="n">SID_string</span> <span class="k">OUT</span><span class="p">;</span>
+
+                <span class="c1">-- retrieve password and sid</span>
+                <span class="n">IF</span> <span class="p">(</span><span class="o">@</span><span class="n">binpwd</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">)</span>
+                <span class="k">BEGIN</span> <span class="c1">-- Non-null password</span>
+                    <span class="k">EXEC</span> <span class="p">[</span><span class="n">master</span><span class="p">].</span><span class="n">dbo</span><span class="p">.</span><span class="n">sp_hexadecimal</span> <span class="o">@</span><span class="n">binpwd</span><span class="p">,</span> <span class="o">@</span><span class="n">txtpwd</span> <span class="k">OUT</span><span class="p">;</span>
+
+                    <span class="n">IF</span> <span class="p">((</span><span class="o">@</span><span class="n">xstatus</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="mi">2048</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2048</span><span class="p">)</span>
+                        <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">'   SET @pwd = CONVERT(varchar(256), '</span> <span class="o">+</span> <span class="o">@</span><span class="n">txtpwd</span> <span class="o">+</span> <span class="s1">');'</span> <span class="o">+</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+                    <span class="k">ELSE</span>
+                        <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">'   SET @pwd = CONVERT(varbinary(256), '</span> <span class="o">+</span> <span class="o">@</span><span class="n">txtpwd</span> <span class="o">+</span> <span class="s1">');'</span> <span class="o">+</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+                <span class="k">END</span>
+                <span class="k">ELSE</span>
+                    <span class="c1">-- Null password</span>
+                    <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">'   SET @pwd = NULL;'</span> <span class="o">+</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+
+                <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">'   EXEC [master].dbo.sp_addlogin </span><span class="se">''</span><span class="s1">'</span> <span class="o">+</span> <span class="o">@</span><span class="n">name</span> <span class="o">+</span> <span class="s1">'</span><span class="se">''</span><span class="s1">, @pwd, @sid='</span> <span class="o">+</span> <span class="o">@</span><span class="n">SID_string</span> <span class="o">+</span> <span class="s1">', @encryptopt='</span><span class="p">;</span>
+
+                <span class="n">IF</span> <span class="p">((</span><span class="o">@</span><span class="n">xstatus</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="mi">2048</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2048</span><span class="p">)</span>
+                    <span class="c1">-- login upgraded from 6.5</span>
+                    <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">'</span><span class="se">''</span><span class="s1">skip_encryption_old</span><span class="se">''</span><span class="s1">;'</span> <span class="o">+</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+                <span class="k">ELSE</span>
+                    <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">'</span><span class="se">''</span><span class="s1">skip_encryption</span><span class="se">''</span><span class="s1">;'</span> <span class="o">+</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+            <span class="k">END</span>
+
+            <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">'END'</span> <span class="o">+</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+
+            <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">'EXEC [master].dbo.sp_defaultdb @loginame='</span> <span class="o">+</span> <span class="n">QUOTENAME</span><span class="p">(</span><span class="o">@</span><span class="n">name</span><span class="p">,</span> <span class="s1">'['</span><span class="p">)</span> <span class="o">+</span> <span class="s1">', @defdb='</span> <span class="o">+</span> <span class="n">QUOTENAME</span><span class="p">(</span><span class="k">ISNULL</span><span class="p">(</span><span class="o">@</span><span class="n">default_database</span><span class="p">,</span> <span class="o">@</span><span class="n">defaultdb</span><span class="p">),</span> <span class="s1">'['</span><span class="p">)</span>  <span class="o">+</span> <span class="s1">';'</span> <span class="o">+</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+            <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">'EXEC [master].dbo.sp_defaultlanguage @loginame='</span> <span class="o">+</span> <span class="n">QUOTENAME</span><span class="p">(</span><span class="o">@</span><span class="n">name</span><span class="p">,</span> <span class="s1">'['</span><span class="p">)</span> <span class="o">+</span> <span class="s1">', @language=</span><span class="se">''</span><span class="s1">'</span> <span class="o">+</span> <span class="k">CAST</span><span class="p">(</span><span class="o">@@</span><span class="k">LANGUAGE</span> <span class="k">AS</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span> <span class="o">+</span> <span class="s1">'</span><span class="se">''</span><span class="s1">;'</span> <span class="o">+</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+        <span class="k">END</span>
+
+        <span class="k">ELSE</span> <span class="n">IF</span> <span class="p">(</span><span class="o">@</span><span class="n">sqlserverversion</span> <span class="o">=</span> <span class="mi">90</span><span class="p">)</span>  <span class="c1">-- SQL Server 2005</span>
+        <span class="k">BEGIN</span>
+            <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="s1">'IF NOT EXISTS(SELECT [name] FROM sys.server_principals WHERE [name]=</span><span class="se">''</span><span class="s1">'</span> <span class="o">+</span> <span class="o">@</span><span class="n">name</span> <span class="o">+</span> <span class="s1">'</span><span class="se">''</span><span class="s1">)'</span> <span class="o">+</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+
+            <span class="n">IF</span> <span class="p">((</span><span class="o">@</span><span class="n">xstatus</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">-- Windows Authenticated account/group</span>
+            <span class="k">BEGIN</span>
+                <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">'   CREATE LOGIN '</span> <span class="o">+</span> <span class="n">QUOTENAME</span><span class="p">(</span><span class="o">@</span><span class="n">name</span><span class="p">)</span> <span class="o">+</span> <span class="s1">' FROM WINDOWS WITH DEFAULT_DATABASE='</span> <span class="o">+</span> <span class="n">QUOTENAME</span><span class="p">(</span><span class="k">ISNULL</span><span class="p">(</span><span class="o">@</span><span class="n">default_database</span><span class="p">,</span> <span class="o">@</span><span class="n">defaultdb</span><span class="p">),</span> <span class="s1">'['</span><span class="p">);</span>
+                <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">', DEFAULT_LANGUAGE=['</span> <span class="o">+</span> <span class="k">CAST</span><span class="p">(</span><span class="o">@@</span><span class="k">LANGUAGE</span> <span class="k">AS</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span> <span class="o">+</span> <span class="s1">']'</span><span class="p">;</span>
+            <span class="k">END</span>
+            <span class="k">ELSE</span>
+            <span class="k">BEGIN</span> <span class="c1">-- SQL Server authentication</span>
+                <span class="c1">-- retrieve password and sid</span>
+                <span class="k">EXEC</span> <span class="p">[</span><span class="n">master</span><span class="p">].</span><span class="n">dbo</span><span class="p">.</span><span class="n">sp_hexadecimal</span> <span class="o">@</span><span class="n">SID_varbinary</span><span class="p">,</span> <span class="o">@</span><span class="n">SID_string</span> <span class="k">OUT</span><span class="p">;</span>
+                <span class="n">IF</span> <span class="p">(</span><span class="o">@</span><span class="n">binpwd</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">)</span>
+                <span class="k">BEGIN</span> <span class="c1">-- Non-null password</span>
+                    <span class="k">EXEC</span> <span class="p">[</span><span class="n">master</span><span class="p">].</span><span class="n">dbo</span><span class="p">.</span><span class="n">sp_hexadecimal</span> <span class="o">@</span><span class="n">binpwd</span><span class="p">,</span> <span class="o">@</span><span class="n">txtpwd</span> <span class="k">OUT</span><span class="p">;</span>
+                    <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">'   CREATE LOGIN '</span> <span class="o">+</span> <span class="n">QUOTENAME</span><span class="p">(</span><span class="o">@</span><span class="n">name</span><span class="p">)</span> <span class="o">+</span> <span class="s1">' WITH PASSWORD= '</span> <span class="o">+</span> <span class="o">@</span><span class="n">txtpwd</span> <span class="o">+</span> <span class="s1">' HASHED, SID='</span> <span class="o">+</span> <span class="o">@</span><span class="n">SID_string</span> <span class="o">+</span> <span class="s1">', DEFAULT_DATABASE='</span> <span class="o">+</span> <span class="n">QUOTENAME</span><span class="p">(</span><span class="k">ISNULL</span><span class="p">(</span><span class="o">@</span><span class="n">default_database</span><span class="p">,</span> <span class="o">@</span><span class="n">defaultdb</span><span class="p">),</span> <span class="s1">'['</span><span class="p">);</span>
+                    <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">', DEFAULT_LANGUAGE=['</span> <span class="o">+</span> <span class="k">CAST</span><span class="p">(</span><span class="o">@@</span><span class="k">LANGUAGE</span> <span class="k">AS</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span> <span class="o">+</span> <span class="s1">']'</span><span class="p">;</span>
+                <span class="k">END</span>
+                <span class="k">ELSE</span> <span class="c1">-- Null password</span>
+                <span class="k">BEGIN</span>
+                    <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">'   CREATE LOGIN '</span> <span class="o">+</span> <span class="n">QUOTENAME</span><span class="p">(</span><span class="o">@</span><span class="n">name</span><span class="p">)</span> <span class="o">+</span> <span class="s1">' WITH PASSWORD=NULL, SID='</span> <span class="o">+</span> <span class="o">@</span><span class="n">SID_string</span> <span class="o">+</span> <span class="s1">', DEFAULT_DATABASE='</span> <span class="o">+</span> <span class="n">QUOTENAME</span><span class="p">(</span><span class="k">ISNULL</span><span class="p">(</span><span class="o">@</span><span class="n">default_database</span><span class="p">,</span> <span class="o">@</span><span class="n">defaultdb</span><span class="p">),</span> <span class="s1">'['</span><span class="p">);</span>
+                    <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">', DEFAULT_LANGUAGE=['</span> <span class="o">+</span> <span class="k">CAST</span><span class="p">(</span><span class="o">@@</span><span class="k">LANGUAGE</span> <span class="k">AS</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span> <span class="o">+</span> <span class="s1">']'</span><span class="p">;</span>
+                <span class="k">END</span>
+
+                <span class="c1">-- set password policy state</span>
+                <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">', CHECK_POLICY='</span> <span class="o">+</span> <span class="p">(</span><span class="k">CASE</span> <span class="o">@</span><span class="n">check_policy</span> <span class="k">WHEN</span> <span class="mi">1</span> <span class="k">THEN</span> <span class="s1">'ON'</span> <span class="k">WHEN</span> <span class="mi">0</span> <span class="k">THEN</span> <span class="s1">'OFF'</span> <span class="k">ELSE</span> <span class="s1">'OFF'</span> <span class="k">END</span><span class="p">);</span>
+                <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">', CHECK_EXPIRATION='</span> <span class="o">+</span> <span class="p">(</span><span class="k">CASE</span> <span class="o">@</span><span class="n">check_expiration</span> <span class="k">WHEN</span> <span class="mi">1</span> <span class="k">THEN</span> <span class="s1">'ON'</span> <span class="k">WHEN</span> <span class="mi">0</span> <span class="k">THEN</span> <span class="s1">'OFF'</span> <span class="k">ELSE</span> <span class="s1">'OFF'</span> <span class="k">END</span><span class="p">)</span> <span class="o">+</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+            <span class="k">END</span>
+
+        <span class="k">END</span>
+
+        <span class="c1">-- check and set membership in server roles</span>
+        <span class="n">IF</span> <span class="p">(</span><span class="o">@</span><span class="n">xstatus</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="mi">16</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span> <span class="c1">-- sysadmin</span>
+            <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">'EXEC [master].dbo.sp_addsrvrolemember @loginame='</span> <span class="o">+</span> <span class="n">QUOTENAME</span><span class="p">(</span><span class="o">@</span><span class="n">name</span><span class="p">)</span> <span class="o">+</span> <span class="s1">', @rolename=[sysadmin]'</span> <span class="o">+</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+
+        <span class="n">IF</span> <span class="p">(</span><span class="o">@</span><span class="n">xstatus</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="mi">32</span> <span class="o">=</span> <span class="mi">32</span><span class="p">)</span> <span class="c1">-- securityadmin</span>
+            <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">'EXEC [master].dbo.sp_addsrvrolemember @loginame='</span> <span class="o">+</span> <span class="n">QUOTENAME</span><span class="p">(</span><span class="o">@</span><span class="n">name</span><span class="p">)</span> <span class="o">+</span> <span class="s1">', @rolename=[securityadmin]'</span> <span class="o">+</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+
+        <span class="n">IF</span> <span class="o">@</span><span class="n">xstatus</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="mi">64</span> <span class="o">=</span> <span class="mi">64</span> <span class="c1">-- serveradmin</span>
+            <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">'EXEC [master].dbo.sp_addsrvrolemember @loginame='</span> <span class="o">+</span> <span class="n">QUOTENAME</span><span class="p">(</span><span class="o">@</span><span class="n">name</span><span class="p">)</span> <span class="o">+</span> <span class="s1">', @rolename=[serveradmin]'</span> <span class="o">+</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+
+        <span class="n">IF</span> <span class="o">@</span><span class="n">xstatus</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="mi">128</span> <span class="o">=</span> <span class="mi">128</span> <span class="c1">-- setupadmin</span>
+            <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">'EXEC [master].dbo.sp_addsrvrolemember @loginame='</span> <span class="o">+</span> <span class="n">QUOTENAME</span><span class="p">(</span><span class="o">@</span><span class="n">name</span><span class="p">)</span> <span class="o">+</span> <span class="s1">', @rolename=[setupadmin]'</span> <span class="o">+</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+
+        <span class="n">IF</span> <span class="o">@</span><span class="n">xstatus</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="mi">256</span> <span class="o">=</span> <span class="mi">256</span> <span class="c1">--processadmin</span>
+            <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">'EXEC [master].dbo.sp_addsrvrolemember @loginame='</span> <span class="o">+</span> <span class="n">QUOTENAME</span><span class="p">(</span><span class="o">@</span><span class="n">name</span><span class="p">)</span> <span class="o">+</span> <span class="s1">', @rolename=[processadmin]'</span> <span class="o">+</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+
+        <span class="n">IF</span> <span class="o">@</span><span class="n">xstatus</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="mi">512</span> <span class="o">=</span> <span class="mi">512</span> <span class="c1">-- diskadmin</span>
+            <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">'EXEC [master].dbo.sp_addsrvrolemember @loginame='</span> <span class="o">+</span> <span class="n">QUOTENAME</span><span class="p">(</span><span class="o">@</span><span class="n">name</span><span class="p">)</span> <span class="o">+</span> <span class="s1">', @rolename=[diskadmin]'</span> <span class="o">+</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+
+        <span class="n">IF</span> <span class="o">@</span><span class="n">xstatus</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="mi">1024</span> <span class="o">=</span> <span class="mi">1024</span> <span class="c1">-- dbcreator</span>
+            <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">'EXEC [master].dbo.sp_addsrvrolemember @loginame='</span> <span class="o">+</span> <span class="n">QUOTENAME</span><span class="p">(</span><span class="o">@</span><span class="n">name</span><span class="p">)</span> <span class="o">+</span> <span class="s1">', @rolename=[dbcreator]'</span> <span class="o">+</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+
+        <span class="n">IF</span> <span class="o">@</span><span class="n">xstatus</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="mi">4096</span> <span class="o">=</span> <span class="mi">4096</span> <span class="c1">-- bulkadmin</span>
+            <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">'EXEC [master].dbo.sp_addsrvrolemember @loginame='</span> <span class="o">+</span> <span class="n">QUOTENAME</span><span class="p">(</span><span class="o">@</span><span class="n">name</span><span class="p">)</span> <span class="o">+</span> <span class="s1">', @rolename=[bulkadmin]'</span> <span class="o">+</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+
+        <span class="n">PRINT</span> <span class="o">@</span><span class="n">outputstring</span><span class="p">;</span>
+
+        <span class="k">FETCH</span> <span class="k">NEXT</span> <span class="k">FROM</span> <span class="o">@</span><span class="n">curLogins</span> <span class="k">INTO</span> <span class="o">@</span><span class="n">SID_varbinary</span><span class="p">,</span> <span class="o">@</span><span class="n">name</span><span class="p">,</span> <span class="o">@</span><span class="n">xstatus</span><span class="p">,</span> <span class="o">@</span><span class="n">binpwd</span><span class="p">,</span> <span class="o">@</span><span class="n">defaultdb</span><span class="p">;</span>
+    <span class="k">END</span>
+    <span class="k">CLOSE</span> <span class="o">@</span><span class="n">curLogins</span><span class="p">;</span>
+    <span class="k">DEALLOCATE</span> <span class="o">@</span><span class="n">curLogins</span><span class="p">;</span>
+
+    <span class="n">PRINT</span> <span class="s1">'GO'</span><span class="p">;</span>
+    <span class="n">PRINT</span> <span class="s1">''</span><span class="p">;</span>
+    <span class="n">PRINT</span> <span class="s1">'/* ***** WARNING: Check logins for NULL password! ***** */'</span><span class="p">;</span>
+
+    <span class="cm">/* ***** clean up ***** */</span>
+    <span class="k">DROP</span> <span class="k">TABLE</span> <span class="o">#</span><span class="n">LoginList</span><span class="p">;</span>
+<span class="k">END</span>
+<span class="k">GO</span>
+</code></pre></div></div>
+
+<h3 id="sp_migrate_logins---sql-server-2005-version">sp_migrate_logins - SQL Server 2005 version</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">USE</span> <span class="p">[</span><span class="n">master</span><span class="p">]</span>
+<span class="k">GO</span>
+
+<span class="n">IF</span> <span class="n">OBJECT_ID</span><span class="p">(</span><span class="s1">'dbo.sp_migrate_logins'</span><span class="p">)</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span>
+    <span class="k">DROP</span> <span class="k">PROCEDURE</span> <span class="n">dbo</span><span class="p">.</span><span class="n">sp_migrate_logins</span>
+<span class="k">GO</span>
+
+<span class="k">CREATE</span> <span class="k">PROCEDURE</span> <span class="n">dbo</span><span class="p">.</span><span class="n">sp_migrate_logins</span>
+    <span class="o">@</span><span class="n">dbname</span> <span class="n">SYSNAME</span> <span class="o">=</span> <span class="k">NULL</span><span class="p">,</span>             <span class="c1">-- database whose logins are to be migrated; if not set the current database will be used</span>
+    <span class="o">@</span><span class="n">default_database</span> <span class="n">SYSNAME</span> <span class="o">=</span> <span class="k">NULL</span><span class="p">,</span>   <span class="c1">-- which database will be set as default; if not set the login's default will be used</span>
+    <span class="o">@</span><span class="n">login_name</span> <span class="n">SYSNAME</span> <span class="o">=</span> <span class="k">NULL</span><span class="p">,</span>         <span class="c1">-- the (single) login to migrate</span>
+    <span class="o">@</span><span class="n">sqlserverversion</span> <span class="nb">tinyint</span> <span class="o">=</span> <span class="mi">90</span><span class="p">,</span>     <span class="c1">-- the destination SQL Server version (allowed: 90)</span>
+    <span class="o">@</span><span class="n">check_policy</span> <span class="nb">bit</span> <span class="o">=</span> <span class="k">NULL</span><span class="p">,</span>           <span class="c1">-- whether to override and enforce the CHECK_POLICY property</span>
+    <span class="o">@</span><span class="n">check_expiration</span> <span class="nb">bit</span> <span class="o">=</span> <span class="k">NULL</span>        <span class="c1">-- whether to override and enforce the CHECK_EXPIRATION property</span>
+<span class="k">AS</span>
+<span class="cm">/*
+----------------------------------------------------------------------------
+-- Object Name:             dbo.sp_migrate_logins
+-- Project:                 N/A
+-- Business Process:        N/A
+-- Purpose:                 Transfer logins which are authorised users in a database.
+-- Detailed Description:    Transfer logins which are authorised users in a database between instances of SQL Server 2005.
+--                          NOTE: SQL Server 2005 ONLY!
+-- Database:                master
+-- Dependent Objects:       None
+-- Called By:               SysAdmin
+--
+--------------------------------------------------------------------------------------
+-- Rev   | CMR      | Date Modified  | Developer             | Change Summary
+--------------------------------------------------------------------------------------
+--   1.0 |          | 01/03/2011     | Reuben Sultana        | First implementation
+--       |          |                |                       |
+--
+*/</span>
+<span class="k">BEGIN</span>
+    <span class="k">SET</span> <span class="n">NOCOUNT</span> <span class="k">ON</span><span class="p">;</span>
+    <span class="k">DECLARE</span> <span class="o">@</span><span class="n">sqlcmd</span> <span class="n">NVARCHAR</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+
+    <span class="k">SET</span> <span class="o">@</span><span class="n">sqlcmd</span> <span class="o">=</span><span class="s1">''</span><span class="p">;</span>
+    <span class="n">PRINT</span> <span class="s1">'/* ***** Login Migration Script ***** */'</span><span class="p">;</span>
+
+    <span class="cm">/* ***** preliminary checks ***** */</span>
+    <span class="c1">-- verify that a sysadmin is executing this stored procedure</span>
+    <span class="n">IF</span> <span class="p">(</span><span class="n">IS_SRVROLEMEMBER</span><span class="p">(</span><span class="s1">'sysadmin'</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">BEGIN</span>
+        <span class="n">RAISERROR</span><span class="p">(</span><span class="s1">'Only members of the </span><span class="se">''</span><span class="s1">sysadmin</span><span class="se">''</span><span class="s1"> fixed server role can execute this stored procedure.'</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="k">RETURN</span><span class="p">;</span>
+    <span class="k">END</span>
+
+    <span class="cm">/* ***** check values of input variables ***** */</span>
+    <span class="c1">-- @dbname</span>
+    <span class="n">IF</span> <span class="p">(</span><span class="o">@</span><span class="n">dbname</span> <span class="k">IS</span> <span class="k">NULL</span><span class="p">)</span>
+    <span class="k">BEGIN</span>
+        <span class="k">SET</span> <span class="o">@</span><span class="n">dbname</span> <span class="o">=</span> <span class="n">DB_NAME</span><span class="p">();</span>
+        <span class="n">PRINT</span> <span class="s1">'-- Setting default database to the current database.'</span><span class="p">;</span>
+    <span class="k">END</span>
+    <span class="c1">--</span>
+    <span class="n">IF</span> <span class="p">(</span><span class="o">@</span><span class="n">dbname</span> <span class="k">IN</span> <span class="p">(</span><span class="s1">'master'</span><span class="p">,</span> <span class="s1">'model'</span><span class="p">,</span> <span class="s1">'msdb'</span><span class="p">,</span> <span class="s1">'tempdb'</span><span class="p">))</span>
+    <span class="k">BEGIN</span>
+        <span class="n">RAISERROR</span><span class="p">(</span><span class="s1">'System databases cannot be migrated. Please select another database.'</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="k">RETURN</span><span class="p">;</span>
+    <span class="k">END</span>
+    <span class="c1">--</span>
+    <span class="n">IF</span> <span class="k">NOT</span> <span class="k">EXISTS</span><span class="p">(</span><span class="k">SELECT</span> <span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="k">FROM</span> <span class="n">sys</span><span class="p">.</span><span class="n">databases</span> <span class="k">WHERE</span> <span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">=@</span><span class="n">dbname</span><span class="p">)</span>
+    <span class="k">BEGIN</span>
+        <span class="n">RAISERROR</span><span class="p">(</span><span class="s1">'Database </span><span class="se">''</span><span class="s1">%s</span><span class="se">''</span><span class="s1"> does not exist.'</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">@</span><span class="n">dbname</span><span class="p">);</span>
+        <span class="k">RETURN</span><span class="p">;</span>
+    <span class="k">END</span>
+
+    <span class="n">PRINT</span> <span class="s1">'-- Generated '</span> <span class="o">+</span> <span class="k">CONVERT</span><span class="p">(</span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span> <span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span> <span class="mi">113</span><span class="p">)</span> <span class="o">+</span> <span class="s1">' on '</span> <span class="o">+</span> <span class="k">ISNULL</span><span class="p">(</span><span class="o">@@</span><span class="n">SERVERNAME</span><span class="p">,</span> <span class="k">CAST</span><span class="p">(</span><span class="n">SERVERPROPERTY</span><span class="p">(</span><span class="s1">'ServerName'</span><span class="p">)</span> <span class="k">AS</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)))</span> <span class="o">+</span> <span class="s1">' for database </span><span class="se">''</span><span class="s1">'</span> <span class="o">+</span> <span class="o">@</span><span class="n">dbname</span> <span class="o">+</span> <span class="s1">''</span><span class="p">;</span>
+    <span class="n">PRINT</span> <span class="s1">''</span><span class="p">;</span>
+
+    <span class="c1">-- @default_database</span>
+    <span class="n">IF</span> <span class="p">(</span><span class="o">@</span><span class="n">default_database</span> <span class="k">IN</span> <span class="p">(</span><span class="s1">'master'</span><span class="p">,</span> <span class="s1">'model'</span><span class="p">,</span> <span class="s1">'msdb'</span><span class="p">,</span> <span class="s1">'tempdb'</span><span class="p">))</span>
+    <span class="k">BEGIN</span>
+        <span class="n">RAISERROR</span><span class="p">(</span><span class="s1">'Cannot set a system database as the default database. Please select another database.'</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="k">RETURN</span><span class="p">;</span>
+    <span class="k">END</span>
+    <span class="c1">--</span>
+    <span class="n">IF</span> <span class="p">(</span><span class="o">@</span><span class="n">default_database</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">)</span> <span class="k">AND</span> <span class="k">NOT</span> <span class="k">EXISTS</span><span class="p">(</span><span class="k">SELECT</span> <span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="k">FROM</span> <span class="n">sys</span><span class="p">.</span><span class="n">databases</span> <span class="k">WHERE</span> <span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">=@</span><span class="n">default_database</span><span class="p">)</span>
+    <span class="k">BEGIN</span>
+        <span class="n">RAISERROR</span><span class="p">(</span><span class="s1">'Database </span><span class="se">''</span><span class="s1">%s</span><span class="se">''</span><span class="s1"> does not exist.'</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">@</span><span class="n">default_database</span><span class="p">);</span>
+        <span class="k">RETURN</span><span class="p">;</span>
+    <span class="k">END</span>
+
+    <span class="c1">-- @login_name</span>
+    <span class="n">IF</span> <span class="p">(</span><span class="o">@</span><span class="n">login_name</span> <span class="k">IS</span> <span class="k">NULL</span><span class="p">)</span>
+    <span class="k">BEGIN</span>
+        <span class="n">PRINT</span> <span class="s1">'-- A single login was not defined.  All logins authorised to access database </span><span class="se">''</span><span class="s1">'</span> <span class="o">+</span> <span class="o">@</span><span class="n">dbname</span> <span class="o">+</span> <span class="s1">'</span><span class="se">''</span><span class="s1"> will be extracted.'</span><span class="p">;</span>
+    <span class="k">END</span>
+    <span class="k">ELSE</span>
+    <span class="n">IF</span> <span class="k">NOT</span> <span class="k">EXISTS</span><span class="p">(</span><span class="k">SELECT</span> <span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="k">FROM</span> <span class="n">sys</span><span class="p">.</span><span class="n">server_principals</span> <span class="k">WHERE</span> <span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">=@</span><span class="n">login_name</span> <span class="k">AND</span> <span class="p">[</span><span class="k">type</span><span class="p">]</span> <span class="k">IN</span> <span class="p">(</span><span class="s1">'G'</span><span class="p">,</span> <span class="s1">'S'</span><span class="p">,</span> <span class="s1">'U'</span><span class="p">)</span> <span class="k">AND</span> <span class="n">principal_id</span><span class="o">&gt;</span><span class="mi">100</span><span class="p">)</span>
+    <span class="k">BEGIN</span>
+        <span class="n">RAISERROR</span><span class="p">(</span><span class="s1">'Login </span><span class="se">''</span><span class="s1">%s</span><span class="se">''</span><span class="s1"> does not exist.'</span><span class="p">,,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">@</span><span class="n">login_name</span><span class="p">);</span>
+        <span class="k">RETURN</span><span class="p">;</span>
+    <span class="k">END</span>
+
+    <span class="c1">-- @sqlserverversion</span>
+    <span class="n">IF</span> <span class="p">(</span><span class="o">@</span><span class="n">sqlserverversion</span> <span class="k">NOT</span> <span class="k">IN</span> <span class="p">(</span><span class="mi">90</span><span class="p">))</span>
+    <span class="k">BEGIN</span>
+        <span class="n">RAISERROR</span><span class="p">(</span><span class="s1">'The supplied SQL Server version </span><span class="se">''</span><span class="s1">%d</span><span class="se">''</span><span class="s1"> is not valid.'</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">@</span><span class="n">sqlserverversion</span><span class="p">);</span>
+        <span class="k">RETURN</span><span class="p">;</span>
+    <span class="k">END</span>
+
+    <span class="cm">/* ***** the nitty-gritty... ***** */</span>
+    <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">#</span><span class="n">LoginList</span> <span class="p">(</span><span class="n">login_name</span> <span class="n">SYSNAME</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> <span class="n">login_sid</span> <span class="nb">VARBINARY</span><span class="p">(</span><span class="mi">85</span><span class="p">));</span>
+
+    <span class="k">DECLARE</span> <span class="o">@</span><span class="n">name</span> <span class="n">SYSNAME</span><span class="p">;</span>
+    <span class="k">DECLARE</span> <span class="o">@</span><span class="k">type</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="k">DECLARE</span> <span class="o">@</span><span class="n">hasaccess</span> <span class="nb">INT</span><span class="p">;</span>
+    <span class="k">DECLARE</span> <span class="o">@</span><span class="n">denylogin</span> <span class="nb">INT</span><span class="p">;</span>
+    <span class="k">DECLARE</span> <span class="o">@</span><span class="n">is_disabled</span> <span class="nb">INT</span><span class="p">;</span>
+    <span class="k">DECLARE</span> <span class="o">@</span><span class="n">PWD_varbinary</span> <span class="nb">VARBINARY</span><span class="p">(</span><span class="mi">256</span><span class="p">);</span>
+    <span class="k">DECLARE</span> <span class="o">@</span><span class="n">PWD_string</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">514</span><span class="p">);</span>
+    <span class="k">DECLARE</span> <span class="o">@</span><span class="n">SID_varbinary</span> <span class="nb">VARBINARY</span><span class="p">(</span><span class="mi">85</span><span class="p">);</span>
+    <span class="k">DECLARE</span> <span class="o">@</span><span class="n">SID_string</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">514</span><span class="p">);</span>
+    <span class="k">DECLARE</span> <span class="o">@</span><span class="n">tmpstr</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1024</span><span class="p">);</span>
+    <span class="k">DECLARE</span> <span class="o">@</span><span class="n">is_policy_checked</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+    <span class="k">DECLARE</span> <span class="o">@</span><span class="n">is_expiration_checked</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+
+    <span class="k">DECLARE</span> <span class="o">@</span><span class="n">defaultdb</span> <span class="n">SYSNAME</span><span class="p">;</span>
+
+    <span class="k">DECLARE</span> <span class="o">@</span><span class="n">curLogins</span> <span class="k">CURSOR</span><span class="p">;</span>
+    <span class="k">DECLARE</span> <span class="o">@</span><span class="n">outputstring</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>
+
+    <span class="n">IF</span> <span class="p">(</span><span class="o">@</span><span class="n">login_name</span> <span class="k">IS</span> <span class="k">NULL</span><span class="p">)</span>
+        <span class="k">SET</span> <span class="o">@</span><span class="n">sqlcmd</span> <span class="o">=</span> <span class="s1">'SELECT [name], [sid] FROM '</span> <span class="o">+</span> <span class="n">QUOTENAME</span><span class="p">(</span><span class="o">@</span><span class="n">dbname</span><span class="p">,</span> <span class="s1">'['</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'.sys.sysusers WHERE [uid]&gt;4 AND [islogin]=1 ORDER BY [name] ASC;'</span>
+    <span class="k">ELSE</span>
+        <span class="k">SET</span> <span class="o">@</span><span class="n">sqlcmd</span> <span class="o">=</span> <span class="s1">'SELECT [name], [sid] FROM '</span> <span class="o">+</span> <span class="n">QUOTENAME</span><span class="p">(</span><span class="o">@</span><span class="n">dbname</span><span class="p">,</span> <span class="s1">'['</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'.sys.sysusers WHERE [name]=</span><span class="se">''</span><span class="s1">'</span> <span class="o">+</span> <span class="o">@</span><span class="n">login_name</span> <span class="o">+</span> <span class="s1">'</span><span class="se">''</span><span class="s1">;'</span>
+
+    <span class="k">INSERT</span> <span class="k">INTO</span> <span class="o">#</span><span class="n">LoginList</span> <span class="k">EXEC</span> <span class="n">sp_executesql</span> <span class="o">@</span><span class="n">sqlcmd</span><span class="p">;</span>
+    <span class="n">IF</span> <span class="p">(</span><span class="o">@@</span><span class="n">ROWCOUNT</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">BEGIN</span>
+        <span class="n">RAISERROR</span><span class="p">(</span><span class="s1">'No logins authorised to access database </span><span class="se">''</span><span class="s1">%s</span><span class="se">''</span><span class="s1"> were found.'</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">@</span><span class="n">dbname</span><span class="p">);</span>
+        <span class="k">RETURN</span><span class="p">;</span>
+    <span class="k">END</span>
+
+    <span class="n">PRINT</span> <span class="s1">'USE [master]'</span><span class="p">;</span>
+    <span class="n">PRINT</span> <span class="s1">'GO'</span><span class="p">;</span>
+
+    <span class="k">SET</span> <span class="o">@</span><span class="n">curLogins</span> <span class="o">=</span> <span class="k">CURSOR</span> <span class="k">FOR</span>
+        <span class="k">SELECT</span> <span class="n">p</span><span class="p">.[</span><span class="n">sid</span><span class="p">],</span> <span class="n">p</span><span class="p">.[</span><span class="n">name</span><span class="p">],</span> <span class="n">p</span><span class="p">.[</span><span class="k">type</span><span class="p">],</span> <span class="n">p</span><span class="p">.[</span><span class="n">is_disabled</span><span class="p">],</span> <span class="k">ISNULL</span><span class="p">(</span><span class="n">p</span><span class="p">.[</span><span class="n">default_database_name</span><span class="p">],</span> <span class="s1">'master'</span><span class="p">),</span> <span class="n">l</span><span class="p">.[</span><span class="n">hasaccess</span><span class="p">],</span> <span class="n">l</span><span class="p">.[</span><span class="n">denylogin</span><span class="p">]</span>
+        <span class="k">FROM</span> <span class="n">sys</span><span class="p">.</span><span class="n">server_principals</span> <span class="n">p</span>
+            <span class="k">INNER</span> <span class="k">JOIN</span> <span class="o">#</span><span class="n">LoginList</span> <span class="n">u</span> <span class="k">ON</span> <span class="n">p</span><span class="p">.[</span><span class="n">sid</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span><span class="p">.[</span><span class="n">login_sid</span><span class="p">]</span>
+            <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">sys</span><span class="p">.</span><span class="n">syslogins</span> <span class="n">l</span> <span class="k">ON</span> <span class="n">l</span><span class="p">.[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">.[</span><span class="n">name</span><span class="p">]</span>
+        <span class="k">WHERE</span> <span class="n">p</span><span class="p">.[</span><span class="k">type</span><span class="p">]</span> <span class="k">IN</span> <span class="p">(</span><span class="s1">'G'</span><span class="p">,</span> <span class="s1">'S'</span><span class="p">,</span> <span class="s1">'U'</span><span class="p">)</span> <span class="k">AND</span> <span class="n">p</span><span class="p">.[</span><span class="n">principal_id</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">100</span><span class="p">;</span>
+
+    <span class="k">OPEN</span> <span class="o">@</span><span class="n">curLogins</span><span class="p">;</span>
+    <span class="k">FETCH</span> <span class="k">NEXT</span> <span class="k">FROM</span> <span class="o">@</span><span class="n">curLogins</span> <span class="k">INTO</span> <span class="o">@</span><span class="n">SID_varbinary</span><span class="p">,</span> <span class="o">@</span><span class="n">name</span><span class="p">,</span> <span class="o">@</span><span class="k">type</span><span class="p">,</span> <span class="o">@</span><span class="n">is_disabled</span><span class="p">,</span> <span class="o">@</span><span class="n">defaultdb</span><span class="p">,</span> <span class="o">@</span><span class="n">hasaccess</span><span class="p">,</span> <span class="o">@</span><span class="n">denylogin</span><span class="p">;</span>
+    <span class="n">WHILE</span> <span class="p">(</span><span class="o">@@</span><span class="n">FETCH_STATUS</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">BEGIN</span>
+        <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+        <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="s1">'IF NOT EXISTS(SELECT [name] FROM sys.server_principals WHERE [name]=</span><span class="se">''</span><span class="s1">'</span> <span class="o">+</span> <span class="o">@</span><span class="n">name</span> <span class="o">+</span> <span class="s1">'</span><span class="se">''</span><span class="s1">)'</span> <span class="o">+</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+
+        <span class="n">IF</span> <span class="p">(</span><span class="o">@</span><span class="k">type</span> <span class="k">IN</span> <span class="p">(</span><span class="s1">'G'</span><span class="p">,</span> <span class="s1">'U'</span><span class="p">))</span>
+        <span class="k">BEGIN</span> <span class="c1">-- Windows Authenticated account/group</span>
+            <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">'   CREATE LOGIN '</span> <span class="o">+</span> <span class="n">QUOTENAME</span><span class="p">(</span><span class="o">@</span><span class="n">name</span><span class="p">)</span> <span class="o">+</span> <span class="s1">' FROM WINDOWS WITH DEFAULT_DATABASE=['</span> <span class="o">+</span> <span class="k">ISNULL</span><span class="p">(</span><span class="o">@</span><span class="n">default_database</span><span class="p">,</span> <span class="o">@</span><span class="n">defaultdb</span><span class="p">)</span> <span class="o">+</span> <span class="s1">']'</span><span class="p">;</span>
+            <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">', DEFAULT_LANGUAGE=['</span> <span class="o">+</span> <span class="k">CAST</span><span class="p">(</span><span class="o">@@</span><span class="k">LANGUAGE</span> <span class="k">AS</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span> <span class="o">+</span> <span class="s1">'];'</span><span class="p">;</span>
+        <span class="k">END</span>
+        <span class="k">ELSE</span>
+        <span class="k">BEGIN</span> <span class="c1">-- SQL Server authentication</span>
+            <span class="c1">-- retrieve password and sid</span>
+            <span class="k">SET</span> <span class="o">@</span><span class="n">PWD_varbinary</span> <span class="o">=</span> <span class="k">CAST</span><span class="p">(</span><span class="n">LOGINPROPERTY</span><span class="p">(</span><span class="o">@</span><span class="n">name</span><span class="p">,</span> <span class="s1">'PasswordHash'</span><span class="p">)</span> <span class="k">AS</span> <span class="nb">VARBINARY</span><span class="p">(</span><span class="mi">256</span><span class="p">))</span>
+            <span class="k">EXEC</span> <span class="n">sp_hexadecimal</span> <span class="o">@</span><span class="n">PWD_varbinary</span><span class="p">,</span> <span class="o">@</span><span class="n">PWD_string</span> <span class="k">OUT</span>
+            <span class="k">EXEC</span> <span class="n">sp_hexadecimal</span> <span class="o">@</span><span class="n">SID_varbinary</span><span class="p">,</span> <span class="o">@</span><span class="n">SID_string</span> <span class="k">OUT</span>
+
+            <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">'   CREATE LOGIN '</span> <span class="o">+</span> <span class="n">QUOTENAME</span><span class="p">(</span><span class="o">@</span><span class="n">name</span><span class="p">)</span> <span class="o">+</span> <span class="s1">' WITH PASSWORD= '</span> <span class="o">+</span> <span class="o">@</span><span class="n">PWD_string</span> <span class="o">+</span> <span class="s1">' HASHED, SID='</span> <span class="o">+</span> <span class="o">@</span><span class="n">SID_string</span> <span class="o">+</span> <span class="s1">', DEFAULT_DATABASE=['</span> <span class="o">+</span> <span class="k">ISNULL</span><span class="p">(</span><span class="o">@</span><span class="n">default_database</span><span class="p">,</span> <span class="o">@</span><span class="n">defaultdb</span><span class="p">)</span> <span class="o">+</span> <span class="s1">']'</span><span class="p">;</span>
+            <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">', DEFAULT_LANGUAGE=['</span> <span class="o">+</span> <span class="k">CAST</span><span class="p">(</span><span class="o">@@</span><span class="k">LANGUAGE</span> <span class="k">AS</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span> <span class="o">+</span> <span class="s1">']'</span><span class="p">;</span>
+
+            <span class="c1">-- retrieve password policy state</span>
+            <span class="k">SELECT</span>
+                <span class="o">@</span><span class="n">is_policy_checked</span> <span class="o">=</span> <span class="k">CASE</span> <span class="k">ISNULL</span><span class="p">(</span><span class="o">@</span><span class="n">check_policy</span><span class="p">,</span> <span class="p">[</span><span class="n">is_policy_checked</span><span class="p">])</span> <span class="k">WHEN</span> <span class="mi">1</span> <span class="k">THEN</span> <span class="s1">'ON'</span> <span class="k">WHEN</span> <span class="mi">0</span> <span class="k">THEN</span> <span class="s1">'OFF'</span> <span class="k">ELSE</span> <span class="k">NULL</span> <span class="k">END</span><span class="p">,</span>
+                <span class="o">@</span><span class="n">is_expiration_checked</span> <span class="o">=</span> <span class="k">CASE</span> <span class="k">ISNULL</span><span class="p">(</span><span class="o">@</span><span class="n">check_expiration</span><span class="p">,</span> <span class="p">[</span><span class="n">is_expiration_checked</span><span class="p">])</span> <span class="k">WHEN</span> <span class="mi">1</span> <span class="k">THEN</span> <span class="s1">'ON'</span> <span class="k">WHEN</span> <span class="mi">0</span> <span class="k">THEN</span> <span class="s1">'OFF'</span> <span class="k">ELSE</span> <span class="k">NULL</span> <span class="k">END</span>
+            <span class="k">FROM</span> <span class="n">sys</span><span class="p">.</span><span class="n">sql_logins</span> <span class="k">WHERE</span> <span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="o">@</span><span class="n">name</span>
+
+            <span class="n">IF</span> <span class="p">(</span><span class="o">@</span><span class="n">is_policy_checked</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">)</span>
+                <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">', CHECK_POLICY='</span> <span class="o">+</span> <span class="o">@</span><span class="n">is_policy_checked</span><span class="p">;</span>
+
+            <span class="n">IF</span> <span class="p">(</span><span class="o">@</span><span class="n">is_expiration_checked</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">)</span>
+                <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">', CHECK_EXPIRATION='</span> <span class="o">+</span> <span class="o">@</span><span class="n">is_expiration_checked</span> <span class="o">+</span> <span class="s1">';'</span> <span class="o">+</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+        <span class="k">END</span>
+
+        <span class="n">IF</span> <span class="p">(</span><span class="o">@</span><span class="n">denylogin</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">-- login is denied access</span>
+            <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">'DENY CONNECT SQL TO '</span> <span class="o">+</span> <span class="n">QUOTENAME</span><span class="p">(</span><span class="o">@</span><span class="n">name</span><span class="p">,</span> <span class="s1">'['</span><span class="p">)</span> <span class="o">+</span> <span class="s1">';'</span> <span class="o">+</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+        <span class="k">ELSE</span> <span class="n">IF</span> <span class="p">(</span><span class="o">@</span><span class="n">hasaccess</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">-- login exists but does not have access</span>
+            <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">'REVOKE CONNECT SQL TO '</span> <span class="o">+</span> <span class="n">QUOTENAME</span><span class="p">(</span><span class="o">@</span><span class="n">name</span><span class="p">,</span> <span class="s1">'['</span><span class="p">)</span> <span class="o">+</span> <span class="s1">';'</span> <span class="o">+</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+
+        <span class="n">IF</span> <span class="p">(</span><span class="o">@</span><span class="n">is_disabled</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">-- login is disabled</span>
+            <span class="k">SET</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">=</span> <span class="o">@</span><span class="n">outputstring</span> <span class="o">+</span> <span class="s1">'ALTER LOGIN '</span> <span class="o">+</span> <span class="n">QUOTENAME</span><span class="p">(</span><span class="o">@</span><span class="n">name</span><span class="p">,</span> <span class="s1">'['</span><span class="p">)</span> <span class="o">+</span> <span class="s1">' DISABLE;'</span> <span class="o">+</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+
+        <span class="n">PRINT</span> <span class="o">@</span><span class="n">outputstring</span><span class="p">;</span>
+
+        <span class="k">FETCH</span> <span class="k">NEXT</span> <span class="k">FROM</span> <span class="o">@</span><span class="n">curLogins</span> <span class="k">INTO</span> <span class="o">@</span><span class="n">SID_varbinary</span><span class="p">,</span> <span class="o">@</span><span class="n">name</span><span class="p">,</span> <span class="o">@</span><span class="k">type</span><span class="p">,</span> <span class="o">@</span><span class="n">is_disabled</span><span class="p">,</span> <span class="o">@</span><span class="n">defaultdb</span><span class="p">,</span> <span class="o">@</span><span class="n">hasaccess</span><span class="p">,</span> <span class="o">@</span><span class="n">denylogin</span><span class="p">;</span>
+    <span class="k">END</span>
+    <span class="k">CLOSE</span> <span class="o">@</span><span class="n">curLogins</span><span class="p">;</span>
+    <span class="k">DEALLOCATE</span> <span class="o">@</span><span class="n">curLogins</span><span class="p">;</span>
+
+    <span class="n">PRINT</span> <span class="s1">'GO'</span><span class="p">;</span>
+    <span class="n">PRINT</span> <span class="s1">''</span><span class="p">;</span>
+    <span class="n">PRINT</span> <span class="s1">'/* ***** WARNING: Check logins for NULL password! ***** */'</span><span class="p">;</span>
+
+    <span class="cm">/* ***** clean up ***** */</span>
+    <span class="k">DROP</span> <span class="k">TABLE</span> <span class="o">#</span><span class="n">LoginList</span><span class="p">;</span>
+<span class="k">END</span>
+<span class="k">GO</span>
+</code></pre></div></div>
+
+<p>If you have any comments or suggestions to improve these stored procedures please let me know by filling in the form in the Contact page.</p>
+
+<p>Thank you.</p>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          Tags:
+          
+          
+            <a href="/tags#SQL Server 2008">SQL Server 2008</a>
+          
+            <a href="/tags#SQL Server 2000">SQL Server 2000</a>
+          
+            <a href="/tags#Database Administration">Database Administration</a>
+          
+            <a href="/tags#T-SQL Programming">T-SQL Programming</a>
+          
+            <a href="/tags#Security">Security</a>
+          
+            <a href="/tags#SQL Server 2005">SQL Server 2005</a>
+          
+          
+        </div>
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+<section id = "social-share-section">
+  <span class="sr-only">Share: </span>
+
+  
+    <a href="https://twitter.com/intent/tweet?text=Script+Logins+from+Database+Users&url=http%3A%2F%2F0.0.0.0%3A4000%2Fblog%2Findex.php%2F2011%2F03%2F19%2Fscript-logins-from-database-users%2F"
+      class="btn btn-social-icon btn-twitter" title="Share on Twitter">
+      <span class="fab fa-fw fa-twitter" aria-hidden="true"></span>
+      <span class="sr-only">Twitter</span>
+    </a>
+  
+
+  
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2Fblog%2Findex.php%2F2011%2F03%2F19%2Fscript-logins-from-database-users%2F"
+      class="btn btn-social-icon btn-facebook" title="Share on Facebook">
+      <span class="fab fa-fw fa-facebook" aria-hidden="true"></span>
+      <span class="sr-only">Facebook</span>
+    </a>
+  
+
+  
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2Fblog%2Findex.php%2F2011%2F03%2F19%2Fscript-logins-from-database-users%2F"
+      class="btn btn-social-icon btn-linkedin" title="Share on LinkedIn">
+      <span class="fab fa-fw fa-linkedin" aria-hidden="true"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  
+
+  
+
+</section>
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/blog/index.php/2011/03/12/generate-lottery-ticket-combinations/" data-toggle="tooltip" data-placement="top" title="Generate Lottery Ticket Combinations">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/blog/index.php/2011/03/26/create-a-database-mail-profile-in-4-steps-or-less/" data-toggle="tooltip" data-placement="top" title="Create a Database Mail profile in 4 Steps (or less)">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+      
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="/feed.xml" title="RSS">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">RSS</span>
+    </a>
+  </li><li class="list-inline-item">
+    <a href="mailto:info@sqlserverdiaries.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/reubensultana" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://twitter.com/reubensultana" title="Twitter">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Twitter</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://linkedin.com/in/reubensultana" title="LinkedIn">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">LinkedIn</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Reuben Sultana
+        &nbsp;&bull;&nbsp;
+      
+      2020
+
+      
+        &nbsp;&bull;&nbsp;
+        <a href="http://0.0.0.0:4000/">sqlserverdiaries.com</a>
+      
+
+      
+      </p>
+      <!-- Please don't remove this, keep my open source work credited :) -->
+<!--
+      <p class="theme-by text-muted">
+        Theme by
+        <a href="https://beautifuljekyll.com">beautiful-jekyll</a>
+      </p>
+-->
+    </div>
+    </div>
+  </div>
+</footer>
+
+  
+    
+  
+    
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/main.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  </body>
+</html>

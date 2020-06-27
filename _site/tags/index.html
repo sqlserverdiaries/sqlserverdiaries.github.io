@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2020 -->
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Tag Index</title>
+  
+  
+  <meta name="author" content="Reuben Sultana">
+  
+  
+  
+
+  <link rel="alternate" type="application/rss+xml" title="SQL Server Diaries - A personal take on SQL Server solutions" href="http://0.0.0.0:4000/feed.xml">
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/main.css">
+    
+  
+
+  
+
+  
+
+  <!-- Facebook OpenGraph tags -->
+  
+
+  
+  <meta property="og:title" content="Tag Index">
+  
+
+   
+  <meta property="og:description" content="{% assign date_format = site.date_format | default: &quot;%B %-d, %Y&quot; %} {%- capture site_tags -%} {%- for tag in site.tags -%} {{- tag | first -}}{%- unless forloop.last -%},{%- endunless -%} {%- endfor -%} {%- endcapture -%} {%- assign tags_list = site_tags | split:',' | sort -%} {%- for tag...">
+  
+
+
+  <meta property="og:type" content="website">
+
+  
+  <meta property="og:url" content="http://0.0.0.0:4000/tags/">
+  <link rel="canonical" href="http://0.0.0.0:4000/tags/">
+  
+
+  
+
+
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@reubensultana">
+  <meta name="twitter:creator" content="@reubensultana">
+
+  
+  <meta name="twitter:title" content="Tag Index">
+  
+
+  
+  <meta name="twitter:description" content="{% assign date_format = site.date_format | default: &quot;%B %-d, %Y&quot; %} {%- capture site_tags -%} {%- for tag in site.tags -%} {{- tag | first -}}{%- unless forloop.last -%},{%- endunless -%} {%- endfor -%} {%- endcapture -%} {%- assign tags_list = site_tags | split:',' | sort -%} {%- for tag...">
+  
+
+  
+
+  
+
+  
+
+</head>
+
+
+  <body>
+
+    
+
+  
+    <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-custom "><a class="navbar-brand" href="http://0.0.0.0:4000/">SQL Server Diaries</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tags">Tags</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://reubensultana.com">Author's home</a>
+          </li></ul>
+  </div>
+
+  
+
+</nav>
+
+
+    <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="page-heading">
+          <h1>Tag Index</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class="container-md" role="main">
+  <div class="row">
+    <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <a href="#Architecture" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;Architecture&nbsp;(1)</a><a href="#BLOBTempStoragePath" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;BLOBTempStoragePath&nbsp;(1)</a><a href="#Backup" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;Backup&nbsp;(1)</a><a href="#Backup and Recovery" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;Backup and Recovery&nbsp;(4)</a><a href="#BufferTempStoragePath" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;BufferTempStoragePath&nbsp;(1)</a><a href="#CROSS JOIN" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;CROSS JOIN&nbsp;(1)</a><a href="#CTE" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;CTE&nbsp;(1)</a><a href="#Code Samples" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;Code Samples&nbsp;(5)</a><a href="#Coding Practices" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;Coding Practices&nbsp;(5)</a><a href="#Combinations" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;Combinations&nbsp;(1)</a><a href="#Connection Strings" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;Connection Strings&nbsp;(2)</a><a href="#DNS" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;DNS&nbsp;(1)</a><a href="#Data Maintenance" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;Data Maintenance&nbsp;(1)</a><a href="#Database Administration" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;Database Administration&nbsp;(13)</a><a href="#Database Design" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;Database Design&nbsp;(7)</a><a href="#Database Documentation" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;Database Documentation&nbsp;(4)</a><a href="#Database Mail" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;Database Mail&nbsp;(2)</a><a href="#Database Migration" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;Database Migration&nbsp;(3)</a><a href="#Development" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;Development&nbsp;(5)</a><a href="#GUID" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;GUID&nbsp;(1)</a><a href="#Indexes" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;Indexes&nbsp;(1)</a><a href="#Listening Ports" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;Listening Ports&nbsp;(1)</a><a href="#Permutations" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;Permutations&nbsp;(1)</a><a href="#SQL Injection" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;SQL Injection&nbsp;(1)</a><a href="#SQL Server" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;SQL Server&nbsp;(6)</a><a href="#SQL Server 2000" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;SQL Server 2000&nbsp;(3)</a><a href="#SQL Server 2005" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;SQL Server 2005&nbsp;(8)</a><a href="#SQL Server 2008" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;SQL Server 2008&nbsp;(3)</a><a href="#SQL Server 2008 R2" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;SQL Server 2008 R2&nbsp;(1)</a><a href="#SQL Server Agent" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;SQL Server Agent&nbsp;(3)</a><a href="#SQL Server Integration Services" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;SQL Server Integration Services&nbsp;(3)</a><a href="#SQL Server errors" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;SQL Server errors&nbsp;(1)</a><a href="#SQL Tools" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;SQL Tools&nbsp;(3)</a><a href="#SSIS" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;SSIS&nbsp;(3)</a><a href="#Security" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;Security&nbsp;(6)</a><a href="#Storage" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;Storage&nbsp;(2)</a><a href="#T-SQL Programming" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;T-SQL Programming&nbsp;(13)</a><a href="#Testing" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;Testing&nbsp;(1)</a><a href="#Uncategorized" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;Uncategorized&nbsp;(3)</a><a href="#Upgrade" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;Upgrade&nbsp;(2)</a><a href="#Virtualization" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;Virtualization&nbsp;(2)</a><a href="#Windows" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;Windows&nbsp;(1)</a><a href="#command-line utilities" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;command-line utilities&nbsp;(1)</a><a href="#data types" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;data types&nbsp;(4)</a><a href="#datetime" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;datetime&nbsp;(1)</a><a href="#forfiles" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;forfiles&nbsp;(1)</a><a href="#runas" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;runas&nbsp;(1)</a><div id="full-tags-list"><h2 id="Architecture" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;Architecture&nbsp;(1)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/02/sql-server-connection-strings-unique-application-dns-and-listening-ports/">SQL Server Connection Strings, Unique Application DNS and Listening Ports</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-02T00:00:00+01:00">April 2, 2011</time>
+                </div>
+            </div></div><h2 id="BLOBTempStoragePath" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;BLOBTempStoragePath&nbsp;(1)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2010/12/30/ssis-buffertempstoragepath-error/">SSIS error: 'buffer manager cannot create a temporary storage file on any path in the BufferTempStoragePath property'</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-22T00:00:00+00:00">January 22, 2011</time>
+                </div>
+            </div></div><h2 id="Backup" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;Backup&nbsp;(1)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2012/12/21/deploy-or-migrate-a-database-using-scripts-part-1/">Deploy or Migrate a Database using Scripts - part 1</a>
+                <div class="entry-date">
+                    <time datetime="2012-12-21T00:00:00+00:00">December 21, 2012</time>
+                </div>
+            </div></div><h2 id="Backup and Recovery" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;Backup and Recovery&nbsp;(4)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/16/use-the-forfiles-utility-to-delete-old-database-backup-files/">Use the Forfiles Utility to Delete Old Database Backup Files</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-16T00:00:00+01:00">April 16, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/02/19/send-sql-server-agent-job-log-by-email/">Send SQL Server Agent Job log file by Email</a>
+                <div class="entry-date">
+                    <time datetime="2011-02-19T00:00:00+00:00">February 19, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/02/12/generating-a-database-data-dictionary/">Generating a Database Data Dictionary</a>
+                <div class="entry-date">
+                    <time datetime="2011-02-12T00:00:00+00:00">February 12, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2010/12/30/ssis-buffertempstoragepath-error/">SSIS error: 'buffer manager cannot create a temporary storage file on any path in the BufferTempStoragePath property'</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-22T00:00:00+00:00">January 22, 2011</time>
+                </div>
+            </div></div><h2 id="BufferTempStoragePath" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;BufferTempStoragePath&nbsp;(1)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2010/12/30/ssis-buffertempstoragepath-error/">SSIS error: 'buffer manager cannot create a temporary storage file on any path in the BufferTempStoragePath property'</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-22T00:00:00+00:00">January 22, 2011</time>
+                </div>
+            </div></div><h2 id="CROSS JOIN" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;CROSS JOIN&nbsp;(1)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2011/03/12/generate-lottery-ticket-combinations/">Generate Lottery Ticket Combinations</a>
+                <div class="entry-date">
+                    <time datetime="2011-03-12T00:00:00+00:00">March 12, 2011</time>
+                </div>
+            </div></div><h2 id="CTE" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;CTE&nbsp;(1)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2011/03/12/generate-lottery-ticket-combinations/">Generate Lottery Ticket Combinations</a>
+                <div class="entry-date">
+                    <time datetime="2011-03-12T00:00:00+00:00">March 12, 2011</time>
+                </div>
+            </div></div><h2 id="Code Samples" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;Code Samples&nbsp;(5)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2012/12/21/deploy-or-migrate-a-database-using-scripts-part-1/">Deploy or Migrate a Database using Scripts - part 1</a>
+                <div class="entry-date">
+                    <time datetime="2012-12-21T00:00:00+00:00">December 21, 2012</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/03/12/generate-lottery-ticket-combinations/">Generate Lottery Ticket Combinations</a>
+                <div class="entry-date">
+                    <time datetime="2011-03-12T00:00:00+00:00">March 12, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/02/12/generating-a-database-data-dictionary/">Generating a Database Data Dictionary</a>
+                <div class="entry-date">
+                    <time datetime="2011-02-12T00:00:00+00:00">February 12, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/01/29/header-for-database-code-objects/">Header for Database Code Objects</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-29T00:00:00+00:00">January 29, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/01/15/protecting-against-sql-injection-attacks/">Protecting against SQL Injection attacks</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-15T00:00:00+00:00">January 15, 2011</time>
+                </div>
+            </div></div><h2 id="Coding Practices" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;Coding Practices&nbsp;(5)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/09/using-guids-as-primary-keys-or-not/">Using GUIDs as Primary Keys, or not</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-09T00:00:00+01:00">April 9, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/02/12/generating-a-database-data-dictionary/">Generating a Database Data Dictionary</a>
+                <div class="entry-date">
+                    <time datetime="2011-02-12T00:00:00+00:00">February 12, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/01/29/header-for-database-code-objects/">Header for Database Code Objects</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-29T00:00:00+00:00">January 29, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/01/15/protecting-against-sql-injection-attacks/">Protecting against SQL Injection attacks</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-15T00:00:00+00:00">January 15, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/01/08/date-and-time-data-types/">Date and Time data types</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-08T00:00:00+00:00">January 8, 2011</time>
+                </div>
+            </div></div><h2 id="Combinations" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;Combinations&nbsp;(1)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2011/03/12/generate-lottery-ticket-combinations/">Generate Lottery Ticket Combinations</a>
+                <div class="entry-date">
+                    <time datetime="2011-03-12T00:00:00+00:00">March 12, 2011</time>
+                </div>
+            </div></div><h2 id="Connection Strings" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;Connection Strings&nbsp;(2)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/02/sql-server-connection-strings-unique-application-dns-and-listening-ports/">SQL Server Connection Strings, Unique Application DNS and Listening Ports</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-02T00:00:00+01:00">April 2, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/03/05/addressing-a-login-failed-error-18452-error-message-in-sql-server-2005/">Addressing a 'login failed' (Error 18452) error message in SQL Server 2005</a>
+                <div class="entry-date">
+                    <time datetime="2011-03-05T00:00:00+00:00">March 5, 2011</time>
+                </div>
+            </div></div><h2 id="DNS" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;DNS&nbsp;(1)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/02/sql-server-connection-strings-unique-application-dns-and-listening-ports/">SQL Server Connection Strings, Unique Application DNS and Listening Ports</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-02T00:00:00+01:00">April 2, 2011</time>
+                </div>
+            </div></div><h2 id="Data Maintenance" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;Data Maintenance&nbsp;(1)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/23/compare-the-contents-data-of-two-tables/">Compare the Contents (data) of Two Tables</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-23T00:00:00+01:00">April 23, 2011</time>
+                </div>
+            </div></div><h2 id="Database Administration" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;Database Administration&nbsp;(13)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2012/12/21/deploy-or-migrate-a-database-using-scripts-part-1/">Deploy or Migrate a Database using Scripts - part 1</a>
+                <div class="entry-date">
+                    <time datetime="2012-12-21T00:00:00+00:00">December 21, 2012</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/30/documenting-the-owner-of-a-generic-database-user/">Documenting the Owner of a Generic Database User</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-30T00:00:00+01:00">April 30, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/23/compare-the-contents-data-of-two-tables/">Compare the Contents (data) of Two Tables</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-23T00:00:00+01:00">April 23, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/16/use-the-forfiles-utility-to-delete-old-database-backup-files/">Use the Forfiles Utility to Delete Old Database Backup Files</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-16T00:00:00+01:00">April 16, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/02/sql-server-connection-strings-unique-application-dns-and-listening-ports/">SQL Server Connection Strings, Unique Application DNS and Listening Ports</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-02T00:00:00+01:00">April 2, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/03/26/create-a-database-mail-profile-in-4-steps-or-less/">Create a Database Mail profile in 4 Steps (or less)</a>
+                <div class="entry-date">
+                    <time datetime="2011-03-26T00:00:00+00:00">March 26, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/03/19/script-logins-from-database-users/">Script Logins from Database Users</a>
+                <div class="entry-date">
+                    <time datetime="2011-03-19T00:00:00+00:00">March 19, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/03/05/addressing-a-login-failed-error-18452-error-message-in-sql-server-2005/">Addressing a 'login failed' (Error 18452) error message in SQL Server 2005</a>
+                <div class="entry-date">
+                    <time datetime="2011-03-05T00:00:00+00:00">March 5, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/02/26/run-sql-server-agent-jobs-with-alternate-credentials/">Run SQL Server Agent Jobs with Alternate Credentials</a>
+                <div class="entry-date">
+                    <time datetime="2011-02-26T00:00:00+00:00">February 26, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/02/19/send-sql-server-agent-job-log-by-email/">Send SQL Server Agent Job log file by Email</a>
+                <div class="entry-date">
+                    <time datetime="2011-02-19T00:00:00+00:00">February 19, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/01/29/header-for-database-code-objects/">Header for Database Code Objects</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-29T00:00:00+00:00">January 29, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2010/12/30/ssis-buffertempstoragepath-error/">SSIS error: 'buffer manager cannot create a temporary storage file on any path in the BufferTempStoragePath property'</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-22T00:00:00+00:00">January 22, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/01/15/protecting-against-sql-injection-attacks/">Protecting against SQL Injection attacks</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-15T00:00:00+00:00">January 15, 2011</time>
+                </div>
+            </div></div><h2 id="Database Design" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;Database Design&nbsp;(7)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/09/using-guids-as-primary-keys-or-not/">Using GUIDs as Primary Keys, or not</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-09T00:00:00+01:00">April 9, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/02/sql-server-connection-strings-unique-application-dns-and-listening-ports/">SQL Server Connection Strings, Unique Application DNS and Listening Ports</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-02T00:00:00+01:00">April 2, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/02/12/generating-a-database-data-dictionary/">Generating a Database Data Dictionary</a>
+                <div class="entry-date">
+                    <time datetime="2011-02-12T00:00:00+00:00">February 12, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/02/05/database-upgrade-from-sql-server-7/">Database Upgrade from SQL Server 7</a>
+                <div class="entry-date">
+                    <time datetime="2011-02-05T00:00:00+00:00">February 5, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/01/29/header-for-database-code-objects/">Header for Database Code Objects</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-29T00:00:00+00:00">January 29, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/01/15/protecting-against-sql-injection-attacks/">Protecting against SQL Injection attacks</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-15T00:00:00+00:00">January 15, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/01/08/date-and-time-data-types/">Date and Time data types</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-08T00:00:00+00:00">January 8, 2011</time>
+                </div>
+            </div></div><h2 id="Database Documentation" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;Database Documentation&nbsp;(4)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2012/12/21/deploy-or-migrate-a-database-using-scripts-part-1/">Deploy or Migrate a Database using Scripts - part 1</a>
+                <div class="entry-date">
+                    <time datetime="2012-12-21T00:00:00+00:00">December 21, 2012</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/30/documenting-the-owner-of-a-generic-database-user/">Documenting the Owner of a Generic Database User</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-30T00:00:00+01:00">April 30, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/30/documenting-the-owner-of-a-generic-database-user/">Documenting the Owner of a Generic Database User</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-30T00:00:00+01:00">April 30, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/02/12/generating-a-database-data-dictionary/">Generating a Database Data Dictionary</a>
+                <div class="entry-date">
+                    <time datetime="2011-02-12T00:00:00+00:00">February 12, 2011</time>
+                </div>
+            </div></div><h2 id="Database Mail" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;Database Mail&nbsp;(2)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2011/03/26/create-a-database-mail-profile-in-4-steps-or-less/">Create a Database Mail profile in 4 Steps (or less)</a>
+                <div class="entry-date">
+                    <time datetime="2011-03-26T00:00:00+00:00">March 26, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/02/19/send-sql-server-agent-job-log-by-email/">Send SQL Server Agent Job log file by Email</a>
+                <div class="entry-date">
+                    <time datetime="2011-02-19T00:00:00+00:00">February 19, 2011</time>
+                </div>
+            </div></div><h2 id="Database Migration" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;Database Migration&nbsp;(3)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2012/12/21/deploy-or-migrate-a-database-using-scripts-part-1/">Deploy or Migrate a Database using Scripts - part 1</a>
+                <div class="entry-date">
+                    <time datetime="2012-12-21T00:00:00+00:00">December 21, 2012</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/02/sql-server-connection-strings-unique-application-dns-and-listening-ports/">SQL Server Connection Strings, Unique Application DNS and Listening Ports</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-02T00:00:00+01:00">April 2, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/01/08/date-and-time-data-types/">Date and Time data types</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-08T00:00:00+00:00">January 8, 2011</time>
+                </div>
+            </div></div><h2 id="Development" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;Development&nbsp;(5)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2012/12/21/deploy-or-migrate-a-database-using-scripts-part-1/">Deploy or Migrate a Database using Scripts - part 1</a>
+                <div class="entry-date">
+                    <time datetime="2012-12-21T00:00:00+00:00">December 21, 2012</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/02/12/generating-a-database-data-dictionary/">Generating a Database Data Dictionary</a>
+                <div class="entry-date">
+                    <time datetime="2011-02-12T00:00:00+00:00">February 12, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/01/29/header-for-database-code-objects/">Header for Database Code Objects</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-29T00:00:00+00:00">January 29, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/01/15/protecting-against-sql-injection-attacks/">Protecting against SQL Injection attacks</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-15T00:00:00+00:00">January 15, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/01/08/date-and-time-data-types/">Date and Time data types</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-08T00:00:00+00:00">January 8, 2011</time>
+                </div>
+            </div></div><h2 id="GUID" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;GUID&nbsp;(1)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/09/using-guids-as-primary-keys-or-not/">Using GUIDs as Primary Keys, or not</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-09T00:00:00+01:00">April 9, 2011</time>
+                </div>
+            </div></div><h2 id="Indexes" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;Indexes&nbsp;(1)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/09/using-guids-as-primary-keys-or-not/">Using GUIDs as Primary Keys, or not</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-09T00:00:00+01:00">April 9, 2011</time>
+                </div>
+            </div></div><h2 id="Listening Ports" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;Listening Ports&nbsp;(1)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/02/sql-server-connection-strings-unique-application-dns-and-listening-ports/">SQL Server Connection Strings, Unique Application DNS and Listening Ports</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-02T00:00:00+01:00">April 2, 2011</time>
+                </div>
+            </div></div><h2 id="Permutations" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;Permutations&nbsp;(1)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2011/03/12/generate-lottery-ticket-combinations/">Generate Lottery Ticket Combinations</a>
+                <div class="entry-date">
+                    <time datetime="2011-03-12T00:00:00+00:00">March 12, 2011</time>
+                </div>
+            </div></div><h2 id="SQL Injection" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;SQL Injection&nbsp;(1)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2011/01/15/protecting-against-sql-injection-attacks/">Protecting against SQL Injection attacks</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-15T00:00:00+00:00">January 15, 2011</time>
+                </div>
+            </div></div><h2 id="SQL Server" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;SQL Server&nbsp;(6)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/02/sql-server-connection-strings-unique-application-dns-and-listening-ports/">SQL Server Connection Strings, Unique Application DNS and Listening Ports</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-02T00:00:00+01:00">April 2, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/03/12/generate-lottery-ticket-combinations/">Generate Lottery Ticket Combinations</a>
+                <div class="entry-date">
+                    <time datetime="2011-03-12T00:00:00+00:00">March 12, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/03/05/addressing-a-login-failed-error-18452-error-message-in-sql-server-2005/">Addressing a 'login failed' (Error 18452) error message in SQL Server 2005</a>
+                <div class="entry-date">
+                    <time datetime="2011-03-05T00:00:00+00:00">March 5, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/02/12/generating-a-database-data-dictionary/">Generating a Database Data Dictionary</a>
+                <div class="entry-date">
+                    <time datetime="2011-02-12T00:00:00+00:00">February 12, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/01/29/header-for-database-code-objects/">Header for Database Code Objects</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-29T00:00:00+00:00">January 29, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/01/15/protecting-against-sql-injection-attacks/">Protecting against SQL Injection attacks</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-15T00:00:00+00:00">January 15, 2011</time>
+                </div>
+            </div></div><h2 id="SQL Server 2000" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;SQL Server 2000&nbsp;(3)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/09/using-guids-as-primary-keys-or-not/">Using GUIDs as Primary Keys, or not</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-09T00:00:00+01:00">April 9, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/03/19/script-logins-from-database-users/">Script Logins from Database Users</a>
+                <div class="entry-date">
+                    <time datetime="2011-03-19T00:00:00+00:00">March 19, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/01/08/date-and-time-data-types/">Date and Time data types</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-08T00:00:00+00:00">January 8, 2011</time>
+                </div>
+            </div></div><h2 id="SQL Server 2005" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;SQL Server 2005&nbsp;(8)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/09/using-guids-as-primary-keys-or-not/">Using GUIDs as Primary Keys, or not</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-09T00:00:00+01:00">April 9, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/03/26/create-a-database-mail-profile-in-4-steps-or-less/">Create a Database Mail profile in 4 Steps (or less)</a>
+                <div class="entry-date">
+                    <time datetime="2011-03-26T00:00:00+00:00">March 26, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/03/19/script-logins-from-database-users/">Script Logins from Database Users</a>
+                <div class="entry-date">
+                    <time datetime="2011-03-19T00:00:00+00:00">March 19, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/02/26/run-sql-server-agent-jobs-with-alternate-credentials/">Run SQL Server Agent Jobs with Alternate Credentials</a>
+                <div class="entry-date">
+                    <time datetime="2011-02-26T00:00:00+00:00">February 26, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/02/19/send-sql-server-agent-job-log-by-email/">Send SQL Server Agent Job log file by Email</a>
+                <div class="entry-date">
+                    <time datetime="2011-02-19T00:00:00+00:00">February 19, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/02/05/database-upgrade-from-sql-server-7/">Database Upgrade from SQL Server 7</a>
+                <div class="entry-date">
+                    <time datetime="2011-02-05T00:00:00+00:00">February 5, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2010/12/30/ssis-buffertempstoragepath-error/">SSIS error: 'buffer manager cannot create a temporary storage file on any path in the BufferTempStoragePath property'</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-22T00:00:00+00:00">January 22, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/01/08/date-and-time-data-types/">Date and Time data types</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-08T00:00:00+00:00">January 8, 2011</time>
+                </div>
+            </div></div><h2 id="SQL Server 2008" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;SQL Server 2008&nbsp;(3)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/09/using-guids-as-primary-keys-or-not/">Using GUIDs as Primary Keys, or not</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-09T00:00:00+01:00">April 9, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/03/19/script-logins-from-database-users/">Script Logins from Database Users</a>
+                <div class="entry-date">
+                    <time datetime="2011-03-19T00:00:00+00:00">March 19, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/02/19/send-sql-server-agent-job-log-by-email/">Send SQL Server Agent Job log file by Email</a>
+                <div class="entry-date">
+                    <time datetime="2011-02-19T00:00:00+00:00">February 19, 2011</time>
+                </div>
+            </div></div><h2 id="SQL Server 2008 R2" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;SQL Server 2008 R2&nbsp;(1)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/09/using-guids-as-primary-keys-or-not/">Using GUIDs as Primary Keys, or not</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-09T00:00:00+01:00">April 9, 2011</time>
+                </div>
+            </div></div><h2 id="SQL Server Agent" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;SQL Server Agent&nbsp;(3)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2011/03/26/create-a-database-mail-profile-in-4-steps-or-less/">Create a Database Mail profile in 4 Steps (or less)</a>
+                <div class="entry-date">
+                    <time datetime="2011-03-26T00:00:00+00:00">March 26, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/02/26/run-sql-server-agent-jobs-with-alternate-credentials/">Run SQL Server Agent Jobs with Alternate Credentials</a>
+                <div class="entry-date">
+                    <time datetime="2011-02-26T00:00:00+00:00">February 26, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/02/19/send-sql-server-agent-job-log-by-email/">Send SQL Server Agent Job log file by Email</a>
+                <div class="entry-date">
+                    <time datetime="2011-02-19T00:00:00+00:00">February 19, 2011</time>
+                </div>
+            </div></div><h2 id="SQL Server Integration Services" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;SQL Server Integration Services&nbsp;(3)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2012/12/21/deploy-or-migrate-a-database-using-scripts-part-1/">Deploy or Migrate a Database using Scripts - part 1</a>
+                <div class="entry-date">
+                    <time datetime="2012-12-21T00:00:00+00:00">December 21, 2012</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/02/26/run-sql-server-agent-jobs-with-alternate-credentials/">Run SQL Server Agent Jobs with Alternate Credentials</a>
+                <div class="entry-date">
+                    <time datetime="2011-02-26T00:00:00+00:00">February 26, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2010/12/30/ssis-buffertempstoragepath-error/">SSIS error: 'buffer manager cannot create a temporary storage file on any path in the BufferTempStoragePath property'</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-22T00:00:00+00:00">January 22, 2011</time>
+                </div>
+            </div></div><h2 id="SQL Server errors" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;SQL Server errors&nbsp;(1)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2011/03/05/addressing-a-login-failed-error-18452-error-message-in-sql-server-2005/">Addressing a 'login failed' (Error 18452) error message in SQL Server 2005</a>
+                <div class="entry-date">
+                    <time datetime="2011-03-05T00:00:00+00:00">March 5, 2011</time>
+                </div>
+            </div></div><h2 id="SQL Tools" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;SQL Tools&nbsp;(3)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2012/12/21/deploy-or-migrate-a-database-using-scripts-part-1/">Deploy or Migrate a Database using Scripts - part 1</a>
+                <div class="entry-date">
+                    <time datetime="2012-12-21T00:00:00+00:00">December 21, 2012</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/23/compare-the-contents-data-of-two-tables/">Compare the Contents (data) of Two Tables</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-23T00:00:00+01:00">April 23, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2010/12/30/ssis-buffertempstoragepath-error/">SSIS error: 'buffer manager cannot create a temporary storage file on any path in the BufferTempStoragePath property'</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-22T00:00:00+00:00">January 22, 2011</time>
+                </div>
+            </div></div><h2 id="SSIS" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;SSIS&nbsp;(3)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2012/12/21/deploy-or-migrate-a-database-using-scripts-part-1/">Deploy or Migrate a Database using Scripts - part 1</a>
+                <div class="entry-date">
+                    <time datetime="2012-12-21T00:00:00+00:00">December 21, 2012</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/02/26/run-sql-server-agent-jobs-with-alternate-credentials/">Run SQL Server Agent Jobs with Alternate Credentials</a>
+                <div class="entry-date">
+                    <time datetime="2011-02-26T00:00:00+00:00">February 26, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2010/12/30/ssis-buffertempstoragepath-error/">SSIS error: 'buffer manager cannot create a temporary storage file on any path in the BufferTempStoragePath property'</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-22T00:00:00+00:00">January 22, 2011</time>
+                </div>
+            </div></div><h2 id="Security" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;Security&nbsp;(6)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/02/sql-server-connection-strings-unique-application-dns-and-listening-ports/">SQL Server Connection Strings, Unique Application DNS and Listening Ports</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-02T00:00:00+01:00">April 2, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/03/19/script-logins-from-database-users/">Script Logins from Database Users</a>
+                <div class="entry-date">
+                    <time datetime="2011-03-19T00:00:00+00:00">March 19, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/03/05/addressing-a-login-failed-error-18452-error-message-in-sql-server-2005/">Addressing a 'login failed' (Error 18452) error message in SQL Server 2005</a>
+                <div class="entry-date">
+                    <time datetime="2011-03-05T00:00:00+00:00">March 5, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/02/26/run-sql-server-agent-jobs-with-alternate-credentials/">Run SQL Server Agent Jobs with Alternate Credentials</a>
+                <div class="entry-date">
+                    <time datetime="2011-02-26T00:00:00+00:00">February 26, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/01/15/protecting-against-sql-injection-attacks/">Protecting against SQL Injection attacks</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-15T00:00:00+00:00">January 15, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/01/15/protecting-against-sql-injection-attacks/">Protecting against SQL Injection attacks</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-15T00:00:00+00:00">January 15, 2011</time>
+                </div>
+            </div></div><h2 id="Storage" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;Storage&nbsp;(2)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2012/12/21/deploy-or-migrate-a-database-using-scripts-part-1/">Deploy or Migrate a Database using Scripts - part 1</a>
+                <div class="entry-date">
+                    <time datetime="2012-12-21T00:00:00+00:00">December 21, 2012</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/09/using-guids-as-primary-keys-or-not/">Using GUIDs as Primary Keys, or not</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-09T00:00:00+01:00">April 9, 2011</time>
+                </div>
+            </div></div><h2 id="T-SQL Programming" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;T-SQL Programming&nbsp;(13)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2012/12/21/deploy-or-migrate-a-database-using-scripts-part-1/">Deploy or Migrate a Database using Scripts - part 1</a>
+                <div class="entry-date">
+                    <time datetime="2012-12-21T00:00:00+00:00">December 21, 2012</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/09/using-guids-as-primary-keys-or-not/">Using GUIDs as Primary Keys, or not</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-09T00:00:00+01:00">April 9, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/03/26/create-a-database-mail-profile-in-4-steps-or-less/">Create a Database Mail profile in 4 Steps (or less)</a>
+                <div class="entry-date">
+                    <time datetime="2011-03-26T00:00:00+00:00">March 26, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/03/19/script-logins-from-database-users/">Script Logins from Database Users</a>
+                <div class="entry-date">
+                    <time datetime="2011-03-19T00:00:00+00:00">March 19, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/03/12/generate-lottery-ticket-combinations/">Generate Lottery Ticket Combinations</a>
+                <div class="entry-date">
+                    <time datetime="2011-03-12T00:00:00+00:00">March 12, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/02/26/run-sql-server-agent-jobs-with-alternate-credentials/">Run SQL Server Agent Jobs with Alternate Credentials</a>
+                <div class="entry-date">
+                    <time datetime="2011-02-26T00:00:00+00:00">February 26, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/02/19/send-sql-server-agent-job-log-by-email/">Send SQL Server Agent Job log file by Email</a>
+                <div class="entry-date">
+                    <time datetime="2011-02-19T00:00:00+00:00">February 19, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/02/12/generating-a-database-data-dictionary/">Generating a Database Data Dictionary</a>
+                <div class="entry-date">
+                    <time datetime="2011-02-12T00:00:00+00:00">February 12, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/01/29/header-for-database-code-objects/">Header for Database Code Objects</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-29T00:00:00+00:00">January 29, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/01/15/protecting-against-sql-injection-attacks/">Protecting against SQL Injection attacks</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-15T00:00:00+00:00">January 15, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/01/15/protecting-against-sql-injection-attacks/">Protecting against SQL Injection attacks</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-15T00:00:00+00:00">January 15, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/01/08/date-and-time-data-types/">Date and Time data types</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-08T00:00:00+00:00">January 8, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/01/08/date-and-time-data-types/">Date and Time data types</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-08T00:00:00+00:00">January 8, 2011</time>
+                </div>
+            </div></div><h2 id="Testing" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;Testing&nbsp;(1)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2012/12/21/deploy-or-migrate-a-database-using-scripts-part-1/">Deploy or Migrate a Database using Scripts - part 1</a>
+                <div class="entry-date">
+                    <time datetime="2012-12-21T00:00:00+00:00">December 21, 2012</time>
+                </div>
+            </div></div><h2 id="Uncategorized" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;Uncategorized&nbsp;(3)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/2013/03/01/holding-on/">Holding On</a>
+                <div class="entry-date">
+                    <time datetime="2013-03-01T00:00:00+00:00">March 1, 2013</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/2013/02/01/blog-offline/">Blog Offline</a>
+                <div class="entry-date">
+                    <time datetime="2013-02-01T00:00:00+00:00">February 1, 2013</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2010/12/30/the-first-record/">The First Record</a>
+                <div class="entry-date">
+                    <time datetime="2010-12-30T00:00:00+00:00">December 30, 2010</time>
+                </div>
+            </div></div><h2 id="Upgrade" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;Upgrade&nbsp;(2)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2012/12/21/deploy-or-migrate-a-database-using-scripts-part-1/">Deploy or Migrate a Database using Scripts - part 1</a>
+                <div class="entry-date">
+                    <time datetime="2012-12-21T00:00:00+00:00">December 21, 2012</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/02/05/database-upgrade-from-sql-server-7/">Database Upgrade from SQL Server 7</a>
+                <div class="entry-date">
+                    <time datetime="2011-02-05T00:00:00+00:00">February 5, 2011</time>
+                </div>
+            </div></div><h2 id="Virtualization" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;Virtualization&nbsp;(2)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2012/12/21/deploy-or-migrate-a-database-using-scripts-part-1/">Deploy or Migrate a Database using Scripts - part 1</a>
+                <div class="entry-date">
+                    <time datetime="2012-12-21T00:00:00+00:00">December 21, 2012</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/02/sql-server-connection-strings-unique-application-dns-and-listening-ports/">SQL Server Connection Strings, Unique Application DNS and Listening Ports</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-02T00:00:00+01:00">April 2, 2011</time>
+                </div>
+            </div></div><h2 id="Windows" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;Windows&nbsp;(1)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/16/use-the-forfiles-utility-to-delete-old-database-backup-files/">Use the Forfiles Utility to Delete Old Database Backup Files</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-16T00:00:00+01:00">April 16, 2011</time>
+                </div>
+            </div></div><h2 id="command-line utilities" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;command-line utilities&nbsp;(1)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2012/12/21/deploy-or-migrate-a-database-using-scripts-part-1/">Deploy or Migrate a Database using Scripts - part 1</a>
+                <div class="entry-date">
+                    <time datetime="2012-12-21T00:00:00+00:00">December 21, 2012</time>
+                </div>
+            </div></div><h2 id="data types" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;data types&nbsp;(4)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2012/12/21/deploy-or-migrate-a-database-using-scripts-part-1/">Deploy or Migrate a Database using Scripts - part 1</a>
+                <div class="entry-date">
+                    <time datetime="2012-12-21T00:00:00+00:00">December 21, 2012</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/09/using-guids-as-primary-keys-or-not/">Using GUIDs as Primary Keys, or not</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-09T00:00:00+01:00">April 9, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/02/12/generating-a-database-data-dictionary/">Generating a Database Data Dictionary</a>
+                <div class="entry-date">
+                    <time datetime="2011-02-12T00:00:00+00:00">February 12, 2011</time>
+                </div>
+            </div><div class="tag-entry">
+                <a href="/blog/index.php/2011/01/08/date-and-time-data-types/">Date and Time data types</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-08T00:00:00+00:00">January 8, 2011</time>
+                </div>
+            </div></div><h2 id="datetime" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;datetime&nbsp;(1)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2011/01/08/date-and-time-data-types/">Date and Time data types</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-08T00:00:00+00:00">January 8, 2011</time>
+                </div>
+            </div></div><h2 id="forfiles" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;forfiles&nbsp;(1)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2011/04/16/use-the-forfiles-utility-to-delete-old-database-backup-files/">Use the Forfiles Utility to Delete Old Database Backup Files</a>
+                <div class="entry-date">
+                    <time datetime="2011-04-16T00:00:00+01:00">April 16, 2011</time>
+                </div>
+            </div></div><h2 id="runas" class="linked-section">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        &nbsp;runas&nbsp;(1)
+    </h2>
+    <div class="post-list"><div class="tag-entry">
+                <a href="/blog/index.php/2010/12/30/ssis-buffertempstoragepath-error/">SSIS error: 'buffer manager cannot create a temporary storage file on any path in the BufferTempStoragePath property'</a>
+                <div class="entry-date">
+                    <time datetime="2011-01-22T00:00:00+00:00">January 22, 2011</time>
+                </div>
+            </div></div></div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="/feed.xml" title="RSS">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">RSS</span>
+    </a>
+  </li><li class="list-inline-item">
+    <a href="mailto:info@sqlserverdiaries.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/reubensultana" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://twitter.com/reubensultana" title="Twitter">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Twitter</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://linkedin.com/in/reubensultana" title="LinkedIn">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">LinkedIn</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Reuben Sultana
+        &nbsp;&bull;&nbsp;
+      
+      2020
+
+      
+        &nbsp;&bull;&nbsp;
+        <a href="http://0.0.0.0:4000/">sqlserverdiaries.com</a>
+      
+
+      
+      </p>
+      <!-- Please don't remove this, keep my open source work credited :) -->
+<!--
+      <p class="theme-by text-muted">
+        Theme by
+        <a href="https://beautifuljekyll.com">beautiful-jekyll</a>
+      </p>
+-->
+    </div>
+    </div>
+  </div>
+</footer>
+
+  
+    
+  
+    
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/main.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  </body>
+</html>

