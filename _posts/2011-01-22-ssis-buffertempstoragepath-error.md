@@ -4,16 +4,7 @@ date: 2011-01-22
 title: "SSIS error: 'buffer manager cannot create a temporary storage file on any path in the BufferTempStoragePath property'"
 permalink: ./blog/index.php/2010/12/30/ssis-buffertempstoragepath-error/
 published: true
-tags:
-    - SQL Server 2005
-    - BufferTempStoragePath
-    - runas
-    - BLOBTempStoragePath
-    - SSIS
-    - Backup and Recovery
-    - Database Administration
-    - SQL Tools
-    - SQL Server Integration Services
+tags: [SQL Server 2005, BufferTempStoragePath, runas, BLOBTempStoragePath, SSIS, Backup and Recovery, Database Administration, SQL Tools, SQL Server Integration Services]
 comments: false
 ---
 An ETL SSIS package implemented on a test environment was failing occasionally with the error:

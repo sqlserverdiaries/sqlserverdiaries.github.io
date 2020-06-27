@@ -4,23 +4,7 @@ date:   2012-12-21
 title:  "Deploy or Migrate a Database using Scripts - part 1"
 permalink: ./blog/index.php/2012/12/21/deploy-or-migrate-a-database-using-scripts-part-1/
 published: true
-tags:
-    - SQL Tools
-    - Database Administration
-    - Virtualization
-    - Backup
-    - Code Samples
-    - command-line utilities
-    - Database Documentation
-    - Database Migration
-    - data types
-    - Development
-    - T-SQL Programming
-    - SQL Server Integration Services
-    - SSIS
-    - Storage
-    - Testing
-    - Upgrade
+tags: [SQL Tools, Database Administration, Virtualization, Backup, Code Samples, command-line utilities, Database Documentation, Database Migration, data types, Development, T-SQL Programming, SQL Server Integration Services, SSIS, Storage, Testing, Upgrade]
 comments: false
 ---
 A database migration is always a headache for DBAs.  There are different approaches one may take, some being simpler than others. A couple of weeks ago, in the [Migrate Databases Using Backup-Restore](./blog/index.php/2012/11/migrate-databases-using-backup-restore/) article, I explained how a database migration can be carried out effortlessly and with minimal downtime.  This is however not possible if you are upgrading from one version to another or if, for instance you want to ensure that the CHECKSUM option is applicable to all pages.  The post titled [Database Upgrade from SQL Server 7](./blog/index.php/2011/02/database-upgrade-from-sql-server-7/) explains that although the option is set it will be applicable to *newly created* pages only.  Existing pages will retain the previous setting.  Moving binary data to another "normal" FILEGROUP or one using the FILESTREAM capabilities is another reason to migrate using scripting.  The method I will be explaining covers dissecting and rebuilding the database from scratch.

@@ -4,18 +4,7 @@ date:   2011-04-09
 title:  "Using GUIDs as Primary Keys, or not"
 permalink: ./blog/index.php/2011/04/09/using-guids-as-primary-keys-or-not/
 published: true
-tags:
-    - Storage
-    - T-SQL Programming
-    - SQL Server 2000
-    - Coding Practices
-    - Database Design
-    - SQL Server 2008 R2
-    - Indexes
-    - SQL Server 2008
-    - data types
-    - GUID
-    - SQL Server 2005
+tags: [Storage, T-SQL Programming, SQL Server 2000, Coding Practices, Database Design, SQL Server 2008 R2, Indexes, SQL Server 2008, data types, GUID, SQL Server 2005]
 comments: false
 ---
 Also known as **G**lobally **U**nique **Id**entifiers, GUID values consist of a string of alphanumeric values which in principle should be unique across all machines of the network.  GUID values are stored in a database table using the _[uniqueidentifier (Transact-SQL)](http://msdn.microsoft.com/en-us/library/ms187942.aspx)_ data type and requires 16 bytes of storage space per row.  Values can be generated using the [NEWID (Transact-SQL)](http://msdn.microsoft.com/en-us/library/ms190348.aspx) or the [NEWSEQUENTIALID() (Transact-SQL)](http://msdn.microsoft.com/en-us/library/ms189786.aspx) SQL Server functions.  The latter is available in SQL Server 2005 and later versions.

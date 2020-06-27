@@ -4,16 +4,7 @@ date:   2011-02-12
 title:  "Generating a Database Data Dictionary"
 permalink: ./blog/index.php/2011/02/12/generating-a-database-data-dictionary/
 published: true
-tags:
-    - SQL Server
-    - Backup and Recovery
-    - T-SQL Programming
-    - Database Documentation # 
-    - Database Design # 
-    - Development # 
-    - Coding Practices # 
-    - data types # 
-    - Code Samples
+tags: [SQL Server, Backup and Recovery, T-SQL Programming, T-SQL Programming, Database Documentation, Database Design, Development, Coding Practices, data types, Code Samples]
 comments: false
 ---
 Accurate documentation is paramount for any system.  Unfotunately, when developing a database we sometimes tend to overlook this particular document.

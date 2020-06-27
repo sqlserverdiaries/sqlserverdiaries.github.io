@@ -4,10 +4,7 @@ date:   2011-04-30
 title:  "Documenting the Owner of a Generic Database User"
 permalink: ./blog/index.php/2011/04/30/documenting-the-owner-of-a-generic-database-user/
 published: true
-tags:
-    - Database Documentation
-    - Database Administration
-    - Database Documentation
+tags: [Database Documentation, Database Administration]
 comments: false
 ---
 A developer asked about whether it was possible to store additional tags to identify the owner of a generic login or generic database user.  The below solution can be used to store this information and also offers further possibilities.

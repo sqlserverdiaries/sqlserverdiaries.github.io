@@ -4,10 +4,7 @@ date:   2011-02-05
 title:  "Database Upgrade from SQL Server 7"
 permalink: ./blog/index.php/2011/02/05/database-upgrade-from-sql-server-7/
 published: true
-tags:
-    - Upgrade
-    - Database Design
-    - SQL Server 2005
+tags: [Upgrade, Database Design, SQL Server 2005]
 comments: false
 ---
 When migrating databases from SQL Server 7 or 2000 to SQL Server 2005/2008 the steps can be summarised as follows:

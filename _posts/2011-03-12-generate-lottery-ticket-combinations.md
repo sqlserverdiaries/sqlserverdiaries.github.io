@@ -4,14 +4,7 @@ date:   2011-03-12
 title:  "Generate Lottery Ticket Combinations"
 permalink: ./blog/index.php/2011/03/12/generate-lottery-ticket-combinations/
 published: true
-tags:
-    - T-SQL Programming
-    - Code Samples
-    - CTE
-    - CROSS JOIN
-    - Permutations
-    - Combinations
-    - SQL Server
+tags: [T-SQL Programming, Code Samples, T-SQL Programming, CTE, CROSS JOIN, Permutations, Combinations, SQL Server]
 comments: false
 ---
 In Malta, the [Super 5](http://www.maltco.com/super/) lottery prize has always been considered the peak of winnings by the Maltese.  So much so that it has become part of the day-to-day language when referring to good luck (_I feel I just won the Super 5!_).  As a challenge, I thought of how to write a T-SQL statement that would retrieve all the possible combinations (or permutations) of the tickets.  As a backround to the lottery, the wining ticket will contain 5 distinct numbers between 1 and 42 in any order.  Each ticket costs €1.50 and draws are held once a week.

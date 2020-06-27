@@ -3,18 +3,7 @@ layout: post
 date:   2011-01-15
 title:  "Protecting against SQL Injection attacks"
 permalink: ./blog/index.php/2011/01/15/protecting-against-sql-injection-attacks/
-tags:
-    - T-SQL Programming
-    - Security      
-    - SQL Injection
-    - Security
-    - Database Administration
-    - Database Design
-    - T-SQL Programming
-    - Code Samples
-    - Coding Practices
-    - Development
-    - SQL Server
+tags: [T-SQL Programming, Security, SQL Injection, Security, Database Administration, Database Design, T-SQL Programming, Code Samples, Coding Practices, Development, SQL Server]
 comments: false
 ---
 In a nutshell, an SQL injection attack is one where malicious code is passed to an instance of SQL Server for parsing and execution through a vulnerable application.  Although most SQL injection attacks can come from the web (having a larger "target audience") even machines connected to an organisation's network can pose a potential threat to the entire infrastructure.  Moreover, the applications do not necessarily have to be web-based ones.

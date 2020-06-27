@@ -4,12 +4,7 @@ date:   2011-03-26
 title:  "Create a Database Mail profile in 4 Steps (or less)"
 permalink: ./blog/index.php/2011/03/26/create-a-database-mail-profile-in-4-steps-or-less/
 published: true
-tags:
-    - SQL Server 2005
-    - T-SQL Programming
-    - SQL Server Agent
-    - Database Mail
-    - Database Administration
+tags: [SQL Server 2005, T-SQL Programming, SQL Server Agent, Database Mail, Database Administration]
 comments: false
 ---
 [Database Mail](http://msdn.microsoft.com/en-us/library/ms175887.aspx) provides functionality to send email using T-SQL and is the successor to SQL Server 2000's [SQL Mail](http://msdn.microsoft.com/en-us/library/ms177418.aspx). Although SQL Mail is still available in SQL Server 2005, it is provided for backward compatibility only and the Books Online reccomend that Database Mail is used instead.

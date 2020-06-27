@@ -4,13 +4,7 @@ date:   2011-03-19
 title:  "Script Logins from Database Users"
 permalink: ./blog/index.php/2011/03/19/script-logins-from-database-users/
 published: true
-tags:
-    - SQL Server 2008
-    - SQL Server 2000
-    - Database Administration
-    - T-SQL Programming
-    - Security
-    - SQL Server 2005
+tags: [SQL Server 2008, SQL Server 2000, Database Administration, T-SQL Programming, Security, SQL Server 2005, Security]
 comments: false
 ---
 When performing a database migration from one SQL Server instance to another, the DBA has to transfer all logins which have access to the database.  The transfer will only be successful if the logins retain the same passwords to reduce the impact on the end users, and more specifically, the logins have to be created with the same Security IDentifier (SID) as the original one.  The SID is a varbinay value and can be retrieved by querying the _dbo.syslogins_ view in SQL Server 2000, or the _sys.server_principals_ catalog view in SQL Server 2005 and 2008.

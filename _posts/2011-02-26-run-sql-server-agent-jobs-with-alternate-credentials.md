@@ -4,14 +4,7 @@ date:   2011-02-26
 title:  "Run SQL Server Agent Jobs with Alternate Credentials"
 permalink: ./blog/index.php/2011/02/26/run-sql-server-agent-jobs-with-alternate-credentials/
 published: true
-tags:
-    - Database Administration
-    - SQL Server Integration Services
-    - T-SQL Programming
-    - SQL Server Agent
-    - SSIS
-    - SQL Server 2005
-    - Security
+tags: [Database Administration, SQL Server Integration Services, T-SQL Programming, SQL Server Agent, SSIS, SQL Server 2005, Security]
 comments: false
 ---
 According to the [Selecting an Account for the SQL Server Agent Service](http://msdn.microsoft.com/en-us/library/ms191543.aspx), the SQL Server Agent service account should be able to authenticate with the instance and also be a memeber of the _sysadmin_ fixed server role.

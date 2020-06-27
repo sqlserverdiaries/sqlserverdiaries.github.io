@@ -4,10 +4,7 @@ date:   2011-04-23
 title:  "Compare the Contents (data) of Two Tables"
 permalink: ./blog/index.php/2011/04/23/compare-the-contents-data-of-two-tables/
 published: true
-tags:
-    - SQL Tools
-    - Database Administration
-    - Data Maintenance
+tags: [SQL Tools, Database Administration, Data Maintenance]
 comments: false
 ---
 An application developer asked me if there was an option in SQL Server to compare the contents/data of two tables without having to create a custom application.  There are various third party tools that can achieve this target however SQL Server comes with an out-of-the-box solution.

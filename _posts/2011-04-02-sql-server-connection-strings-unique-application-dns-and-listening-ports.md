@@ -4,17 +4,7 @@ date:   2011-04-02
 title:  "SQL Server Connection Strings, Unique Application DNS and Listening Ports"
 permalink: ./blog/index.php/2011/04/02/sql-server-connection-strings-unique-application-dns-and-listening-ports/
 published: true
-tags:
-    - Security
-    - DNS
-    - Connection Strings
-    - Listening Ports
-    - Database Migration
-    - SQL Server
-    - Database Administration
-    - Database Design
-    - Virtualization
-    - Architecture
+tags: [Security, DNS, Connection Strings, Listening Ports, Database Migration, SQL Server, Database Administration, Database Design, Virtualization, Architecture]
 comments: false
 ---
 Managing SQL Server applications can be a bit tricky, especially in an enterprise scenario with tens or hundreds of applications deployed for a large user-base across geographically dispersed locations.  With a bit of planning, events such as database migrations, DBMS upgrade, or server virtualisation to name a few, can be carried out without affecting the end-users and with much less effort than configuring each machine or redeploying an update.

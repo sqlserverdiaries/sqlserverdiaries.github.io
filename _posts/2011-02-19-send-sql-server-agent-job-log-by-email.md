@@ -4,14 +4,7 @@ date:   2011-02-19
 title:  "Send SQL Server Agent Job log file by Email"
 permalink: ./blog/index.php/2011/02/19/send-sql-server-agent-job-log-by-email/
 published: true
-tags:
-    - T-SQL Programming
-    - SQL Server Agent
-    - SQL Server 2005
-    - Database Mail
-    - Backup and Recovery
-    - Database Administration
-    - SQL Server 2008
+tags: [T-SQL Programming, SQL Server Agent, SQL Server 2005, Database Mail, Backup and Recovery, Database Administration, SQL Server 2008]
 comments: false
 ---
 When creating an SQL Server Agent job with one or more steps, each step can be configured to write the query output to a log file.  If the job failes, such a log can assist a DBA identify the cause of the failure.  That is, if the log is still available.

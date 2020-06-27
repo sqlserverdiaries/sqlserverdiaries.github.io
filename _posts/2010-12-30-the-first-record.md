@@ -5,8 +5,7 @@ title:  "The First Record"
 permalink: ./blog/index.php/2010/12/30/the-first-record/
 categories: blog
 published: true
-tags:
-    - Uncategorized
+tags: [Uncategorized]
 comments: false
 ---
 Dear Reader,
