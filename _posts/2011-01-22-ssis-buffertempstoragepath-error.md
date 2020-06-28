@@ -2,7 +2,7 @@
 layout: post
 date: 2011-01-22
 title: "SSIS error: 'buffer manager cannot create a temporary storage file on any path in the BufferTempStoragePath property'"
-permalink: ./blog/index.php/2010/12/30/ssis-buffertempstoragepath-error/
+permalink: ./blog/index.php/2010/12/ssis-buffertempstoragepath-error/
 published: true
 tags: [SQL Server 2005, BufferTempStoragePath, runas, BLOBTempStoragePath, SSIS, Backup and Recovery, Database Administration, SQL Tools, SQL Server Integration Services]
 comments: false
@@ -28,6 +28,7 @@ The package was stored in the *msdb* database and the SQL Agent job was configur
 The [Microsoft Support article 972365](http://support.microsoft.com/kb/972365) indicated that Cumulative Update 5 for SQL Server 2005 Service Pack 3 would fix this issue.  Since we usually apply CUs to fix security issues only we did not see this as a resolution.
 
 Since the profile for the login used as a proxy account did not exist on the server we executed the following:
+
 1. Open a command prompt window on the server
 2. Execute *"runas /user:DOMAIN\proxy_account_login notepad.exe"* and enter the password when requested
 3. Close Notepad

@@ -2,7 +2,7 @@
 layout: post
 date:   2011-03-05
 title:  "Addressing a 'login failed' (Error 18452) error message in SQL Server 2005"
-permalink: ./blog/index.php/2011/03/05/addressing-a-login-failed-error-18452-error-message-in-sql-server-2005/
+permalink: ./blog/index.php/2011/03/addressing-a-login-failed-error-18452-error-message-in-sql-server-2005/
 published: true
 tags: [SQL Server, Connection Strings, Database Administration, SQL Server errors, Security]
 comments: false

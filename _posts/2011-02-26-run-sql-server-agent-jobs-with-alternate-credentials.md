@@ -2,7 +2,7 @@
 layout: post
 date:   2011-02-26
 title:  "Run SQL Server Agent Jobs with Alternate Credentials"
-permalink: ./blog/index.php/2011/02/26/run-sql-server-agent-jobs-with-alternate-credentials/
+permalink: ./blog/index.php/2011/02/run-sql-server-agent-jobs-with-alternate-credentials/
 published: true
 tags: [Database Administration, SQL Server Integration Services, T-SQL Programming, SQL Server Agent, SSIS, SQL Server 2005, Security]
 comments: false

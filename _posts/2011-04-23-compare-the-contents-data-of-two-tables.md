@@ -2,7 +2,7 @@
 layout: post
 date:   2011-04-23
 title:  "Compare the Contents (data) of Two Tables"
-permalink: ./blog/index.php/2011/04/23/compare-the-contents-data-of-two-tables/
+permalink: ./blog/index.php/2011/04/compare-the-contents-data-of-two-tables/
 published: true
 tags: [SQL Tools, Database Administration, Data Maintenance]
 comments: false

@@ -2,7 +2,7 @@
 layout: post
 date:   2011-04-30
 title:  "Documenting the Owner of a Generic Database User"
-permalink: ./blog/index.php/2011/04/30/documenting-the-owner-of-a-generic-database-user/
+permalink: ./blog/index.php/2011/04/documenting-the-owner-of-a-generic-database-user/
 published: true
 tags: [Database Documentation, Database Administration]
 comments: false

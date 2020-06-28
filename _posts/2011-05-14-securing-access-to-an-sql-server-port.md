@@ -2,19 +2,19 @@
 layout: post
 date:   2011-05-14
 title:  "Securing Access to an SQL Server Port"
-permalink: ./blog/index.php/2011/05/14/securing-access-to-an-sql-server-port/
+permalink: ./blog/index.php/2011/05/securing-access-to-an-sql-server-port/
 categories: blog
 published: true
 tags: [Architecture, Database Administration, Database Design, Security, Virtualization, Connection Strings, Database Migration, Listening Ports, Security, SQL Server, SQL Server 2005, SQL Server 2008, SQL Server 2008 R2]
 comments: false
 ---
-In an earlier article titled [SQL Server Connection Strings, Unique Application DNS and Listening Ports](./blog/index.php/2011/04/sql-server-connection-strings-unique-application-dns-and-listening-ports/) I explained a method that can be used to manage applications' connectivity to SQL Server databases across an enterprise.  This article extends the principles explained.
+In an earlier article titled [SQL Server Connection Strings, Unique Application DNS and Listening Ports](/blog/index.php/2011/04/sql-server-connection-strings-unique-application-dns-and-listening-ports/) I explained a method that can be used to manage applications' connectivity to SQL Server databases across an enterprise.  This article extends the principles explained.
 
 Introduced in SQL Server 2005, endpoints provide a point of entry to connect to an SQL Server instance.  Endpoints are also used when configuring [Database Mirroring Overview](http://msdn.microsoft.com/en-us/library/ms189852.aspx) and [SQL Server Service Broker](http://msdn.microsoft.com/en-us/library/bb522893.aspx), but those subjects will be covered in future articles.  A reminder and suggestion about HTTP Endpoints (or Native XML Web Services) which were introduced in SQL Server 2005 - do not use them and plan to replace their functionality with an alternative deployment (e.g. Web Services).  Microsoft have decided to remove this feature in a future version of SQL Server.  Read the MSDN article [Native XML Web Services: Deprecated in SQL Server 2008](http://msdn.microsoft.com/en-us/library/cc280436.aspx) for further details.
 
 By default a number of System Endpoints are created for every service (TCP, VIA, Shared Memory, Named Pipes) and an additional one for the Dedicated Admin Connection, each of which are ready to accept TSQL connections if the protocol is enabled (see [SQL Server Configuration Manager](http://msdn.microsoft.com/en-us/library/ms174212.aspx)).  This article demonstrates how to create a TSQL endpoint and allow access only to specific logins.
 
-After allocating a port to our application, configuring SQL Server to listen on that port and restarting the instance as explained in the [SQL Server Connection Strings, Unique Application DNS and Listening Ports](./blog/index.php/2011/04/sql-server-connection-strings-unique-application-dns-and-listening-ports/), the first step is to create the TSQL endpoint.  This is done using the following syntax:
+After allocating a port to our application, configuring SQL Server to listen on that port and restarting the instance as explained in the [SQL Server Connection Strings, Unique Application DNS and Listening Ports](/blog/index.php/2011/04/sql-server-connection-strings-unique-application-dns-and-listening-ports/), the first step is to create the TSQL endpoint.  This is done using the following syntax:
 
 ``` sql
 CREATE ENDPOINT [App125DBEndpoint]

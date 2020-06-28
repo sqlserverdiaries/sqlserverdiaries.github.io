@@ -2,7 +2,7 @@
 layout: post
 date:   2013-03-01
 title:  "Holding On"
-permalink: ./blog/2013/03/01/holding-on/
+permalink: ./blog/2013/03/holding-on/
 categories: blog
 published: true
 tags:

@@ -2,7 +2,7 @@
 layout: post
 date:   2011-04-09
 title:  "Using GUIDs as Primary Keys, or not"
-permalink: ./blog/index.php/2011/04/09/using-guids-as-primary-keys-or-not/
+permalink: ./blog/index.php/2011/04/using-guids-as-primary-keys-or-not/
 published: true
 tags: [Storage, T-SQL Programming, SQL Server 2000, Coding Practices, Database Design, SQL Server 2008 R2, Indexes, SQL Server 2008, data types, GUID, SQL Server 2005]
 comments: false
@@ -102,9 +102,9 @@ The above reasons should serve as an introduction to increase the awareness of a
 * [SQL Server I/O Basics, Chapter 2](http://technet.microsoft.com/en-us/library/cc917726.aspx) - Published: July 19, 2006
 * [Physical Database Storage Design](http://www.microsoft.com/technet/prodtechnol/sql/2005/physdbstor.mspx)
 * [Pages and Extents Architecture](http://msdn.microsoft.com/en-us/library/cc280360.aspx)
-* [Understanding Pages and Extents ](http://msdn.microsoft.com/en-us/library/ms190969.aspx)
+* [Understanding Pages and Extents](http://msdn.microsoft.com/en-us/library/ms190969.aspx)
 * [Table and Index Organization](http://msdn.microsoft.com/en-us/library/ms189051.aspx)
-* [Estimating the Size of a Database ](http://msdn.microsoft.com/en-us/library/ms187445.aspx)
+* [Estimating the Size of a Database](http://msdn.microsoft.com/en-us/library/ms187445.aspx)
 * [Designing Indexes](http://msdn.microsoft.com/en-us/library/ms190804.aspx)
 
 You might also wish to read the book [Microsoft SQL Server 2008 Internals by Kalen Delaney](http://www.sqlserverinternals.com) by Kalen Delaney (and other authors) available from most leading online bookstores.

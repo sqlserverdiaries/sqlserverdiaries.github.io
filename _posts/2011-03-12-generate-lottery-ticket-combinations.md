@@ -2,7 +2,7 @@
 layout: post
 date:   2011-03-12
 title:  "Generate Lottery Ticket Combinations"
-permalink: ./blog/index.php/2011/03/12/generate-lottery-ticket-combinations/
+permalink: ./blog/index.php/2011/03/generate-lottery-ticket-combinations/
 published: true
 tags: [T-SQL Programming, Code Samples, T-SQL Programming, CTE, CROSS JOIN, Permutations, Combinations, SQL Server]
 comments: false

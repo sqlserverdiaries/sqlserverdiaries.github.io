@@ -2,7 +2,7 @@
 layout: post
 date:   2011-03-26
 title:  "Create a Database Mail profile in 4 Steps (or less)"
-permalink: ./blog/index.php/2011/03/26/create-a-database-mail-profile-in-4-steps-or-less/
+permalink: ./blog/index.php/2011/03/create-a-database-mail-profile-in-4-steps-or-less/
 published: true
 tags: [SQL Server 2005, T-SQL Programming, SQL Server Agent, Database Mail, Database Administration]
 comments: false

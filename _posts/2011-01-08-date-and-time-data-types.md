@@ -2,7 +2,7 @@
 layout: post
 date:   2011-01-08
 title:  "Date and Time data types"
-permalink: ./blog/index.php/2011/01/08/date-and-time-data-types/
+permalink: ./blog/index.php/2011/01/date-and-time-data-types/
 tags: [datetime, data types, SQL Server 2005, Coding Practices, T-SQL Programming, Database Design, Development, SQL Server 2000, T-SQL Programming, Database Migration]
 comments: false
 ---

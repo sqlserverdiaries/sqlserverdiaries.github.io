@@ -2,7 +2,7 @@
 layout: post
 date:   2013-02-01
 title:  "Blog Offline"
-permalink: ./blog/2013/02/01/blog-offline/
+permalink: ./blog/2013/02/blog-offline/
 categories: blog
 published: true
 tags:

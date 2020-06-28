@@ -2,7 +2,7 @@
 layout: post
 date:   2011-02-19
 title:  "Send SQL Server Agent Job log file by Email"
-permalink: ./blog/index.php/2011/02/19/send-sql-server-agent-job-log-by-email/
+permalink: ./blog/index.php/2011/02/send-sql-server-agent-job-log-by-email/
 published: true
 tags: [T-SQL Programming, SQL Server Agent, SQL Server 2005, Database Mail, Backup and Recovery, Database Administration, SQL Server 2008]
 comments: false

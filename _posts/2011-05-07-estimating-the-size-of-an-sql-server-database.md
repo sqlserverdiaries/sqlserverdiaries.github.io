@@ -2,7 +2,7 @@
 layout: post
 date:   2011-05-07
 title:  "Estimating the Size of an SQL Server Database"
-permalink: ./blog/index.php/2011/05/07/estimating-the-size-of-an-sql-server-database/
+permalink: ./blog/index.php/2011/05/estimating-the-size-of-an-sql-server-database/
 categories: blog
 published: true
 tags: [SQL Server 2005, Database Design, Database Documentation, Coding Practices, SQL Server 2008]
@@ -14,5 +14,5 @@ The files listed below should allow you to get a pretty close idea of the disk s
 
 All you have to do is fill in the values in the separate worksheets where the cells are NOT shaded.  If the SQL Server database you are planning requires more than fifty objects per worksheet just copy the last row, making sure to include the formulas, formats, etc.
 
-* [Estimating the Size of an SQL Server 2005 Database](/assets/article_files/2011-05-07-estimating-the-size-of-an-sql-server-database/SQL-Server-2005-Estimating-the-Size-of-a-Database.xls)
-* [Estimating the Size of an SQL Server 2008 Database](/assets/article_files/2011-05-07-estimating-the-size-of-an-sql-server-database/SQL-Server-2008-Estimating-the-Size-of-a-Database.xls)
+* [Estimating the Size of an SQL Server 2005 Database](/assets/article_files/2011-05-estimating-the-size-of-an-sql-server-database/SQL-Server-2005-Estimating-the-Size-of-a-Database.xls)
+* [Estimating the Size of an SQL Server 2008 Database](/assets/article_files/2011-05-estimating-the-size-of-an-sql-server-database/SQL-Server-2008-Estimating-the-Size-of-a-Database.xls)
