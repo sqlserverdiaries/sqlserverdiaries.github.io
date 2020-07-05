@@ -22,3 +22,5 @@
 * DBA Appreciation Day - 3rd July
 
 * Convert columns to support Unicode character
+
+* NOTE: Languages known to GitHub - <https://github.com/github/linguist/blob/master/lib/linguist/languages.yml>
