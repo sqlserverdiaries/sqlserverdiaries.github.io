@@ -1,5 +1,7 @@
 # NOTES FOR NEW ARTICLES #
 
+## Ideas ##
+
 * Add Comedy section - send your stories
 
 * URL rewriting using Jekyll - avoid Wordpress structure but retain old URLs
@@ -23,4 +25,23 @@
 
 * Convert columns to support Unicode character
 
-* NOTE: Languages known to GitHub - <https://github.com/github/linguist/blob/master/lib/linguist/languages.yml>
+* Using xp_cmdshell "creatively"  
+  * run PowerShell script using sys.xp_cmdshell;
+  * download EXE from the web;
+  * install "dummy" Application under User profile OR run Application.
+
+* Create TEMPDB files in Temporary Drive in Azure VM (IAAS)
+  
+* Prepping the disks for a SQL Server installation (see PoSh script)
+  
+* Break down PowerShell script which moves System Databases into seperate articles/posts
+
+* Review scripts created at Axla and convert to posts/articles
+
+## Referece ##
+
+* Languages known to GitHub
+  <https://github.com/github/linguist/blob/master/lib/linguist/languages.yml>
+
+* Working with Tables in GitHub Markdown
+  <https://www.pluralsight.com/guides/working-tables-github-markdown>
