@@ -58,4 +58,4 @@ SELECT ReturnCol AS [Days] FROM [db_dba].dbo.fn_split(@days, ',');
 
 The above is an example of reusing what is already persent in the DBMS without having to _"reinvent the wheel"_.
 
-The script for the [fn_split function can be downloaded here](/assets/article_files/2012-01-using-built-in-multi-language-month-and-weekday-names-for-application-lists/fn_split.zip).
+The script for the [fn_split function can be downloaded here](/assets/article_files/2012/01/fn_split.zip).

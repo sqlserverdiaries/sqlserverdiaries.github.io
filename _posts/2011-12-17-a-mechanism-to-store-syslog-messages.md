@@ -178,4 +178,4 @@ The last part of the data collection of this solution is to create two SQL Serve
 
 The entire script used for this implementation can be downloaded from the below link.
 
-Script: [a-mechanism-to-store-syslog-messages.zip](/assets/article_files/2011-12-a-mechanism-to-store-syslog-messages/a-mechanism-to-store-syslog-messages.zip)
+Script: [a-mechanism-to-store-syslog-messages.zip](/assets/article_files/2011/12/a-mechanism-to-store-syslog-messages.zip)

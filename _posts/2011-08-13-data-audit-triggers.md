@@ -140,4 +140,4 @@ DROP TABLE dbo.tb_source_audit;
 GO
 ```
 
-As explained earlier, this is just one of the approaches that can be implemented to audit data.  The entire script for the above can be downloaded here: [sample_trigger_multiple_actions.zip](/assets/article_files/2011-08-data-audit-triggers/sample_trigger_multiple_actions.zip).
+As explained earlier, this is just one of the approaches that can be implemented to audit data.  The entire script for the above can be downloaded here: [sample_trigger_multiple_actions.zip](/assets/article_files/2011/08/sample_trigger_multiple_actions.zip).

@@ -96,6 +96,6 @@ We also need to implement functionality to convert plain text parameter values t
 
 The penultimate step is to grant CONTROL permissions on the certificate to the database user.  This is necessary to permit that the user can encrypt and decrypt data using the certificate.
 
-The very last step of this solution is to configure the SSIS package to use the VIEW to when storing the parameter values.  That’s it!  A script containing the T-SQL necessary to implement this solution can be [downloaded from here](/assets/article_files/2012-06-securing-an-ssis-params-table-using-keys/securing-an-ssis-params-table-using-keys.zip).
+The very last step of this solution is to configure the SSIS package to use the VIEW to when storing the parameter values.  That’s it!  A script containing the T-SQL necessary to implement this solution can be [downloaded from here](/assets/article_files/2012/06/securing-an-ssis-params-table-using-keys.zip).
 
 A final thought.  Do not forget to back up the database certificate as part of your maintenance routines.

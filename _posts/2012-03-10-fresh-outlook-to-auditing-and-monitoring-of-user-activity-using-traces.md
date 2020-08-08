@@ -45,6 +45,6 @@ In the case of SQL Server 2000, the complexity mentioned above is handled as fol
 
 Summarising, the SQL Server 2000 version of the script uses the _DIR_ command with the specified parameters, and a T-SQL cursor to execute the _DEL_ command in quiet mode for each file to be deleted. All scripts can be downloaded using the below links.
 
-* [SQL Server 2000 version](/assets/article_files/2012-03-fresh-outlook-to-auditing-and-monitoring-of-user-activity-using-traces/usp_trace_audit_2000.zip)
-* [SQL Server 2005 version](/assets/article_files/2012-03-fresh-outlook-to-auditing-and-monitoring-of-user-activity-using-traces/usp_trace_audit_2005.zip)
-* [SQL Server 2008 version](/assets/article_files/2012-03-fresh-outlook-to-auditing-and-monitoring-of-user-activity-using-traces/usp_trace_audit_2008.zip)
+* [SQL Server 2000 version](/assets/article_files/2012/03/usp_trace_audit_2000.zip)
+* [SQL Server 2005 version](/assets/article_files/2012/03/usp_trace_audit_2005.zip)
+* [SQL Server 2008 version](/assets/article_files/2012/03/usp_trace_audit_2008.zip)

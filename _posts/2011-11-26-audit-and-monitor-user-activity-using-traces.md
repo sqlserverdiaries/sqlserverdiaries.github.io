@@ -59,6 +59,6 @@ I am including three versions of the script, one for each of SQL Server 2000, 20
 
 The scripts for the traces can be downloaded using the below links:
 
-* [SQL Server 2000 version](/assets/article_files/2011-11-audit-and-monitor-user-activity-using-traces/usp_trace_audit_2000.zip)
-* [SQL Server 2005 version](/assets/article_files/2011-11-audit-and-monitor-user-activity-using-traces/usp_trace_audit_2005.zip)
-* [SQL Server 2008 version](/assets/article_files/2011-11-audit-and-monitor-user-activity-using-traces/usp_trace_audit_2008.zip)
+* [SQL Server 2000 version](/assets/article_files/2011/11/usp_trace_audit_2000.zip)
+* [SQL Server 2005 version](/assets/article_files/2011/11/usp_trace_audit_2005.zip)
+* [SQL Server 2008 version](/assets/article_files/2011/11/usp_trace_audit_2008.zip)

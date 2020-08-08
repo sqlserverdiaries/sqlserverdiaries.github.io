@@ -96,6 +96,6 @@ ORDER BY specific_catalog, specific_schema, specific_name, ordinal_position;
 
 The below diagram shows the relationships between the INFORMATION_SCHEMA objects.
 
-![INFORMATION_SCHEMA compatibility views](/assets/article_files/2011-02-generating-a-database-data-dictionary/information_schema_views_all_condensed.jpg)
+![INFORMATION_SCHEMA compatibility views](/assets/article_files/2011/02/information_schema_views_all_condensed.jpg)
 
 For more information about the INFORMATION_SCHEMA compatibility views and which other information can be retrieved can be found in the SQL Server Books Online at [SQL Server Books Online](http://msdn.microsoft.com/en-us/library/ms186778.aspx).

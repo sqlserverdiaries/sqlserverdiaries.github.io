@@ -89,4 +89,4 @@ FROM @XMLResult.nodes('/snapshot/process') T (sqlblock);
 
 The entire script used for this implementation can be downloaded by clicking the link at the end of the article.  My script caters for multiple XML files using the _xp\_cmdshell_ extended stored procedure and can also be used to filter results for a specific SQL Server instance name.  I am thining of developing it further by creating a stored procedure that will load the XML files on schedule and delete them when done, but I'm still not sure if this is the right tool for the job.  Anyway, I hope you find the script as explained here useful.  If you do, let me know if and how you used it in your environment.
 
-Download script: [Import MS SQL Blocks XML Files](/assets/article_files/2011-06-loading-mssql-blocks-xml-files-into-a-table/Import-MS-SQL-Blocks-XML-Files.zip)
+Download script: [Import MS SQL Blocks XML Files](/assets/article_files/2011/06/Import-MS-SQL-Blocks-XML-Files.zip)

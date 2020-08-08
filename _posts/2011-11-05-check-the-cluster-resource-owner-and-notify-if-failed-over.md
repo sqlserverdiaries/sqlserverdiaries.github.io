@@ -10,7 +10,7 @@ comments: false
 ---
 In a Microsoft Cluster environment offering High Availability, a failover to the Secondary (or alternate) Node is usually set to automatic (to maintain the HA). The DBA then has to resolve the issues that caused the failover then fail the services back to the Primary Node. Of course the DBA has to be aware that a failover occurred otherwise the environment would not have an HA once the Resource Groups are in a failed state.
 
-Such a notification can be easily implemented using a T-SQL script and an SQL Server Agent Job. The script would not have “any” hard-coding so that it can be implemented on different environment if necessary. The entire script is [available here](/assets/article_files/2011-11-check-the-cluster-resource-owner-and-notify-if-failed-over/check_cluster_resource_owner_and_notify_if_failed-over.zip) however here’s a run-through of what’s going on.
+Such a notification can be easily implemented using a T-SQL script and an SQL Server Agent Job. The script would not have “any” hard-coding so that it can be implemented on different environment if necessary. The entire script is [available here](/assets/article_files/2011/11/check_cluster_resource_owner_and_notify_if_failed-over.zip) however here’s a run-through of what’s going on.
 
 The first step is identifying the name of the host machine also know as the Cluster Node. This can be achieved using the _SERVERPROPERTY('ComputerNamePhysicalNetBIOS')_ function as shown below. We are also going to define the machine name of the primary node or Resource Group owner. This is the only hard-coding present in the script.
 
@@ -55,4 +55,4 @@ EXEC msdb.dbo.sp_send_dbmail
 
 Once tested, the last step is to create an SQL Server Agent Job which fires every time the SQL Server Agent service is started. You should now be set.
 
-The script, which can be [downloaded from here](/assets/article_files/2011-11-check-the-cluster-resource-owner-and-notify-if-failed-over/check_cluster_resource_owner_and_notify_if_failed-over.zip), has been tested with SQL Server 2005, 2008 and 2008 R2. I am also including a script for SQL Server 2000 which works in a similar way but relies on a different set of functions and stored procedures. The SQL Server 2000 version of the script can be [downloaded here](/assets/article_files/2011-11-check-the-cluster-resource-owner-and-notify-if-failed-over/check_cluster_resource_owner_and_notify_if_failed-over_2000.zip)
+The script, which can be [downloaded from here](/assets/article_files/2011/11/check_cluster_resource_owner_and_notify_if_failed-over.zip), has been tested with SQL Server 2005, 2008 and 2008 R2. I am also including a script for SQL Server 2000 which works in a similar way but relies on a different set of functions and stored procedures. The SQL Server 2000 version of the script can be [downloaded here](/assets/article_files/2011/11/check_cluster_resource_owner_and_notify_if_failed-over_2000.zip)

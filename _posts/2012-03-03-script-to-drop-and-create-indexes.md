@@ -28,6 +28,6 @@ The script is composed of two parts, three actually; the variable declarations a
 
 Scripts for SQL Server 2005 and 2008 can be obtained by using the links below.
 
-* [SQL Server 2005 version](/assets/article_files/2012-03-script-to-drop-and-create-indexes/script-to-drop-and-create-indexes_2005.zip)
+* [SQL Server 2005 version](/assets/article_files/2012/03/script-to-drop-and-create-indexes_2005.zip)
 
-* [SQL Server 2008 version](/assets/article_files/2012-03-script-to-drop-and-create-indexes/script-to-drop-and-create-indexes_2008.zip)
+* [SQL Server 2008 version](/assets/article_files/2012/03/script-to-drop-and-create-indexes_2008.zip)

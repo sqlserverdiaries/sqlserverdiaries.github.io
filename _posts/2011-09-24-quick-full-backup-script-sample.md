@@ -57,4 +57,4 @@ As you can see the script is quite simple. The backup command used the [COPY_ONL
 
 > [DatabaseName]_[DateTime].BAK
 
-The script can also be [downloaded from here](/assets/article_files/2011-09-quick-full-backup-script-sample/quick_full_backup_script_sample.zip).
+The script can also be [downloaded from here](/assets/article_files/2011/09/quick_full_backup_script_sample.zip).

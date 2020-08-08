@@ -146,4 +146,4 @@ EXEC [SQLMONITOR].usp_persist_index_usage_stats
 
 Like the author of the MSSQLTips article, I also encourage you to test this stored procedure with different schedules. In our environment, for the database being monitored we set it to run every two hours which allows for an “acceptable loss” of usage statistics.
 
-The entire script can be [downloaded from here](/assets/article_files/2011-09-persist-index-usage-statistics/persist-index-usage-statistics.zip).
+The entire script can be [downloaded from here](/assets/article_files/2011/09/persist-index-usage-statistics.zip).

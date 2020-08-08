@@ -63,4 +63,4 @@ WHERE [prin].[name] LIKE ISNULL(@loginname, '%')
 WHERE [u].[name] LIKE ISNULL(@loginname, '%')
 ```
 
-The next phase would be to execute the stored procedure for any given database.  This can be achieved using dynamic SQL techniques.  For brevity the entire script can be [downloaded from here](/assets/article_files/2012-01-extract-database-priviliges-for-a-login/extract-database-priviliges-for-a-login.zip).  You will notice that the @1 string in the stored procedure is being replaced by the database name (if verified).  For this to work the stored procedure has to be executed by a member fo the _sysadmin_ or _securityadmin_ fixed server roles.
+The next phase would be to execute the stored procedure for any given database.  This can be achieved using dynamic SQL techniques.  For brevity the entire script can be [downloaded from here](/assets/article_files/2012/01/extract-database-priviliges-for-a-login.zip).  You will notice that the @1 string in the stored procedure is being replaced by the database name (if verified).  For this to work the stored procedure has to be executed by a member fo the _sysadmin_ or _securityadmin_ fixed server roles.

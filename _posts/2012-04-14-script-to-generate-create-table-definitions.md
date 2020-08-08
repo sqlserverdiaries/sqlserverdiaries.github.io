@@ -60,4 +60,4 @@ CREATE TABLE [HumanResources].[Department] (
 ) ON [PRIMARY];
 ```
 
-When executing this script using SQL Server Management Studio you'll have to set the output to redirect to test, and also change the option to display the maximum of 8192 characters. A copy of the script can be [downloaded here](/assets/article_files/2012-04-script-to-generate-create-table-definitions/script-to-generate-create-table-definitions.zip).
+When executing this script using SQL Server Management Studio you'll have to set the output to redirect to test, and also change the option to display the maximum of 8192 characters. A copy of the script can be [downloaded here](/assets/article_files/2012/04/script-to-generate-create-table-definitions.zip).

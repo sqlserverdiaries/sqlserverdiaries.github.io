@@ -25,4 +25,4 @@ FOR /F %%a IN (.\%_sqllist%) DO (
 
 An "output" sub-folder is created as part of the process and the output of each SQL script is written to a LOG file with the same name as the original file.  Besides helping to capture any script errors, this also serves to store any T-SQL [PRINT (Transact-SQL)](http://msdn.microsoft.com/en-us/library/ms176047.aspx) commands.
 
-The batch file and a sample can be [downloaded from here](/assets/article_files/2012-02-execute-multiple-script-files-in-one-batch/execute-multiple-script-files-in-one-batch.zip).  One word of advice.  Do not execute any scripts against production environments without rigorous testing, especially using the techniques mentioned in this article because you might jeopardise the integrity of your system, and your job!
+The batch file and a sample can be [downloaded from here](/assets/article_files/2012/02/execute-multiple-script-files-in-one-batch.zip).  One word of advice.  Do not execute any scripts against production environments without rigorous testing, especially using the techniques mentioned in this article because you might jeopardise the integrity of your system, and your job!

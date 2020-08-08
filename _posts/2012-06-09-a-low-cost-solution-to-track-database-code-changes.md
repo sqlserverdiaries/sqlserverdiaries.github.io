@@ -40,4 +40,4 @@ One drawback of this solution is that the table and DDL trigger have to be imple
 GRANT VIEW SERVER STATE TO [LoginName]
 ```
 
-The script can be [downloaded from here](/assets/article_files/2012-06-a-low-cost-solution-to-track-database-code-changes/a-low-cost-solution-to-track-database-code-changes.zip).  Of course feel free to modify the code according to your requirements.
+The script can be [downloaded from here](/assets/article_files/2012/06/a-low-cost-solution-to-track-database-code-changes.zip).  Of course feel free to modify the code according to your requirements.

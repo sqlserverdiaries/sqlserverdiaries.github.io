@@ -16,7 +16,7 @@ An SQL Injection attack performed through a website can be as simple as replacin
 
 A malicious user can modify the input parameters of a form as shown in the below image to gain access to a system.
 
-![Example 1 - Unauthorised access](/assets/article_files/2011-01-protecting-against-sql-injection-attacks/sql_injection_unathorised_access.jpg)
+![Example 1 - Unauthorised access](/assets/article_files/2011/01/sql_injection_unathorised_access.jpg)
 
 --------------------
 
@@ -24,7 +24,7 @@ A malicious user can modify the input parameters of a form as shown in the below
 
 The below image shows how an authenticated system user can view unauthorised information using SQL injection techniques.
 
-![Example 2 - View unauthorised information](/assets/article_files/2011-01-protecting-against-sql-injection-attacks/sql_injection_unathorised_view.jpg)
+![Example 2 - View unauthorised information](/assets/article_files/2011/01/sql_injection_unathorised_view.jpg)
 
 --------------------
 
@@ -97,6 +97,6 @@ SQL injection attacks can only be prevented by following best practices and empl
 
 Finally, another two fine examples of SQL injection attacks:
 
-![Beat the Speed Cameras](/assets/article_files/2011-01-protecting-against-sql-injection-attacks/sql_injection_speed_camera.jpg)
+![Beat the Speed Cameras](/assets/article_files/2011/01/sql_injection_speed_camera.jpg)
 
-![Bobby Tables](/assets/article_files/2011-01-protecting-against-sql-injection-attacks/sql_injection_bobby_tables.jpg)
+![Bobby Tables](/assets/article_files/2011/01/sql_injection_bobby_tables.jpg)

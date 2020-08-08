@@ -12,13 +12,13 @@ This week I had to issue a report of all the SQL Server versions and a list of d
 
 SQL Server Management Studio (SSMS) lets you classify instances in various ways - one of the methods I use is by version as shown below.
 
-![registered_servers](/assets/article_files/2011-11-retrieve-dbms-and-database-version-information/registered_servers.jpg)
+![registered_servers](/assets/article_files/2011/11/registered_servers.jpg)
 
 Besides making it easier to locate a particular instance, using this metheod I immediately have additional information about the version. But how to report this without having to manually re-type the instance names, etc.
 
 This is where a feature introduced in the 2008 version of the SSMS client tools becomes useful. In SSMS, by right-clicking on the folder _Instances By Version_ in my case I can select the _New Query_ option which opens a query window connected to all instances in the folder and sub-folders!
 
-![registered_servers_new_query](/assets/article_files/2011-11-retrieve-dbms-and-database-version-information/registered_servers_new_query.jpg)
+![registered_servers_new_query](/assets/article_files/2011/11/registered_servers_new_query.jpg)
 
 The query window will display the text [multiple instances].
 

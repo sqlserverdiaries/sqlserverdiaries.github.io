@@ -32,4 +32,4 @@ One the above-listed parameters are set, when the script is run against a databa
 * BCP commands for all seleted tables to export the data to delimited files;
 * Command-line BCP or T-SQL BULK INSERT commands to import the data into the target database.
 
-The script which has been tested for migrations from SQL Server 2000 to 2005 and 2008 can be [downloaded from here](/assets/article_files/2011-12-generate-bcp-export-and-bcp-or-bulk-insert-import-code/generate-bcp-export-and-bcp-or-bulk-insert-import-code.zip).
+The script which has been tested for migrations from SQL Server 2000 to 2005 and 2008 can be [downloaded from here](/assets/article_files/2011/12/generate-bcp-export-and-bcp-or-bulk-insert-import-code.zip).

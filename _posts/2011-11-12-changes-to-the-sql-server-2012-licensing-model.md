@@ -36,7 +36,7 @@ CAL                      |                        |                           | 
 
 With the new core-based licensing model SQL Server 2012 licences seem cheaper however these can only be cost effective on specific combinations of cores/processor machines. Basically licenses are sold in packs of two. The minimum number of core licences that can be purchased for a machine is four which also means that machines having older single-core or dual-core processors will still require four licences. This also implies that it would not be cost-effective to consider hosting SQL Server instances on older machines since the minimum cost for a single-core or dual-core machine would be US$ 7,132 for the Standard Edition or US$ 27,496 for an Enterprise Edition (see image below).
 
-![Image extracted from the SQL Server 2012 Licensing Datasheet](/assets/article_files/2011-11-changes-to-the-sql-server-2012-licensing-model/sql_server_2012_license_packs.jpg)
+![Image extracted from the SQL Server 2012 Licensing Datasheet](/assets/article_files/2011/11/sql_server_2012_license_packs.jpg)
 
 At these prices there is no change in license cost for quad-core processor machines. In fact, where previously a six-core or eight-core machine would set you back only (!) US$ 7,132 for the Standard Edition or US$ 27,496 for an Enterprise Edition, with the new SQL Server 2012 core-based model the license costs compared to the previous (2008) version will be as shown in the below tables.
 
@@ -122,7 +122,7 @@ Total (EUR)                           |       |           | -                   
 
 * [SQL Server 2012 Licensing Datasheet](http://download.microsoft.com/download/2/3/8/2386E6B8-8F6C-461D-B0FF-61EE05DAD511/Licensing%20datasheet%20FINAL%20-%20USA.pdf)
 
-You can download an Excel spreadsheet used containing the above tables [from here](/assets/article_files/2011-11-changes-to-the-sql-server-2012-licensing-model/sql_server_2012_edition_prices.zip).
+You can download an Excel spreadsheet used containing the above tables [from here](/assets/article_files/2011/11/sql_server_2012_edition_prices.zip).
 
 ---
 

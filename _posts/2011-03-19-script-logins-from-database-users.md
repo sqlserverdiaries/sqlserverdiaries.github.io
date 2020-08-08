@@ -13,7 +13,7 @@ Generating a script to recreate all the logins created in an instance or one-by-
 
 Another option is to use the "Transfer Logins Task" component in an SQL Server Integration Services (2005 and later) package as shown in the below screenshot.  Personally, I prefer to generate a script which can be transferred between DBAs, reused during testing, or simply retained for records and auditing purposes.
 
-![SSIS Transfer Logins Task component](/assets/article_files/2011-03-script-logins-from-database-users/SSIS_Transfer_Logins_Task.jpg)
+![SSIS Transfer Logins Task component](/assets/article_files/2011/03/SSIS_Transfer_Logins_Task.jpg)
 
 Building on the concept of the _sp_help_revlogin_ stored procedure, I created the _sp_migrate_logins_ stored procedure.  Since the source DBMS's being managed are SQL Server 2000, 2007 and 2008 ﻿﻿environments two versions of the stored procedure were created - one for SQL Server 2000 and another for SQL Server 2005 and later.  This object is created in the master database to allow it to be called from any database in the instance and has a number of input parameters as described below.
 
