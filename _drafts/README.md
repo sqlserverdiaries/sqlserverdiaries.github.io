@@ -51,6 +51,10 @@
 
 * Migrating (and Upgrading) Database Using Database Mirroring
 
+* What can I do with SYSADMNIN permissions in 30 seconds?
+  See Rob Volk video for ideas.
+  This is a Mwahahahaha article...
+
 ## Reference ##
 
 * Languages known to GitHub

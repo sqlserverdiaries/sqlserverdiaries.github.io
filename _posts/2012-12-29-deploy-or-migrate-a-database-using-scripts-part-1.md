@@ -1,6 +1,6 @@
 ---
 layout: post
-date:   2012-12-21
+date:   2012-12-29
 title:  "Deploy or Migrate a Database using Scripts - part 1"
 permalink: ./blog/index.php/2012/12/deploy-or-migrate-a-database-using-scripts-part-1/
 published: true
