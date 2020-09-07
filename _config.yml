@@ -40,14 +40,14 @@ round-avatar: true
 # Uncomment the links you want to show and add your information to each one.
 # If you don't want to show a link to an RSS feed, set rss to "false".
 social-network-links:
-  email: "info@sqlserverdiaries.com"
-  github: reubensultana
-  twitter: reubensultana
+  email: "info [at] sqlserverdiaries [dot] com"
+  github: sqlserverdiaries
+  twitter: sqldiaries
 #  youtube: user/reubensultana
 #  facebook: reubensultana
   rss: true
 #  reddit: yourname
-  linkedin: reubensultana
+#  linkedin: reubensultana
 #  xing: yourname
 #  stackoverflow: "3943160/yourname"
 #  snapchat: yourname

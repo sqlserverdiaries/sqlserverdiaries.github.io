@@ -58,6 +58,12 @@ As mentioned earlier, CREATE FUCNTION statements have been split into two. The s
 #### 14 Create Stored Procedures.txt ####
 
 The article [Database Object Code Split on Multiple Lines](./blog/index.php/2012/06/database-object-code-split-on-multiple-lines/) I wrote in June 2012 explains that errors are encountered for stored procedures having (very) long lines of text. I have to admit that I haven't found a T-SQL solution to this, but a remedy can be found using the GUI. Just select all the stored procedures you want to migrate (all?), right-click and script them out. The SSMS GUI does a good job at that.
+&nbsp;
+___
+> **NOTE:** This article was meant to be published in January 2013 however, following the incident which brought down the original version of this blog, I never got round to completing it. Although the techniques I started to describe here can be used for the current technology, some better-suited ones exist nowadays.  
+I shall make this a topic for a future post.  
+Thank you.
+___
 
 #### 15 Generate Triggers Script.sql ####
 

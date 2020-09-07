@@ -55,6 +55,8 @@
   See Rob Volk video for ideas.
   This is a Mwahahahaha article...
 
+* Locate objects by database page reference
+
 ## Reference ##
 
 * Languages known to GitHub
@@ -62,3 +64,15 @@
 
 * Working with Tables in GitHub Markdown
   <https://www.pluralsight.com/guides/working-tables-github-markdown>
+
+* Convert HTML to Markdown
+  <https://www.browserling.com/tools/html-to-markdown>
+
+* Jekyll & Markdown: Mermaid, Mathjax, Table of Context
+  <https://www.jappoker.com/blog/2018/markdown-grammar/>
+
+* My secret sauce to make GitHub repositories that get 1k+ stars
+  <https://codarium.substack.com/p/my-secret-sauce-to-make-github-repositories>
+
+* Compose file version 3 reference
+  <https://docs.docker.com/compose/compose-file/>

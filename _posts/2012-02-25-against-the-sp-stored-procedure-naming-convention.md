@@ -1,7 +1,7 @@
 ---
 layout: post
 date:   2012-02-25
-title:  "Against the \"sp(underscore)\" Stored Procedure Naming Convention"
+title:  "Against the \"sp&#95;\" Stored Procedure Naming Convention"
 permalink: ./blog/index.php/2012/02/against-the-sp-stored-procedure-naming-convention/
 categories: blog
 published: true

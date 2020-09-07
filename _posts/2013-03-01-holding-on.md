@@ -9,4 +9,6 @@ tags:
     - Uncategorized
 comments: false
 ---
+A quick catch-up.
+
 Some of my blog posts are available in an almost original format on the [Internet Archive: Wayback Machine](http://web.archive.org/web/20121103125441/http://sqlserverdiaries.com/blog/)
