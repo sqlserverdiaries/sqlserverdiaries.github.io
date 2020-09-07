@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2020 -->
-  <head>
+<!-- Beautiful Jekyll 4.1 | Copyright Dean Attali 2020 -->
+<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>SQL Server Diaries</title>
   
+
+  
+
+  <title>SQL Server Diaries</title>
+
   
   <meta name="author" content="Reuben Sultana">
   
-  
-  
-  <meta name="description" content="A personal take on SQL Server solutions">
+
+  <meta name="description" content="Or How I Did It">
+
   
 
-  <link rel="alternate" type="application/rss+xml" title="SQL Server Diaries - A personal take on SQL Server solutions" href="http://0.0.0.0:4000/feed.xml">
+  
+
+  <link rel="alternate" type="application/rss+xml" title="SQL Server Diaries" href="http://0.0.0.0:4000/feed.xml">
 
   
 
@@ -52,50 +58,48 @@
     
       <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
     
-      <link rel="stylesheet" href="/assets/css/main.css">
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
     
   
 
   
 
   
-
-  <!-- Facebook OpenGraph tags -->
+  
   
 
   
+
+  
+  <meta property="og:site_name" content="SQL Server Diaries">
   <meta property="og:title" content="SQL Server Diaries">
+  <meta property="og:description" content="Or How I Did It">
+
+  
+  <meta property="og:image" content="http://0.0.0.0:4000/assets/article_files/RS.jpg">
   
 
-   
-  <meta property="og:description" content="A personal take on SQL Server solutions">
   
-
-
   <meta property="og:type" content="website">
-
-  
   <meta property="og:url" content="http://0.0.0.0:4000/page3/">
   <link rel="canonical" href="http://0.0.0.0:4000/page3/">
   
 
   
-
-
-  <!-- Twitter summary cards -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:site" content="@reubensultana">
-  <meta name="twitter:creator" content="@reubensultana">
+  
+  <meta name="twitter:site" content="@sqldiaries">
+  <meta name="twitter:creator" content="@sqldiaries">
+
+  <meta property="twitter:title" content="SQL Server Diaries">
+  <meta property="twitter:description" content="Or How I Did It">
 
   
-  <meta name="twitter:title" content="SQL Server Diaries">
+  <meta name="twitter:image" content="http://0.0.0.0:4000/assets/article_files/RS.jpg">
   
 
   
-  <meta name="twitter:description" content="A personal take on SQL Server solutions">
-  
 
-  
 
   
 
@@ -104,12 +108,12 @@
 </head>
 
 
-  <body>
-
-    
+<body>
 
   
-    <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-custom "><a class="navbar-brand" href="http://0.0.0.0:4000/">SQL Server Diaries</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+
+
+  <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://0.0.0.0:4000/">SQL Server Diaries</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -125,16 +129,24 @@
             <a class="nav-link" href="/tags">Tags</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://reubensultana.com">Author's home</a>
+            <a class="nav-link" href="http://www.reubensultana.com">Author's home</a>
           </li></ul>
   </div>
 
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="http://0.0.0.0:4000/">
+          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/article_files/RS.jpg" />
+        </a>
+      </div>
+    </div>
   
 
 </nav>
 
 
-    <!-- TODO this file has become a mess, refactor it -->
+  <!-- TODO this file has become a mess, refactor it -->
 
 
 
@@ -153,10 +165,10 @@
       
         
             <hr class="small">
-            <span class="page-subheading">A personal take on SQL Server solutions</span>
+            <span class="page-subheading">Or How I Did It</span>
       
       
-      
+
       
         </div>
       </div>
@@ -169,9 +181,11 @@
 
 
 
-<div class="container-md" role="main">
+<div class=" container-md " role="main">
   <div class="row">
-    <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+      
+
       
 
 
@@ -179,48 +193,65 @@
 <div class="posts-list">
   
   <article class="post-preview">
-    <a href="/blog/index.php/2011/03/12/generate-lottery-ticket-combinations/">
-      <h2 class="post-title">Generate Lottery Ticket Combinations</h2>
+    
+
+    
+
+    <a href="http://0.0.0.0:4000/blog/index.php/2012/11/migrate-databases-using-backup-restore/">
+      <h2 class="post-title">Migrate Databases Using Backup-Restore</h2>
 
       
     </a>
 
     <p class="post-meta">
       
-      Posted on March 12, 2011
+      Posted on November 10, 2012
     </p>
 
-    <div class="post-entry-container">
+    
+
+    
+    
+
+    <div class="post-entry">
       
-      <div class="post-entry">
-        
-        In Malta, the Super 5 lottery prize has always been considered the peak of winnings by the Maltese.  So much so that it has become part of the day-to-day language when referring to good luck (I feel I just won the Super 5!).  As a challenge, I thought of how...
-        
-        
-          <a href="/blog/index.php/2011/03/12/generate-lottery-ticket-combinations/" class="post-read-more">[Read&nbsp;More]</a>
-        
-      </div>
+      Migrating a database can be a major headache, especially due to the downtime or outage incurred by all systems accessing the database.  This is exacerbated when the data files which have to be moved are considerably large.  Obtaining approval for a suitable and longish downtime might not always be possible...
+      
+      
+        <a href="http://0.0.0.0:4000/blog/index.php/2012/11/migrate-databases-using-backup-restore/" class="post-read-more">[Read&nbsp;More]</a>
+      
     </div>
+    
 
     
     <div class="blog-tags">
       Tags:
       
+      <a href="http://0.0.0.0:4000/tags#command-line utilities">command-line utilities</a>
       
-      <a href="/tags#T-SQL Programming">T-SQL Programming</a>
+      <a href="http://0.0.0.0:4000/tags#Backup and Recovery">Backup and Recovery</a>
       
-      <a href="/tags#Code Samples">Code Samples</a>
+      <a href="http://0.0.0.0:4000/tags#Database Administration">Database Administration</a>
       
-      <a href="/tags#CTE">CTE</a>
+      <a href="http://0.0.0.0:4000/tags#Virtualization">Virtualization</a>
       
-      <a href="/tags#CROSS JOIN">CROSS JOIN</a>
+      <a href="http://0.0.0.0:4000/tags#Connection Strings">Connection Strings</a>
       
-      <a href="/tags#Permutations">Permutations</a>
+      <a href="http://0.0.0.0:4000/tags#Database Migration">Database Migration</a>
       
-      <a href="/tags#Combinations">Combinations</a>
+      <a href="http://0.0.0.0:4000/tags#DNS">DNS</a>
       
-      <a href="/tags#SQL Server">SQL Server</a>
+      <a href="http://0.0.0.0:4000/tags#Linked Servers">Linked Servers</a>
       
+      <a href="http://0.0.0.0:4000/tags#SQL Server">SQL Server</a>
+      
+      <a href="http://0.0.0.0:4000/tags#SQL Server Integration Services">SQL Server Integration Services</a>
+      
+      <a href="http://0.0.0.0:4000/tags#SSIS">SSIS</a>
+      
+      <a href="http://0.0.0.0:4000/tags#Testing">Testing</a>
+      
+      <a href="http://0.0.0.0:4000/tags#Upgrade">Upgrade</a>
       
     </div>
     
@@ -228,44 +259,51 @@
    </article>
   
   <article class="post-preview">
-    <a href="/blog/index.php/2011/03/05/addressing-a-login-failed-error-18452-error-message-in-sql-server-2005/">
-      <h2 class="post-title">Addressing a 'login failed' (Error 18452) error message in SQL Server 2005</h2>
+    
+
+    
+
+    <a href="http://0.0.0.0:4000/blog/index.php/2012/11/deciding-on-min-and-max-memory-configuration-settings/">
+      <h2 class="post-title">Deciding on MIN and MAX Memory Configuration Settings</h2>
 
       
     </a>
 
     <p class="post-meta">
       
-      Posted on March 5, 2011
+      Posted on November 3, 2012
     </p>
 
-    <div class="post-entry-container">
+    
+
+    
+    
+
+    <div class="post-entry">
       
-      <div class="post-entry">
-        
-        An excellent article posted by Il-Sung Lee (Program Manager, SQL Server Protocols) at Understanding “login failed” (Error 18456) error messages in SQL Server 2005 describes the various error message severity levels. Recently a user who uses an application which connects to an SQL Server 2005 instance using Windows Authentication from...
-        
-        
-          <a href="/blog/index.php/2011/03/05/addressing-a-login-failed-error-18452-error-message-in-sql-server-2005/" class="post-read-more">[Read&nbsp;More]</a>
-        
-      </div>
+      It is a well known fact that SQL Server is a “memory junkie” – with the default settings it will consume and reserve all the available memory until the service or the server is restarted.  This may cause a problem on servers which have other services or applications running (such...
+      
+      
+        <a href="http://0.0.0.0:4000/blog/index.php/2012/11/deciding-on-min-and-max-memory-configuration-settings/" class="post-read-more">[Read&nbsp;More]</a>
+      
     </div>
+    
 
     
     <div class="blog-tags">
       Tags:
       
+      <a href="http://0.0.0.0:4000/tags#Architecture">Architecture</a>
       
-      <a href="/tags#SQL Server">SQL Server</a>
+      <a href="http://0.0.0.0:4000/tags#Database Administration">Database Administration</a>
       
-      <a href="/tags#Connection Strings">Connection Strings</a>
+      <a href="http://0.0.0.0:4000/tags#Performance">Performance</a>
       
-      <a href="/tags#Database Administration">Database Administration</a>
+      <a href="http://0.0.0.0:4000/tags#Database Documentation">Database Documentation</a>
       
-      <a href="/tags#SQL Server errors">SQL Server errors</a>
+      <a href="http://0.0.0.0:4000/tags#Microsoft Cluster">Microsoft Cluster</a>
       
-      <a href="/tags#Security">Security</a>
-      
+      <a href="http://0.0.0.0:4000/tags#SQL Server">SQL Server</a>
       
     </div>
     
@@ -273,48 +311,63 @@
    </article>
   
   <article class="post-preview">
-    <a href="/blog/index.php/2011/02/26/run-sql-server-agent-jobs-with-alternate-credentials/">
-      <h2 class="post-title">Run SQL Server Agent Jobs with Alternate Credentials</h2>
+    
+
+    
+
+    <a href="http://0.0.0.0:4000/blog/index.php/2012/10/one-difference-between-dbcx-dbreindec-and-alter-index/">
+      <h2 class="post-title">One Difference between DBCC DBREINDEX and ALTER INDEX</h2>
 
       
     </a>
 
     <p class="post-meta">
       
-      Posted on February 26, 2011
+      Posted on October 27, 2012
     </p>
 
-    <div class="post-entry-container">
+    
+
+    
+    
+
+    <div class="post-entry">
       
-      <div class="post-entry">
-        
-        According to the Selecting an Account for the SQL Server Agent Service, the SQL Server Agent service account should be able to authenticate with the instance and also be a memeber of the sysadmin fixed server role. Agent jobs are usually created by a DBA and by default will execute...
-        
-        
-          <a href="/blog/index.php/2011/02/26/run-sql-server-agent-jobs-with-alternate-credentials/" class="post-read-more">[Read&nbsp;More]</a>
-        
-      </div>
+      I was recently discussing with one of my peers the fact that following a periodical reindexing/index rebuild, the overall database performance was better when the old syntax was executed. To put you in the picture, until the SQL Server 2000 version, index fragmentation was handled using the DBCC DBREINDEX and...
+      
+      
+        <a href="http://0.0.0.0:4000/blog/index.php/2012/10/one-difference-between-dbcx-dbreindec-and-alter-index/" class="post-read-more">[Read&nbsp;More]</a>
+      
     </div>
+    
 
     
     <div class="blog-tags">
       Tags:
       
+      <a href="http://0.0.0.0:4000/tags#Performance">Performance</a>
       
-      <a href="/tags#Database Administration">Database Administration</a>
+      <a href="http://0.0.0.0:4000/tags#Code Samples">Code Samples</a>
       
-      <a href="/tags#SQL Server Integration Services">SQL Server Integration Services</a>
+      <a href="http://0.0.0.0:4000/tags#Coding Practices">Coding Practices</a>
       
-      <a href="/tags#T-SQL Programming">T-SQL Programming</a>
+      <a href="http://0.0.0.0:4000/tags#Data Maintenance">Data Maintenance</a>
       
-      <a href="/tags#SQL Server Agent">SQL Server Agent</a>
+      <a href="http://0.0.0.0:4000/tags#Indexes">Indexes</a>
       
-      <a href="/tags#SSIS">SSIS</a>
+      <a href="http://0.0.0.0:4000/tags#SQL Server 2000">SQL Server 2000</a>
       
-      <a href="/tags#SQL Server 2005">SQL Server 2005</a>
+      <a href="http://0.0.0.0:4000/tags#SQL Server 2005">SQL Server 2005</a>
       
-      <a href="/tags#Security">Security</a>
+      <a href="http://0.0.0.0:4000/tags#SQL Server 2008">SQL Server 2008</a>
       
+      <a href="http://0.0.0.0:4000/tags#SQL Server 2008 R2">SQL Server 2008 R2</a>
+      
+      <a href="http://0.0.0.0:4000/tags#SQL Server 2012">SQL Server 2012</a>
+      
+      <a href="http://0.0.0.0:4000/tags#Upgrade">Upgrade</a>
+      
+      <a href="http://0.0.0.0:4000/tags#Database Administration">Database Administration</a>
       
     </div>
     
@@ -322,48 +375,59 @@
    </article>
   
   <article class="post-preview">
-    <a href="/blog/index.php/2011/02/19/send-sql-server-agent-job-log-by-email/">
-      <h2 class="post-title">Send SQL Server Agent Job log file by Email</h2>
+    
+
+    
+
+    <a href="http://0.0.0.0:4000/blog/index.php/2012/10/data-driven-account-management-part-2/">
+      <h2 class="post-title">Data Driven Account Management – part 2</h2>
 
       
     </a>
 
     <p class="post-meta">
       
-      Posted on February 19, 2011
+      Posted on October 20, 2012
     </p>
 
-    <div class="post-entry-container">
+    
+
+    
+    
+
+    <div class="post-entry">
       
-      <div class="post-entry">
-        
-        When creating an SQL Server Agent job with one or more steps, each step can be configured to write the query output to a log file.  If the job failes, such a log can assist a DBA identify the cause of the failure.  That is, if the log is still...
-        
-        
-          <a href="/blog/index.php/2011/02/19/send-sql-server-agent-job-log-by-email/" class="post-read-more">[Read&nbsp;More]</a>
-        
-      </div>
+      Two weeks ago, in the Data Driven Account Management – part 1 article, I demonstrated how a number of basic account management functions can be implemented for an SQL Server (2005 and later) database without granting elevated priviliges to end users.  The article and attached script showed how logins, users and...
+      
+      
+        <a href="http://0.0.0.0:4000/blog/index.php/2012/10/data-driven-account-management-part-2/" class="post-read-more">[Read&nbsp;More]</a>
+      
     </div>
+    
 
     
     <div class="blog-tags">
       Tags:
       
+      <a href="http://0.0.0.0:4000/tags#Code Samples">Code Samples</a>
       
-      <a href="/tags#T-SQL Programming">T-SQL Programming</a>
+      <a href="http://0.0.0.0:4000/tags#Development">Development</a>
       
-      <a href="/tags#SQL Server Agent">SQL Server Agent</a>
+      <a href="http://0.0.0.0:4000/tags#SQL Server 2005">SQL Server 2005</a>
       
-      <a href="/tags#SQL Server 2005">SQL Server 2005</a>
+      <a href="http://0.0.0.0:4000/tags#SQL Server 2008">SQL Server 2008</a>
       
-      <a href="/tags#Database Mail">Database Mail</a>
+      <a href="http://0.0.0.0:4000/tags#SQL Server 2008 R2">SQL Server 2008 R2</a>
       
-      <a href="/tags#Backup and Recovery">Backup and Recovery</a>
+      <a href="http://0.0.0.0:4000/tags#SQL Server 2012">SQL Server 2012</a>
       
-      <a href="/tags#Database Administration">Database Administration</a>
+      <a href="http://0.0.0.0:4000/tags#T-SQL Programming">T-SQL Programming</a>
       
-      <a href="/tags#SQL Server 2008">SQL Server 2008</a>
+      <a href="http://0.0.0.0:4000/tags#Architecture">Architecture</a>
       
+      <a href="http://0.0.0.0:4000/tags#Database Administration">Database Administration</a>
+      
+      <a href="http://0.0.0.0:4000/tags#Security">Security</a>
       
     </div>
     
@@ -371,52 +435,67 @@
    </article>
   
   <article class="post-preview">
-    <a href="/blog/index.php/2011/02/12/generating-a-database-data-dictionary/">
-      <h2 class="post-title">Generating a Database Data Dictionary</h2>
+    
+
+    
+
+    <a href="http://0.0.0.0:4000/blog/index.php/2012/10/maximise-memory-usage-in-a-two-node-activeactive-cluster/">
+      <h2 class="post-title">Maximise Memory Usage in a Two-Node Active/Active Cluster</h2>
 
       
     </a>
 
     <p class="post-meta">
       
-      Posted on February 12, 2011
+      Posted on October 13, 2012
     </p>
 
-    <div class="post-entry-container">
+    
+
+    
+    
+
+    <div class="post-entry">
       
-      <div class="post-entry">
-        
-        Accurate documentation is paramount for any system. Unfotunately, when developing a database we sometimes tend to overlook this particular document. A data dictionary shows metadata about your database. This information can be generated from the DBMS itself using the INFORMATION_SCHEMA compatibility views. Information such as the list of tables, table...
-        
-        
-          <a href="/blog/index.php/2011/02/12/generating-a-database-data-dictionary/" class="post-read-more">[Read&nbsp;More]</a>
-        
-      </div>
+      When implementing and configuring a Two-Node Active/Active SQL Server Cluster you have to ensure that the memory allocation will suffice for the operating system and other services (a minimum of 2GB is reccomended), as well as for the eventuality when all instances would be on the same physical node. This...
+      
+      
+        <a href="http://0.0.0.0:4000/blog/index.php/2012/10/maximise-memory-usage-in-a-two-node-activeactive-cluster/" class="post-read-more">[Read&nbsp;More]</a>
+      
     </div>
+    
 
     
     <div class="blog-tags">
       Tags:
       
+      <a href="http://0.0.0.0:4000/tags#Architecture">Architecture</a>
       
-      <a href="/tags#SQL Server">SQL Server</a>
+      <a href="http://0.0.0.0:4000/tags#Database Administration">Database Administration</a>
       
-      <a href="/tags#Backup and Recovery">Backup and Recovery</a>
+      <a href="http://0.0.0.0:4000/tags#Performance">Performance</a>
       
-      <a href="/tags#T-SQL Programming">T-SQL Programming</a>
+      <a href="http://0.0.0.0:4000/tags#Virtualization">Virtualization</a>
       
-      <a href="/tags#Database Documentation">Database Documentation</a>
+      <a href="http://0.0.0.0:4000/tags#Code Samples">Code Samples</a>
       
-      <a href="/tags#Database Design">Database Design</a>
+      <a href="http://0.0.0.0:4000/tags#DMV">DMV</a>
       
-      <a href="/tags#Development">Development</a>
+      <a href="http://0.0.0.0:4000/tags#Linked Servers">Linked Servers</a>
       
-      <a href="/tags#Coding Practices">Coding Practices</a>
+      <a href="http://0.0.0.0:4000/tags#Microsoft Cluster">Microsoft Cluster</a>
       
-      <a href="/tags#data types">data types</a>
+      <a href="http://0.0.0.0:4000/tags#SQL Server 2005">SQL Server 2005</a>
       
-      <a href="/tags#Code Samples">Code Samples</a>
+      <a href="http://0.0.0.0:4000/tags#SQL Server 2008">SQL Server 2008</a>
       
+      <a href="http://0.0.0.0:4000/tags#SQL Server 2008 R2">SQL Server 2008 R2</a>
+      
+      <a href="http://0.0.0.0:4000/tags#SQL Server 2012">SQL Server 2012</a>
+      
+      <a href="http://0.0.0.0:4000/tags#SQL Server Agent">SQL Server Agent</a>
+      
+      <a href="http://0.0.0.0:4000/tags#Windows">Windows</a>
       
     </div>
     
@@ -429,24 +508,28 @@
 <ul class="pagination main-pager">
   
   <li class="page-item previous">
-    <a class="page-link" href="/page2">&larr; Newer Posts</a>
+    <a class="page-link" href="http://0.0.0.0:4000/page2">&larr; Newer Posts</a>
   </li>
   
   
   <li class="page-item next">
-    <a class="page-link" href="/page4">Older Posts &rarr;</a>
+    <a class="page-link" href="http://0.0.0.0:4000/page4">Older Posts &rarr;</a>
   </li>
   
 </ul>
 
 
+
       
+
+      
+
     </div>
   </div>
 </div>
 
 
-    <footer>
+  <footer>
   <div class="container-md beautiful-jekyll-footer">
     <div class="row">
       <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
@@ -459,7 +542,7 @@
       <span class="sr-only">RSS</span>
     </a>
   </li><li class="list-inline-item">
-    <a href="mailto:info@sqlserverdiaries.com" title="Email me">
+    <a href="mailto:info [at] sqlserverdiaries [dot] com" title="Email me">
       <span class="fa-stack fa-lg" aria-hidden="true">
         <i class="fas fa-circle fa-stack-2x"></i>
         <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
@@ -467,7 +550,7 @@
       <span class="sr-only">Email me</span>
    </a>
   </li><li class="list-inline-item">
-    <a href="https://github.com/reubensultana" title="GitHub">
+    <a href="https://github.com/sqlserverdiaries" title="GitHub">
       <span class="fa-stack fa-lg" aria-hidden="true">
         <i class="fas fa-circle fa-stack-2x"></i>
         <i class="fab fa-github fa-stack-1x fa-inverse"></i>
@@ -475,20 +558,12 @@
       <span class="sr-only">GitHub</span>
    </a>
   </li><li class="list-inline-item">
-    <a href="https://twitter.com/reubensultana" title="Twitter">
+    <a href="https://twitter.com/sqldiaries" title="Twitter">
       <span class="fa-stack fa-lg" aria-hidden="true">
         <i class="fas fa-circle fa-stack-2x"></i>
         <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
       </span>
       <span class="sr-only">Twitter</span>
-   </a>
-  </li><li class="list-inline-item">
-    <a href="https://linkedin.com/in/reubensultana" title="LinkedIn">
-      <span class="fa-stack fa-lg" aria-hidden="true">
-        <i class="fas fa-circle fa-stack-2x"></i>
-        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
-      </span>
-      <span class="sr-only">LinkedIn</span>
    </a>
   </li></ul>
 
@@ -502,28 +577,26 @@
 
       
         &nbsp;&bull;&nbsp;
-        <a href="http://0.0.0.0:4000/">sqlserverdiaries.com</a>
+        <span class="author-site"><a href="http://0.0.0.0:4000/">sqlserverdiaries.com</a></span>
       
 
       
       </p>
       <!-- Please don't remove this, keep my open source work credited :) -->
-<!--
       <p class="theme-by text-muted">
-        Theme by
-        <a href="https://beautifuljekyll.com">beautiful-jekyll</a>
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
       </p>
--->
-    </div>
+      </div>
     </div>
   </div>
 </footer>
 
+
+  
   
     
-  
-    
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
 
 
   
@@ -543,7 +616,7 @@
   
     <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
     
-      <script src="/assets/js/main.js"></script>
+      <script src="/assets/js/beautifuljekyll.js"></script>
     
   
 
@@ -552,6 +625,6 @@
 
 
 
-  
-  </body>
+
+</body>
 </html>

@@ -1,8 +1,8 @@
 ---
 layout: post
 date:   2012-10-27
-title:  "One Difference between DBCC DBREINDEC and ALTER INDEX"
-permalink: ./blog/index.php/2012/10/one-difference-between-dbcc-dbreindec-and-alter-index/
+title:  "One Difference between DBCC DBREINDEX and ALTER INDEX"
+permalink: ./blog/index.php/2012/10/one-difference-between-dbcx-dbreindec-and-alter-index/
 categories: blog
 published: true
 tags: [Performance, Code Samples, Coding Practices, Data Maintenance, Indexes, SQL Server 2000, SQL Server 2005, SQL Server 2008, SQL Server 2008 R2, SQL Server 2012, Upgrade, Database Administration]

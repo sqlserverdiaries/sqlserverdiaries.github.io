@@ -7,7 +7,6 @@ categories: blog
 published: true
 tags: [Uncategorized]
 comments: false
-cover-img: /assets/img/path.jpg
 ---
 In last weeks Deploy or Migrate a Database using Scripts - part 1 article we saw the first steps that will lead to a successful database deployment or migration project. So far we've covered the following scripts or instructions:
 
