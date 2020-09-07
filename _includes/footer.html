@@ -5,9 +5,7 @@
       {% include social-networks-links.html %}
       {% if page.footer-extra %}
         <div class="footer-custom-content">
-          {% for file in page.footer-extra %}
-            {% include {{ file }} %}
-          {% endfor %}
+          {% include {{ page.footer-extra }} %}
         </div>
       {% endif %}
       <p class="copyright text-muted">
@@ -19,7 +17,7 @@
 
       {% if site.url-pretty %}
         &nbsp;&bull;&nbsp;
-        <span class="author-site"><a href="{{ '' | absolute_url }}">{{ site.url-pretty }}</a></span>
+        <a href="{{ '' | absolute_url }}">{{ site.url-pretty }}</a>
       {% endif %}
 
       {% if site.matomo %}
@@ -30,11 +28,13 @@
       {% endif%}
       </p>
       <!-- Please don't remove this, keep my open source work credited :) -->
-      {% unless site.remove-ads %}<p class="theme-by text-muted">
-        Powered by
-        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
-      </p>{% endunless %}
-      </div>
+<!--
+      <p class="theme-by text-muted">
+        Theme by
+        <a href="https://beautifuljekyll.com">beautiful-jekyll</a>
+      </p>
+-->
+    </div>
     </div>
   </div>
 </footer>

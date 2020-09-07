@@ -5,46 +5,32 @@
     <title>SQL Server Diaries</title>
     
     
-    <description>This website is a virtual proof that I'm awesome</description>
+    <description>A personal take on SQL Server solutions</description>
     
     <link>http://0.0.0.0:4000/</link>
     <atom:link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/rss+xml" />
-	
     
       <item>
         <title>Holding On</title>
         <description>
           
-          A quick catch-up.
-
-Some of my blog posts are available in an almost original format on the Internet Archive: Wayback Machine
+          Some of my blog posts are available in an almost original format on the Internet Archive: Wayback Machine
 
         </description>
         <pubDate>Fri, 01 Mar 2013 00:00:00 +0000</pubDate>
-        <link>http://0.0.0.0:4000/blog/2013/03/holding-on/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/2013/03/holding-on/</guid>
+        <link>http://0.0.0.0:4000/blog/2013/03/01/holding-on/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/blog/2013/03/01/holding-on/</guid>
       </item>
     
       <item>
         <title>Blog Offline</title>
         <description>
           
-          After two years of writing, my (previous…) hosting provider unfortunately managed to lose all my articles; they couldn’t even recover the configuration from their own backup! I did recover all of the content from my own backups and will re-post all articles in due course. I hope to be back...
+          After two years of writing, my (previous…) hosting provider unfortunately managed to lose all my articles; they couldn’t even recover the configuration from their own backup! In time I did recover most of the content, and will re-post all articles in due course. I hope to be back online soon,...
         </description>
         <pubDate>Fri, 01 Feb 2013 00:00:00 +0000</pubDate>
-        <link>http://0.0.0.0:4000/blog/2013/02/blog-offline/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/2013/02/blog-offline/</guid>
-      </item>
-    
-      <item>
-        <title>Deploy or Migrate a Database using Scripts - part 2</title>
-        <description>
-          
-          In last weeks Deploy or Migrate a Database using Scripts - part 1 article we saw the first steps that will lead to a successful database deployment or migration project. So far we’ve covered the following scripts or instructions: 00 Build Database Creation.txt 01 Create Database Trigger(s).txt 02 Create User-Defined...
-        </description>
-        <pubDate>Sat, 05 Jan 2013 00:00:00 +0000</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/12/deploy-or-migrate-a-database-using-scripts-part-2/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/12/deploy-or-migrate-a-database-using-scripts-part-2/</guid>
+        <link>http://0.0.0.0:4000/blog/2013/02/01/blog-offline/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/blog/2013/02/01/blog-offline/</guid>
       </item>
     
       <item>
@@ -53,185 +39,196 @@ Some of my blog posts are available in an almost original format on the Internet
           
           A database migration is always a headache for DBAs.  There are different approaches one may take, some being simpler than others. A couple of weeks ago, in the Migrate Databases Using Backup-Restore article, I explained how a database migration can be carried out effortlessly and with minimal downtime.  This is...
         </description>
-        <pubDate>Sat, 29 Dec 2012 00:00:00 +0000</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/12/deploy-or-migrate-a-database-using-scripts-part-1/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/12/deploy-or-migrate-a-database-using-scripts-part-1/</guid>
+        <pubDate>Fri, 21 Dec 2012 00:00:00 +0000</pubDate>
+        <link>http://0.0.0.0:4000/blog/index.php/2012/12/21/deploy-or-migrate-a-database-using-scripts-part-1/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/12/21/deploy-or-migrate-a-database-using-scripts-part-1/</guid>
       </item>
     
       <item>
-        <title>T-SQL to Transfer Data based on Periodic Date Ranges</title>
+        <title>Documenting the Owner of a Generic Database User</title>
         <description>
           
-          I don’t think I’d be wrong in stating that almost all transactional and analytical systems store or make use of date, time, or parts of to achieve the respective functional targets.  A task I had to complete once was to find a way to retrieve data based on the period...
+          A developer asked about whether it was possible to store additional tags to identify the owner of a generic login or generic database user.  The below solution can be used to store this information and also offers further possibilities. Starting from SQL Server 2000, databases allow for the addition of custom...
         </description>
-        <pubDate>Sat, 22 Dec 2012 00:00:00 +0000</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/12/t-sql-to-transfer-data-based-on-periodic-date-ranges/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/12/t-sql-to-transfer-data-based-on-periodic-date-ranges/</guid>
+        <pubDate>Sat, 30 Apr 2011 00:00:00 +0100</pubDate>
+        <link>http://0.0.0.0:4000/blog/index.php/2011/04/30/documenting-the-owner-of-a-generic-database-user/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2011/04/30/documenting-the-owner-of-a-generic-database-user/</guid>
       </item>
     
       <item>
-        <title>Instance Pre-Installation Checklist</title>
+        <title>Compare the Contents (data) of Two Tables</title>
         <description>
           
-          You have been requested to provide an SQL Server environment to host the database/s of Application123. Once you’ve identified the server onto which the instance will be installed there are a number of checks I would suggest, or at least these are the ones I follow. You will observe that...
+          An application developer asked me if there was an option in SQL Server to compare the contents/data of two tables without having to create a custom application.  There are various third party tools that can achieve this target however SQL Server comes with an out-of-the-box solution. The SQL Server Replication...
         </description>
-        <pubDate>Sat, 15 Dec 2012 00:00:00 +0000</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/12/instance-pre-installation-checklist/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/12/instance-pre-installation-checklist/</guid>
+        <pubDate>Sat, 23 Apr 2011 00:00:00 +0100</pubDate>
+        <link>http://0.0.0.0:4000/blog/index.php/2011/04/23/compare-the-contents-data-of-two-tables/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2011/04/23/compare-the-contents-data-of-two-tables/</guid>
       </item>
     
       <item>
-        <title>Configuring the SCOM 2012 SQL Server Management Pack for Low-Privilege Access</title>
+        <title>Use the Forfiles Utility to Delete Old Database Backup Files</title>
         <description>
           
-          The System Center Operations Manager 2012 is Microsoft’s flagship product to monitor various aspects of the infrastructure.  Specific details about the product can be found in the TechNet at http://technet.microsoft.com/en-us/library/hh205987.aspx.  Monitoring can be “extended” to SQL Server instances (2005 and later versions only) using the System Center Monitoring pack for...
+          I came across a tool that some might find useful.  The Forfiles on Microsoft Technet utility (forfiles.exe) is preinstalled with Windows Server 2003 and later.  Forfiles enables batch processing of files.  One use of this utility would be to delete old backup files to remove dependencies on items such as...
         </description>
-        <pubDate>Sat, 08 Dec 2012 00:00:00 +0000</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/12/configuring-the-scom-2012-sql-server-management-pack-for-low-privilege-access/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/12/configuring-the-scom-2012-sql-server-management-pack-for-low-privilege-access/</guid>
+        <pubDate>Sat, 16 Apr 2011 00:00:00 +0100</pubDate>
+        <link>http://0.0.0.0:4000/blog/index.php/2011/04/16/use-the-forfiles-utility-to-delete-old-database-backup-files/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2011/04/16/use-the-forfiles-utility-to-delete-old-database-backup-files/</guid>
       </item>
     
       <item>
-        <title>Remote Statistics Not Available Errors</title>
+        <title>Using GUIDs as Primary Keys, or not</title>
         <description>
           
-          Before explaining what the errors were I will first explain the environment configuration. Third parties required access to company data from various databases in order to build a Reporting Solution however the company security policies prevented the third-parties from accessing the source databases directly.  An obvious solution would have been...
+          Also known as Globally Unique Identifiers, GUID values consist of a string of alphanumeric values which in principle should be unique across all machines of the network.  GUID values are stored in a database table using the uniqueidentifier (Transact-SQL) data type and requires 16 bytes of storage space per row....
         </description>
-        <pubDate>Sat, 01 Dec 2012 00:00:00 +0000</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/12/remote-statistics-not-available-errors/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/12/remote-statistics-not-available-errors/</guid>
+        <pubDate>Sat, 09 Apr 2011 00:00:00 +0100</pubDate>
+        <link>http://0.0.0.0:4000/blog/index.php/2011/04/09/using-guids-as-primary-keys-or-not/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2011/04/09/using-guids-as-primary-keys-or-not/</guid>
       </item>
     
       <item>
-        <title>Percent Complete and Estimated Completion Time for Backup Processes</title>
+        <title>SQL Server Connection Strings, Unique Application DNS and Listening Ports</title>
         <description>
           
-          The more I learn about SQL Server the more I realise how little I know.  While delving in the output of some DMVs I noticed that the sys.dm_exec_requests can be used to find the percentage completed for a backup operation, as well as the estimated time of completion. The sys.dm_exec_requests...
+          Managing SQL Server applications can be a bit tricky, especially in an enterprise scenario with tens or hundreds of applications deployed for a large user-base across geographically dispersed locations.  With a bit of planning, events such as database migrations, DBMS upgrade, or server virtualisation to name a few, can be...
         </description>
-        <pubDate>Sun, 25 Nov 2012 00:00:00 +0000</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/11/percent-complete-and-estimated-completion-time-for-backup-processes/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/11/percent-complete-and-estimated-completion-time-for-backup-processes/</guid>
+        <pubDate>Sat, 02 Apr 2011 00:00:00 +0100</pubDate>
+        <link>http://0.0.0.0:4000/blog/index.php/2011/04/02/sql-server-connection-strings-unique-application-dns-and-listening-ports/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2011/04/02/sql-server-connection-strings-unique-application-dns-and-listening-ports/</guid>
       </item>
     
       <item>
-        <title>Table Counts plus Space Used by Data and Indexes</title>
+        <title>Create a Database Mail profile in 4 Steps (or less)</title>
         <description>
           
-          I was recently reviewing some of the Dynamic Management Views (DMVs) available since SQL Server 2005 and came across the interesting and useful sys.dm_db_partition_stats DMV.  The documentation states that this DMV will return “page and row-count information for every partition in the current database”.  In the Space Used by Filegroup...
+          Database Mail provides functionality to send email using T-SQL and is the successor to SQL Server 2000’s SQL Mail. Although SQL Mail is still available in SQL Server 2005, it is provided for backward compatibility only and the Books Online reccomend that Database Mail is used instead. Configuring Database Mail...
         </description>
-        <pubDate>Sat, 17 Nov 2012 00:00:00 +0000</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/11/table-counts-plus-space-used-by-data-and-indexes/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/11/table-counts-plus-space-used-by-data-and-indexes/</guid>
+        <pubDate>Sat, 26 Mar 2011 00:00:00 +0000</pubDate>
+        <link>http://0.0.0.0:4000/blog/index.php/2011/03/26/create-a-database-mail-profile-in-4-steps-or-less/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2011/03/26/create-a-database-mail-profile-in-4-steps-or-less/</guid>
       </item>
     
       <item>
-        <title>Migrate Databases Using Backup-Restore</title>
+        <title>Script Logins from Database Users</title>
         <description>
           
-          Migrating a database can be a major headache, especially due to the downtime or outage incurred by all systems accessing the database.  This is exacerbated when the data files which have to be moved are considerably large.  Obtaining approval for a suitable and longish downtime might not always be possible...
+          When performing a database migration from one SQL Server instance to another, the DBA has to transfer all logins which have access to the database.  The transfer will only be successful if the logins retain the same passwords to reduce the impact on the end users, and more specifically, the...
         </description>
-        <pubDate>Sat, 10 Nov 2012 00:00:00 +0000</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/11/migrate-databases-using-backup-restore/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/11/migrate-databases-using-backup-restore/</guid>
+        <pubDate>Sat, 19 Mar 2011 00:00:00 +0000</pubDate>
+        <link>http://0.0.0.0:4000/blog/index.php/2011/03/19/script-logins-from-database-users/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2011/03/19/script-logins-from-database-users/</guid>
       </item>
     
       <item>
-        <title>Deciding on MIN and MAX Memory Configuration Settings</title>
+        <title>Generate Lottery Ticket Combinations</title>
         <description>
           
-          It is a well known fact that SQL Server is a “memory junkie” – with the default settings it will consume and reserve all the available memory until the service or the server is restarted.  This may cause a problem on servers which have other services or applications running (such...
+          In Malta, the Super 5 lottery prize has always been considered the peak of winnings by the Maltese.  So much so that it has become part of the day-to-day language when referring to good luck (I feel I just won the Super 5!).  As a challenge, I thought of how...
         </description>
-        <pubDate>Sat, 03 Nov 2012 00:00:00 +0000</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/11/deciding-on-min-and-max-memory-configuration-settings/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/11/deciding-on-min-and-max-memory-configuration-settings/</guid>
+        <pubDate>Sat, 12 Mar 2011 00:00:00 +0000</pubDate>
+        <link>http://0.0.0.0:4000/blog/index.php/2011/03/12/generate-lottery-ticket-combinations/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2011/03/12/generate-lottery-ticket-combinations/</guid>
       </item>
     
       <item>
-        <title>One Difference between DBCC DBREINDEX and ALTER INDEX</title>
+        <title>Addressing a 'login failed' (Error 18452) error message in SQL Server 2005</title>
         <description>
           
-          I was recently discussing with one of my peers the fact that following a periodical reindexing/index rebuild, the overall database performance was better when the old syntax was executed. To put you in the picture, until the SQL Server 2000 version, index fragmentation was handled using the DBCC DBREINDEX and...
+          An excellent article posted by Il-Sung Lee (Program Manager, SQL Server Protocols) at Understanding “login failed” (Error 18456) error messages in SQL Server 2005 describes the various error message severity levels. Recently a user who uses an application which connects to an SQL Server 2005 instance using Windows Authentication from...
         </description>
-        <pubDate>Sat, 27 Oct 2012 00:00:00 +0100</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/10/one-difference-between-dbcx-dbreindec-and-alter-index/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/10/one-difference-between-dbcx-dbreindec-and-alter-index/</guid>
+        <pubDate>Sat, 05 Mar 2011 00:00:00 +0000</pubDate>
+        <link>http://0.0.0.0:4000/blog/index.php/2011/03/05/addressing-a-login-failed-error-18452-error-message-in-sql-server-2005/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2011/03/05/addressing-a-login-failed-error-18452-error-message-in-sql-server-2005/</guid>
       </item>
     
       <item>
-        <title>Data Driven Account Management – part 2</title>
+        <title>Run SQL Server Agent Jobs with Alternate Credentials</title>
         <description>
           
-          Two weeks ago, in the Data Driven Account Management – part 1 article, I demonstrated how a number of basic account management functions can be implemented for an SQL Server (2005 and later) database without granting elevated priviliges to end users.  The article and attached script showed how logins, users and...
+          According to the Selecting an Account for the SQL Server Agent Service, the SQL Server Agent service account should be able to authenticate with the instance and also be a memeber of the sysadmin fixed server role. Agent jobs are usually created by a DBA and by default will execute...
         </description>
-        <pubDate>Sat, 20 Oct 2012 00:00:00 +0100</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/10/data-driven-account-management-part-2/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/10/data-driven-account-management-part-2/</guid>
+        <pubDate>Sat, 26 Feb 2011 00:00:00 +0000</pubDate>
+        <link>http://0.0.0.0:4000/blog/index.php/2011/02/26/run-sql-server-agent-jobs-with-alternate-credentials/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2011/02/26/run-sql-server-agent-jobs-with-alternate-credentials/</guid>
       </item>
     
       <item>
-        <title>Maximise Memory Usage in a Two-Node Active/Active Cluster</title>
+        <title>Send SQL Server Agent Job log file by Email</title>
         <description>
           
-          When implementing and configuring a Two-Node Active/Active SQL Server Cluster you have to ensure that the memory allocation will suffice for the operating system and other services (a minimum of 2GB is reccomended), as well as for the eventuality when all instances would be on the same physical node. This...
+          When creating an SQL Server Agent job with one or more steps, each step can be configured to write the query output to a log file.  If the job failes, such a log can assist a DBA identify the cause of the failure.  That is, if the log is still...
         </description>
-        <pubDate>Sat, 13 Oct 2012 00:00:00 +0100</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/10/maximise-memory-usage-in-a-two-node-activeactive-cluster/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/10/maximise-memory-usage-in-a-two-node-activeactive-cluster/</guid>
+        <pubDate>Sat, 19 Feb 2011 00:00:00 +0000</pubDate>
+        <link>http://0.0.0.0:4000/blog/index.php/2011/02/19/send-sql-server-agent-job-log-by-email/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2011/02/19/send-sql-server-agent-job-log-by-email/</guid>
       </item>
     
       <item>
-        <title>Data Driven Account Management - part 1</title>
+        <title>Generating a Database Data Dictionary</title>
         <description>
           
-          In previous posts I mention that Windows Authentication should be used and account management functions should be delegated to the domain (e.g. Active Directory). This however is not possible in all cases. Sometimes, due to specific application requirements, SQL Authentication has to be used. Account names (logins/users) should preferably follow...
+          Accurate documentation is paramount for any system. Unfotunately, when developing a database we sometimes tend to overlook this particular document. A data dictionary shows metadata about your database. This information can be generated from the DBMS itself using the INFORMATION_SCHEMA compatibility views. Information such as the list of tables, table...
         </description>
-        <pubDate>Sat, 06 Oct 2012 00:00:00 +0100</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/10/data-driven-account-management-part-1/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/10/data-driven-account-management-part-1/</guid>
+        <pubDate>Sat, 12 Feb 2011 00:00:00 +0000</pubDate>
+        <link>http://0.0.0.0:4000/blog/index.php/2011/02/12/generating-a-database-data-dictionary/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2011/02/12/generating-a-database-data-dictionary/</guid>
       </item>
     
       <item>
-        <title>Semi-Automated T-SQL Code Reviews</title>
+        <title>Database Upgrade from SQL Server 7</title>
         <description>
           
-          I am usually quite cautious when mentioning third-party tools since I don’t have any affiliations with any company or product mentioned.  In this case I want to make an exception.  I recently came across an SSMS addin called SQL Code Guard. The addin is free and, according to the author...
+          When migrating databases from SQL Server 7 or 2000 to SQL Server 2005/2008 the steps can be summarised as follows: Migrate all logins (including passwords) accessing the database Disallow all connections to the database by restricting access only to SYSADMIN’s Back up the database and copy the backup file (or...
         </description>
-        <pubDate>Sat, 29 Sep 2012 00:00:00 +0100</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/09/semi-automated-t-sql-code-reviews/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/09/semi-automated-t-sql-code-reviews/</guid>
+        <pubDate>Sat, 05 Feb 2011 00:00:00 +0000</pubDate>
+        <link>http://0.0.0.0:4000/blog/index.php/2011/02/05/database-upgrade-from-sql-server-7/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2011/02/05/database-upgrade-from-sql-server-7/</guid>
       </item>
     
       <item>
-        <title>Why I avoid using User-Defined Data Types</title>
+        <title>Header for Database Code Objects</title>
         <description>
           
-          User-defined data types (UDT) were introduced with SQL Server 2000.  UDTs provide Database Designers, Developers, and DBAs functionality with which a custom data type can be created and which is based on one of the SQL Server system data types.  If you think of this as an approach to standardise...
+          Stored procedures and functions allow for the implementation of groups of data manipulation language (DML) statements as database objects.  Besides each code block having the relevant comments to facilitate other parties’ understanding of the same code blocks (amongst other reasons), a good coding practice is that some information about the object...
         </description>
-        <pubDate>Sat, 22 Sep 2012 00:00:00 +0100</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/09/why-i-avoid-using-user-defined-data-types/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/09/why-i-avoid-using-user-defined-data-types/</guid>
+        <pubDate>Sat, 29 Jan 2011 00:00:00 +0000</pubDate>
+        <link>http://0.0.0.0:4000/blog/index.php/2011/01/29/header-for-database-code-objects/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2011/01/29/header-for-database-code-objects/</guid>
       </item>
     
       <item>
-        <title>Per Server + CAL Licensing Model For Small Business' Development Environments</title>
+        <title>SSIS error: 'buffer manager cannot create a temporary storage file on any path in the BufferTempStoragePath property'</title>
         <description>
           
-          Whenever a new SQL Server version is released, unless an organisation is forking out the [slightly steep annual cost of] Software Assurance, a DBA has to build a business case to upgrade to the latest database platform.  This because, at the end of the day the licence cost has to...
+          An ETL SSIS package implemented on a test environment was failing occasionally with the error: The buffer manager cannot create a temporary storage file on any path in the BufferTempStoragePath property. There is an incorrect file name or no permission. The package was failing on various occasions when copying binary...
         </description>
-        <pubDate>Sat, 15 Sep 2012 00:00:00 +0100</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/09/per-server-cal-licensing-model-for-small-business-development-environments/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/09/per-server-cal-licensing-model-for-small-business-development-environments/</guid>
+        <pubDate>Sat, 22 Jan 2011 00:00:00 +0000</pubDate>
+        <link>http://0.0.0.0:4000/blog/index.php/2010/12/30/ssis-buffertempstoragepath-error/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2010/12/30/ssis-buffertempstoragepath-error/</guid>
       </item>
     
       <item>
-        <title>Script User-Defined Data Types</title>
+        <title>Protecting against SQL Injection attacks</title>
         <description>
           
-          Continuing with the “database migration using scripting” series, this week I am publishing a script that’ll script user-defined data types. The script reads columns from the sys.types and sys.schemas DMVs to build the DROP TYPE and CREATE TYPE statements. Special attention is given to UDTs based on character, decimal, numeric,...
+          In a nutshell, an SQL injection attack is one where malicious code is passed to an instance of SQL Server for parsing and execution through a vulnerable application.  Although most SQL injection attacks can come from the web (having a larger “target audience”) even machines connected to an organisation’s network...
         </description>
-        <pubDate>Sat, 08 Sep 2012 00:00:00 +0100</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/09/script-user-defined-data-types/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/09/script-user-defined-data-types/</guid>
+        <pubDate>Sat, 15 Jan 2011 00:00:00 +0000</pubDate>
+        <link>http://0.0.0.0:4000/blog/index.php/2011/01/15/protecting-against-sql-injection-attacks/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2011/01/15/protecting-against-sql-injection-attacks/</guid>
+      </item>
+    
+      <item>
+        <title>Date and Time data types</title>
+        <description>
+          
+          Someone asked me why storing datetime values seem to allow a maximum year of 2079. The limit mentioned exists for the SQL Server smalldatetime data type. This is because of the values’ data range supported, accuracy and data size associated with different data types where: Data type Range Accuracy Size...
+        </description>
+        <pubDate>Sat, 08 Jan 2011 00:00:00 +0000</pubDate>
+        <link>http://0.0.0.0:4000/blog/index.php/2011/01/08/date-and-time-data-types/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2011/01/08/date-and-time-data-types/</guid>
       </item>
     
   </channel>

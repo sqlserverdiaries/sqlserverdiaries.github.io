@@ -1,27 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Beautiful Jekyll 4.1 | Copyright Dean Attali 2020 -->
-<head>
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2020 -->
+  <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  
-
-  
-
   <title>SQL Server Diaries</title>
-
+  
   
   <meta name="author" content="Reuben Sultana">
   
-
-  <meta name="description" content="Or How I Did It">
-
+  
+  
+  <meta name="description" content="A personal take on SQL Server solutions">
   
 
-  
-
-  <link rel="alternate" type="application/rss+xml" title="SQL Server Diaries" href="http://0.0.0.0:4000/feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="SQL Server Diaries - A personal take on SQL Server solutions" href="http://0.0.0.0:4000/feed.xml">
 
   
 
@@ -58,48 +52,50 @@
     
       <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
     
-      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+      <link rel="stylesheet" href="/assets/css/main.css">
     
   
 
   
 
   
-  
+
+  <!-- Facebook OpenGraph tags -->
   
 
   
-
-  
-  <meta property="og:site_name" content="SQL Server Diaries">
   <meta property="og:title" content="SQL Server Diaries">
-  <meta property="og:description" content="Or How I Did It">
-
-  
-  <meta property="og:image" content="http://0.0.0.0:4000/assets/article_files/RS.jpg">
   
 
+   
+  <meta property="og:description" content="A personal take on SQL Server solutions">
   
+
+
   <meta property="og:type" content="website">
+
+  
   <meta property="og:url" content="http://0.0.0.0:4000/page4/">
   <link rel="canonical" href="http://0.0.0.0:4000/page4/">
   
 
   
+
+
+  <!-- Twitter summary cards -->
   <meta name="twitter:card" content="summary">
-  
-  <meta name="twitter:site" content="@sqldiaries">
-  <meta name="twitter:creator" content="@sqldiaries">
-
-  <meta property="twitter:title" content="SQL Server Diaries">
-  <meta property="twitter:description" content="Or How I Did It">
+  <meta name="twitter:site" content="@reubensultana">
+  <meta name="twitter:creator" content="@reubensultana">
 
   
-  <meta name="twitter:image" content="http://0.0.0.0:4000/assets/article_files/RS.jpg">
+  <meta name="twitter:title" content="SQL Server Diaries">
   
 
   
+  <meta name="twitter:description" content="A personal take on SQL Server solutions">
+  
 
+  
 
   
 
@@ -108,12 +104,12 @@
 </head>
 
 
-<body>
+  <body>
+
+    
 
   
-
-
-  <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://0.0.0.0:4000/">SQL Server Diaries</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-custom "><a class="navbar-brand" href="http://0.0.0.0:4000/">SQL Server Diaries</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -129,24 +125,16 @@
             <a class="nav-link" href="/tags">Tags</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="http://www.reubensultana.com">Author's home</a>
+            <a class="nav-link" href="https://reubensultana.com">Author's home</a>
           </li></ul>
   </div>
 
-  
-    <div class="avatar-container">
-      <div class="avatar-img-border">
-        <a href="http://0.0.0.0:4000/">
-          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/article_files/RS.jpg" />
-        </a>
-      </div>
-    </div>
   
 
 </nav>
 
 
-  <!-- TODO this file has become a mess, refactor it -->
+    <!-- TODO this file has become a mess, refactor it -->
 
 
 
@@ -165,10 +153,10 @@
       
         
             <hr class="small">
-            <span class="page-subheading">Or How I Did It</span>
+            <span class="page-subheading">A personal take on SQL Server solutions</span>
       
       
-
+      
       
         </div>
       </div>
@@ -181,11 +169,9 @@
 
 
 
-<div class=" container-md " role="main">
+<div class="container-md" role="main">
   <div class="row">
-    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
-      
-
+    <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
       
 
 
@@ -193,59 +179,40 @@
 <div class="posts-list">
   
   <article class="post-preview">
-    
-
-    
-
-    <a href="http://0.0.0.0:4000/blog/index.php/2012/10/data-driven-account-management-part-1/">
-      <h2 class="post-title">Data Driven Account Management - part 1</h2>
+    <a href="/blog/index.php/2011/02/05/database-upgrade-from-sql-server-7/">
+      <h2 class="post-title">Database Upgrade from SQL Server 7</h2>
 
       
     </a>
 
     <p class="post-meta">
       
-      Posted on October 6, 2012
+      Posted on February 5, 2011
     </p>
 
-    
-
-    
-    
-
-    <div class="post-entry">
+    <div class="post-entry-container">
       
-      In previous posts I mention that Windows Authentication should be used and account management functions should be delegated to the domain (e.g. Active Directory). This however is not possible in all cases. Sometimes, due to specific application requirements, SQL Authentication has to be used. Account names (logins/users) should preferably follow...
-      
-      
-        <a href="http://0.0.0.0:4000/blog/index.php/2012/10/data-driven-account-management-part-1/" class="post-read-more">[Read&nbsp;More]</a>
-      
+      <div class="post-entry">
+        
+        When migrating databases from SQL Server 7 or 2000 to SQL Server 2005/2008 the steps can be summarised as follows: Migrate all logins (including passwords) accessing the database Disallow all connections to the database by restricting access only to SYSADMIN’s Back up the database and copy the backup file (or...
+        
+        
+          <a href="/blog/index.php/2011/02/05/database-upgrade-from-sql-server-7/" class="post-read-more">[Read&nbsp;More]</a>
+        
+      </div>
     </div>
-    
 
     
     <div class="blog-tags">
       Tags:
       
-      <a href="http://0.0.0.0:4000/tags#Architecture">Architecture</a>
       
-      <a href="http://0.0.0.0:4000/tags#Database Administration">Database Administration</a>
+      <a href="/tags#Upgrade">Upgrade</a>
       
-      <a href="http://0.0.0.0:4000/tags#Security">Security</a>
+      <a href="/tags#Database Design">Database Design</a>
       
-      <a href="http://0.0.0.0:4000/tags#T-SQL Programming">T-SQL Programming</a>
+      <a href="/tags#SQL Server 2005">SQL Server 2005</a>
       
-      <a href="http://0.0.0.0:4000/tags#Code Samples">Code Samples</a>
-      
-      <a href="http://0.0.0.0:4000/tags#Development">Development</a>
-      
-      <a href="http://0.0.0.0:4000/tags#SQL Server 2005">SQL Server 2005</a>
-      
-      <a href="http://0.0.0.0:4000/tags#SQL Server 2008">SQL Server 2008</a>
-      
-      <a href="http://0.0.0.0:4000/tags#SQL Server 2008 R2">SQL Server 2008 R2</a>
-      
-      <a href="http://0.0.0.0:4000/tags#SQL Server 2012">SQL Server 2012</a>
       
     </div>
     
@@ -253,73 +220,48 @@
    </article>
   
   <article class="post-preview">
-    
-
-    
-
-    <a href="http://0.0.0.0:4000/blog/index.php/2012/09/semi-automated-t-sql-code-reviews/">
-      <h2 class="post-title">Semi-Automated T-SQL Code Reviews</h2>
+    <a href="/blog/index.php/2011/01/29/header-for-database-code-objects/">
+      <h2 class="post-title">Header for Database Code Objects</h2>
 
       
     </a>
 
     <p class="post-meta">
       
-      Posted on September 29, 2012
+      Posted on January 29, 2011
     </p>
 
-    
-
-    
-    
-
-    <div class="post-entry">
+    <div class="post-entry-container">
       
-      I am usually quite cautious when mentioning third-party tools since I don’t have any affiliations with any company or product mentioned.  In this case I want to make an exception.  I recently came across an SSMS addin called SQL Code Guard.
-
-
-      
-      
-        <a href="http://0.0.0.0:4000/blog/index.php/2012/09/semi-automated-t-sql-code-reviews/" class="post-read-more">[Read&nbsp;More]</a>
-      
+      <div class="post-entry">
+        
+        Stored procedures and functions allow for the implementation of groups of data manipulation language (DML) statements as database objects.  Besides each code block having the relevant comments to facilitate other parties’ understanding of the same code blocks (amongst other reasons), a good coding practice is that some information about the object...
+        
+        
+          <a href="/blog/index.php/2011/01/29/header-for-database-code-objects/" class="post-read-more">[Read&nbsp;More]</a>
+        
+      </div>
     </div>
-    
 
     
     <div class="blog-tags">
       Tags:
       
-      <a href="http://0.0.0.0:4000/tags#Audit">Audit</a>
       
-      <a href="http://0.0.0.0:4000/tags#Database Administration">Database Administration</a>
+      <a href="/tags#Database Administration">Database Administration</a>
       
-      <a href="http://0.0.0.0:4000/tags#Database Design">Database Design</a>
+      <a href="/tags#Database Design">Database Design</a>
       
-      <a href="http://0.0.0.0:4000/tags#SQL Tools">SQL Tools</a>
+      <a href="/tags#Development">Development</a>
       
-      <a href="http://0.0.0.0:4000/tags#T-SQL Programming">T-SQL Programming</a>
+      <a href="/tags#SQL Server">SQL Server</a>
       
-      <a href="http://0.0.0.0:4000/tags#Code Samples">Code Samples</a>
+      <a href="/tags#Code Samples">Code Samples</a>
       
-      <a href="http://0.0.0.0:4000/tags#Coding Practices">Coding Practices</a>
+      <a href="/tags#T-SQL Programming">T-SQL Programming</a>
       
-      <a href="http://0.0.0.0:4000/tags#Database Documentation">Database Documentation</a>
+      <a href="/tags#Coding Practices">Coding Practices</a>
       
-      <a href="http://0.0.0.0:4000/tags#Development">Development</a>
-      
-      <a href="http://0.0.0.0:4000/tags#SQL Server">SQL Server</a>
-      
-      <a href="http://0.0.0.0:4000/tags#SQL Server 2005">SQL Server 2005</a>
-      
-      <a href="http://0.0.0.0:4000/tags#SQL Server 2008">SQL Server 2008</a>
-      
-      <a href="http://0.0.0.0:4000/tags#SQL Server 2008 R2">SQL Server 2008 R2</a>
-      
-      <a href="http://0.0.0.0:4000/tags#SQL Server errors">SQL Server errors</a>
-      
-      <a href="http://0.0.0.0:4000/tags#Testing">Testing</a>
-      
-      <a href="http://0.0.0.0:4000/tags#Upgrade">Upgrade</a>
       
     </div>
     
@@ -327,61 +269,52 @@
    </article>
   
   <article class="post-preview">
-    
-
-    
-
-    <a href="http://0.0.0.0:4000/blog/index.php/2012/09/why-i-avoid-using-user-defined-data-types/">
-      <h2 class="post-title">Why I avoid using User-Defined Data Types</h2>
+    <a href="/blog/index.php/2010/12/30/ssis-buffertempstoragepath-error/">
+      <h2 class="post-title">SSIS error: 'buffer manager cannot create a temporary storage file on any path in the BufferTempStoragePath property'</h2>
 
       
     </a>
 
     <p class="post-meta">
       
-      Posted on September 22, 2012
+      Posted on January 22, 2011
     </p>
 
-    
-
-    
-    
-
-    <div class="post-entry">
+    <div class="post-entry-container">
       
-      User-defined data types (UDT) were introduced with SQL Server 2000.  UDTs provide Database Designers, Developers, and DBAs functionality with which a custom data type can be created and which is based on one of the SQL Server system data types.  If you think of this as an approach to standardise...
-      
-      
-        <a href="http://0.0.0.0:4000/blog/index.php/2012/09/why-i-avoid-using-user-defined-data-types/" class="post-read-more">[Read&nbsp;More]</a>
-      
+      <div class="post-entry">
+        
+        An ETL SSIS package implemented on a test environment was failing occasionally with the error: The buffer manager cannot create a temporary storage file on any path in the BufferTempStoragePath property. There is an incorrect file name or no permission. The package was failing on various occasions when copying binary...
+        
+        
+          <a href="/blog/index.php/2010/12/30/ssis-buffertempstoragepath-error/" class="post-read-more">[Read&nbsp;More]</a>
+        
+      </div>
     </div>
-    
 
     
     <div class="blog-tags">
       Tags:
       
-      <a href="http://0.0.0.0:4000/tags#Architecture">Architecture</a>
       
-      <a href="http://0.0.0.0:4000/tags#Database Administration">Database Administration</a>
+      <a href="/tags#SQL Server 2005">SQL Server 2005</a>
       
-      <a href="http://0.0.0.0:4000/tags#Database Design">Database Design</a>
+      <a href="/tags#BufferTempStoragePath">BufferTempStoragePath</a>
       
-      <a href="http://0.0.0.0:4000/tags#T-SQL Programming">T-SQL Programming</a>
+      <a href="/tags#runas">runas</a>
       
-      <a href="http://0.0.0.0:4000/tags#Code Samples">Code Samples</a>
+      <a href="/tags#BLOBTempStoragePath">BLOBTempStoragePath</a>
       
-      <a href="http://0.0.0.0:4000/tags#Coding Practices">Coding Practices</a>
+      <a href="/tags#SSIS">SSIS</a>
       
-      <a href="http://0.0.0.0:4000/tags#data types">data types</a>
+      <a href="/tags#Backup and Recovery">Backup and Recovery</a>
       
-      <a href="http://0.0.0.0:4000/tags#Development">Development</a>
+      <a href="/tags#Database Administration">Database Administration</a>
       
-      <a href="http://0.0.0.0:4000/tags#SQL Server">SQL Server</a>
+      <a href="/tags#SQL Tools">SQL Tools</a>
       
-      <a href="http://0.0.0.0:4000/tags#Storage">Storage</a>
+      <a href="/tags#SQL Server Integration Services">SQL Server Integration Services</a>
       
-      <a href="http://0.0.0.0:4000/tags#Testing">Testing</a>
       
     </div>
     
@@ -389,53 +322,56 @@
    </article>
   
   <article class="post-preview">
-    
-
-    
-
-    <a href="http://0.0.0.0:4000/blog/index.php/2012/09/per-server-cal-licensing-model-for-small-business-development-environments/">
-      <h2 class="post-title">Per Server + CAL Licensing Model For Small Business' Development Environments</h2>
+    <a href="/blog/index.php/2011/01/15/protecting-against-sql-injection-attacks/">
+      <h2 class="post-title">Protecting against SQL Injection attacks</h2>
 
       
     </a>
 
     <p class="post-meta">
       
-      Posted on September 15, 2012
+      Posted on January 15, 2011
     </p>
 
-    
-
-    
-    
-
-    <div class="post-entry">
+    <div class="post-entry-container">
       
-      Whenever a new SQL Server version is released, unless an organisation is forking out the [slightly steep annual cost of] Software Assurance, a DBA has to build a business case to upgrade to the latest database platform.  This because, at the end of the day the licence cost has to...
-      
-      
-        <a href="http://0.0.0.0:4000/blog/index.php/2012/09/per-server-cal-licensing-model-for-small-business-development-environments/" class="post-read-more">[Read&nbsp;More]</a>
-      
+      <div class="post-entry">
+        
+        In a nutshell, an SQL injection attack is one where malicious code is passed to an instance of SQL Server for parsing and execution through a vulnerable application.  Although most SQL injection attacks can come from the web (having a larger “target audience”) even machines connected to an organisation’s network...
+        
+        
+          <a href="/blog/index.php/2011/01/15/protecting-against-sql-injection-attacks/" class="post-read-more">[Read&nbsp;More]</a>
+        
+      </div>
     </div>
-    
 
     
     <div class="blog-tags">
       Tags:
       
-      <a href="http://0.0.0.0:4000/tags#Architecture">Architecture</a>
       
-      <a href="http://0.0.0.0:4000/tags#Database Administration">Database Administration</a>
+      <a href="/tags#T-SQL Programming">T-SQL Programming</a>
       
-      <a href="http://0.0.0.0:4000/tags#Virtualization">Virtualization</a>
+      <a href="/tags#Security">Security</a>
       
-      <a href="http://0.0.0.0:4000/tags#Database Migration">Database Migration</a>
+      <a href="/tags#SQL Injection">SQL Injection</a>
       
-      <a href="http://0.0.0.0:4000/tags#Development">Development</a>
+      <a href="/tags#Security">Security</a>
       
-      <a href="http://0.0.0.0:4000/tags#Testing">Testing</a>
+      <a href="/tags#Database Administration">Database Administration</a>
       
-      <a href="http://0.0.0.0:4000/tags#Upgrade">Upgrade</a>
+      <a href="/tags#Database Design">Database Design</a>
+      
+      <a href="/tags#T-SQL Programming">T-SQL Programming</a>
+      
+      <a href="/tags#Code Samples">Code Samples</a>
+      
+      <a href="/tags#Coding Practices">Coding Practices</a>
+      
+      <a href="/tags#Development">Development</a>
+      
+      <a href="/tags#SQL Server">SQL Server</a>
+      
       
     </div>
     
@@ -443,69 +379,54 @@
    </article>
   
   <article class="post-preview">
-    
-
-    
-
-    <a href="http://0.0.0.0:4000/blog/index.php/2012/09/script-user-defined-data-types/">
-      <h2 class="post-title">Script User-Defined Data Types</h2>
+    <a href="/blog/index.php/2011/01/08/date-and-time-data-types/">
+      <h2 class="post-title">Date and Time data types</h2>
 
       
     </a>
 
     <p class="post-meta">
       
-      Posted on September 8, 2012
+      Posted on January 8, 2011
     </p>
 
-    
-
-    
-    
-
-    <div class="post-entry">
+    <div class="post-entry-container">
       
-      Continuing with the “database migration using scripting” series, this week I am publishing a script that’ll script user-defined data types. The script reads columns from the sys.types and sys.schemas DMVs to build the DROP TYPE and CREATE TYPE statements. Special attention is given to UDTs based on character, decimal, numeric,...
-      
-      
-        <a href="http://0.0.0.0:4000/blog/index.php/2012/09/script-user-defined-data-types/" class="post-read-more">[Read&nbsp;More]</a>
-      
+      <div class="post-entry">
+        
+        Someone asked me why storing datetime values seem to allow a maximum year of 2079. The limit mentioned exists for the SQL Server smalldatetime data type. This is because of the values’ data range supported, accuracy and data size associated with different data types where: Data type Range Accuracy Size...
+        
+        
+          <a href="/blog/index.php/2011/01/08/date-and-time-data-types/" class="post-read-more">[Read&nbsp;More]</a>
+        
+      </div>
     </div>
-    
 
     
     <div class="blog-tags">
       Tags:
       
-      <a href="http://0.0.0.0:4000/tags#Code Samples">Code Samples</a>
       
-      <a href="http://0.0.0.0:4000/tags#Database Administration">Database Administration</a>
+      <a href="/tags#datetime">datetime</a>
       
-      <a href="http://0.0.0.0:4000/tags#Database Documentation">Database Documentation</a>
+      <a href="/tags#data types">data types</a>
       
-      <a href="http://0.0.0.0:4000/tags#Database Documentation">Database Documentation</a>
+      <a href="/tags#SQL Server 2005">SQL Server 2005</a>
       
-      <a href="http://0.0.0.0:4000/tags#Database Migration">Database Migration</a>
+      <a href="/tags#Coding Practices">Coding Practices</a>
       
-      <a href="http://0.0.0.0:4000/tags#data types">data types</a>
+      <a href="/tags#T-SQL Programming">T-SQL Programming</a>
       
-      <a href="http://0.0.0.0:4000/tags#Development">Development</a>
+      <a href="/tags#Database Design">Database Design</a>
       
-      <a href="http://0.0.0.0:4000/tags#SQL Server 2005">SQL Server 2005</a>
+      <a href="/tags#Development">Development</a>
       
-      <a href="http://0.0.0.0:4000/tags#SQL Server 2008">SQL Server 2008</a>
+      <a href="/tags#SQL Server 2000">SQL Server 2000</a>
       
-      <a href="http://0.0.0.0:4000/tags#SQL Server 2012">SQL Server 2012</a>
+      <a href="/tags#T-SQL Programming">T-SQL Programming</a>
       
-      <a href="http://0.0.0.0:4000/tags#SQL Server">SQL Server</a>
+      <a href="/tags#Database Migration">Database Migration</a>
       
-      <a href="http://0.0.0.0:4000/tags#T-SQL Programming">T-SQL Programming</a>
-      
-      <a href="http://0.0.0.0:4000/tags#Upgrade">Upgrade</a>
-      
-      <a href="http://0.0.0.0:4000/tags#Testing">Testing</a>
-      
-      <a href="http://0.0.0.0:4000/tags#Storage">Storage</a>
       
     </div>
     
@@ -518,28 +439,24 @@
 <ul class="pagination main-pager">
   
   <li class="page-item previous">
-    <a class="page-link" href="http://0.0.0.0:4000/page3">&larr; Newer Posts</a>
+    <a class="page-link" href="/page3">&larr; Newer Posts</a>
   </li>
   
   
   <li class="page-item next">
-    <a class="page-link" href="http://0.0.0.0:4000/page5">Older Posts &rarr;</a>
+    <a class="page-link" href="/page5">Older Posts &rarr;</a>
   </li>
   
 </ul>
 
 
-
       
-
-      
-
     </div>
   </div>
 </div>
 
 
-  <footer>
+    <footer>
   <div class="container-md beautiful-jekyll-footer">
     <div class="row">
       <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
@@ -552,7 +469,7 @@
       <span class="sr-only">RSS</span>
     </a>
   </li><li class="list-inline-item">
-    <a href="mailto:info [at] sqlserverdiaries [dot] com" title="Email me">
+    <a href="mailto:info@sqlserverdiaries.com" title="Email me">
       <span class="fa-stack fa-lg" aria-hidden="true">
         <i class="fas fa-circle fa-stack-2x"></i>
         <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
@@ -560,7 +477,7 @@
       <span class="sr-only">Email me</span>
    </a>
   </li><li class="list-inline-item">
-    <a href="https://github.com/sqlserverdiaries" title="GitHub">
+    <a href="https://github.com/reubensultana" title="GitHub">
       <span class="fa-stack fa-lg" aria-hidden="true">
         <i class="fas fa-circle fa-stack-2x"></i>
         <i class="fab fa-github fa-stack-1x fa-inverse"></i>
@@ -568,12 +485,20 @@
       <span class="sr-only">GitHub</span>
    </a>
   </li><li class="list-inline-item">
-    <a href="https://twitter.com/sqldiaries" title="Twitter">
+    <a href="https://twitter.com/reubensultana" title="Twitter">
       <span class="fa-stack fa-lg" aria-hidden="true">
         <i class="fas fa-circle fa-stack-2x"></i>
         <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
       </span>
       <span class="sr-only">Twitter</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://linkedin.com/in/reubensultana" title="LinkedIn">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">LinkedIn</span>
    </a>
   </li></ul>
 
@@ -587,26 +512,28 @@
 
       
         &nbsp;&bull;&nbsp;
-        <span class="author-site"><a href="http://0.0.0.0:4000/">sqlserverdiaries.com</a></span>
+        <a href="http://0.0.0.0:4000/">sqlserverdiaries.com</a>
       
 
       
       </p>
       <!-- Please don't remove this, keep my open source work credited :) -->
+<!--
       <p class="theme-by text-muted">
-        Powered by
-        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+        Theme by
+        <a href="https://beautifuljekyll.com">beautiful-jekyll</a>
       </p>
-      </div>
+-->
+    </div>
     </div>
   </div>
 </footer>
 
-
-  
   
     
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+  
+    
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
 
   
@@ -626,7 +553,7 @@
   
     <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
     
-      <script src="/assets/js/beautifuljekyll.js"></script>
+      <script src="/assets/js/main.js"></script>
     
   
 
@@ -635,6 +562,6 @@
 
 
 
-
-</body>
+  
+  </body>
 </html>
