@@ -7,7 +7,6 @@ categories: blog
 published: true
 tags: [Uncategorized]
 comments: false
-cover-img: /assets/img/path.jpg
 ---
 Dear Reader,
 
