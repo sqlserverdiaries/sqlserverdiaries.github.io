@@ -1,1 +1,0 @@
-# sqlserverdiaries.github.io
