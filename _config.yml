@@ -28,7 +28,7 @@ navbar-links:
 
 # Image to show in the navigation bar - works best with a square image
 # Remove this parameter if you don't want an image in the navbar
-avatar: /assets/article_files/RS.jpg
+avatar: "/assets/article_files/RS.jpg"
 
 # By default, the image is cut into a circle. You can disable this behaviour by setting 'round-avatar: false'
 round-avatar: true
@@ -70,7 +70,7 @@ social-network-links:
 
 # If you want to show a link to an RSS in the footer, add the site description here.
 # If you don't want to show an RSS link, remove the following line.
-rss-description: This website is a virtual proof that I'm awesome
+rss-description: Or How I Did It
 
 # --- General options --- #
 
@@ -79,7 +79,6 @@ share-links-active:
   linkedin: true
   twitter: true
   facebook: true
-                
   vk: false
 
 # How to display the link to your website in the footer
