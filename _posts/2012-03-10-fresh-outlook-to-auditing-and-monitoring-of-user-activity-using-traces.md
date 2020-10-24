@@ -1,11 +1,11 @@
 ---
 layout: post
-date:   2010-12-30
-title:  "The First Record"
-permalink: ./blog/index.php/2010/12/the-first-record/
+date:   2012-03-10
+title:  "Fresh outlook to Auditing and Monitoring of User Activity using Traces"
+permalink: ./blog/index.php/2012/03/fresh-outlook-to-auditing-and-monitoring-of-user-activity-using-traces/
 categories: blog
 published: true
-tags: [Uncategorized]
+tags: [Architecture, Database Administration, Security, Security, SQL Server 2000, SQL Server 2005, SQL Server 2008, SQL Server 2008 R2]
 comments: false
 ---
 I recently wrote about [auditing SQL Server instances using Traces](/blog/index.php/2011/11/audit-and-monitor-user-activity-using-traces/ "Audit and Monitor User Activity using Traces"), and after reviewing the solution with a "fresh" mindset I saw features that were missed during the research which led to a previous article.  Today's post shows how to limit the auditing to UPDATE, INSERT and DELETE events (see note/insert below) using the [Audit Schema Object Access Event Class](http://technet.microsoft.com/en-us/library/ms175846.aspx "Audit Schema Object Access Event Class") by setting appropriate filters on the _Permissions_ column.  This functionality is available in SQL Server 2000 and later versions.  Information for SQL Server 2000 versions can be found by looking up the text _Audit Object Permission Event_ (which "records the successful or unsuccessful use of object permissions") at [http://msdn.microsoft.com/en-us/library/aa173905(v=sql.80).aspx](http://msdn.microsoft.com/en-us/library/aa173905(v=sql.80).aspx).

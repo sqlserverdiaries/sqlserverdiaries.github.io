@@ -5,10 +5,6 @@
 <lastmod>2010-12-30T00:00:00+00:00</lastmod>
 </url>
 <url>
-<loc>http://0.0.0.0:4000/blog/index.php/2010/12/the-first-record/</loc>
-<lastmod>2010-12-30T00:00:00+00:00</lastmod>
-</url>
-<url>
 <loc>http://0.0.0.0:4000/blog/index.php/2011/01/date-and-time-data-types/</loc>
 <lastmod>2011-01-08T00:00:00+00:00</lastmod>
 </url>
@@ -253,6 +249,10 @@
 <lastmod>2012-03-03T00:00:00+00:00</lastmod>
 </url>
 <url>
+<loc>http://0.0.0.0:4000/blog/index.php/2012/03/fresh-outlook-to-auditing-and-monitoring-of-user-activity-using-traces/</loc>
+<lastmod>2012-03-10T00:00:00+00:00</lastmod>
+</url>
+<url>
 <loc>http://0.0.0.0:4000/blog/index.php/2012/03/grant-priviliges-to-a-computermachine-account-why/</loc>
 <lastmod>2012-03-17T00:00:00+00:00</lastmod>
 </url>
@@ -434,6 +434,9 @@
 </url>
 <url>
 <loc>http://0.0.0.0:4000/about/</loc>
+</url>
+<url>
+<loc>http://0.0.0.0:4000/aboutme/</loc>
 </url>
 <url>
 <loc>http://0.0.0.0:4000/</loc>
