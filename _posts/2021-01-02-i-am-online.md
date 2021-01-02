@@ -42,7 +42,7 @@ I completed the EDX course "DAT203X: Data Science and Machine Learning Essential
 
 My wife and I decided to take the plunge and move to Ireland. Leaving family and friends behind, and my job of sixteen years, was a tough decision but we felt it was for the best. We spent the next three years in a rented apartment in Howth, Co. Dublin.
 
-Moving to another country also gave me the opportunity to attended my first SQL Saturday Ireland conference at the National College Of Ireland in Dublin.
+Moving to another country also gave me the opportunity to attend my first SQL Saturday Ireland conference at the National College Of Ireland in Dublin.
 
 After that conference I joined the SQL Ireland User Group, and attend monthly meetings organised through MeetUp.
 
@@ -64,9 +64,9 @@ We finally got to buy our own piece of Irish soil and moved into our new home.
 
 I attended the SQL Saturday Ireland 2019 conference which was once again held at the University College Cork (UCC), in Cork.
 
-Sadly, I had to sell my Honday Shadow VT-600C motorcycle after 18 years of great adventures. I miss that bike some days.
+Sadly, I had to sell my Honda Shadow VT-600C motorcycle after 18 years of great adventures. I miss that bike some days.
 
-I decided to try something new, and work on a topic that wasn't within my comfort zone, and I took up the CompTIA CySA+ Cybersecurity Analyst course.
+I decided to try something new, and work on a topic that wasn't within my comfort zone, and took up the CompTIA CySA+ Cybersecurity Analyst course.
 
 I began to look into GutHub Pages and Jekyll as a platform to host the new version of this blog.
 
