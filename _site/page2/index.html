@@ -21,13 +21,35 @@
 
   
 
-  <link rel="alternate" type="application/rss+xml" title="SQL Server Diaries" href="http://0.0.0.0:4000/feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="SQL Server Diaries" href="/feed.xml">
+
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-1752027-5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-1752027-5');
+</script>
+
 
   
 
   
+<!-- Google Analytics -->
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+  ga('create', 'UA-1752027-5', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
 
-  
 
 
   
@@ -76,13 +98,13 @@
   <meta property="og:description" content="Or How I Did It">
 
   
-  <meta property="og:image" content="http://0.0.0.0:4000/assets/article_files/RS.jpg">
+  <meta property="og:image" content="/assets/article_files/RS.jpg">
   
 
   
   <meta property="og:type" content="website">
-  <meta property="og:url" content="http://0.0.0.0:4000/page2/">
-  <link rel="canonical" href="http://0.0.0.0:4000/page2/">
+  <meta property="og:url" content="/page2/">
+  <link rel="canonical" href="/page2/">
   
 
   
@@ -95,7 +117,7 @@
   <meta property="twitter:description" content="Or How I Did It">
 
   
-  <meta name="twitter:image" content="http://0.0.0.0:4000/assets/article_files/RS.jpg">
+  <meta name="twitter:image" content="/assets/article_files/RS.jpg">
   
 
   
@@ -113,7 +135,7 @@
   
 
 
-  <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://0.0.0.0:4000/">SQL Server Diaries</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+  <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="">SQL Server Diaries</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -138,7 +160,7 @@
   
     <div class="avatar-container">
       <div class="avatar-img-border">
-        <a href="http://0.0.0.0:4000/">
+        <a href="">
           <img alt="Navigation bar avatar" class="avatar-img" src="/assets/article_files/RS.jpg" />
         </a>
       </div>
@@ -199,7 +221,75 @@
 
     
 
-    <a href="http://0.0.0.0:4000/blog/index.php/2012/12/instance-pre-installation-checklist/">
+    <a href="/blog/index.php/2012/12/t-sql-to-transfer-data-based-on-periodic-date-ranges/">
+      <h2 class="post-title">T-SQL to Transfer Data based on Periodic Date Ranges</h2>
+
+      
+    </a>
+
+    <p class="post-meta">
+      
+      Posted on December 22, 2012
+    </p>
+
+    
+
+    
+    
+
+    <div class="post-entry">
+      
+      I don’t think I’d be wrong in stating that almost all transactional and analytical systems store or make use of date, time, or parts of to achieve the respective functional targets.  A task I had to complete once was to find a way to retrieve data based on the period...
+      
+      
+        <a href="/blog/index.php/2012/12/t-sql-to-transfer-data-based-on-periodic-date-ranges/" class="post-read-more">[Read&nbsp;More]</a>
+      
+    </div>
+    
+
+    
+    <div class="blog-tags">
+      <span>Tags:</span>
+      
+      <a href="/tags#Code Samples">Code Samples</a>
+      
+      <a href="/tags#Database Administration">Database Administration</a>
+      
+      <a href="/tags#T-SQL Programming">T-SQL Programming</a>
+      
+      <a href="/tags#Coding Practices">Coding Practices</a>
+      
+      <a href="/tags#command-line utilities">command-line utilities</a>
+      
+      <a href="/tags#Database Migration">Database Migration</a>
+      
+      <a href="/tags#Development">Development</a>
+      
+      <a href="/tags#data types">data types</a>
+      
+      <a href="/tags#datetime">datetime</a>
+      
+      <a href="/tags#SQL Server 2005">SQL Server 2005</a>
+      
+      <a href="/tags#SQL Server 2008">SQL Server 2008</a>
+      
+      <a href="/tags#SQL Server 2008 R2">SQL Server 2008 R2</a>
+      
+      <a href="/tags#SQL Server 2012">SQL Server 2012</a>
+      
+      <a href="/tags#Testing">Testing</a>
+      
+    </div>
+    
+
+   </article>
+  
+  <article class="post-preview">
+    
+
+    
+
+    <a href="/blog/index.php/2012/12/instance-pre-installation-checklist/">
       <h2 class="post-title">Instance Pre-Installation Checklist</h2>
 
       
@@ -220,7 +310,7 @@
       You have been requested to provide an SQL Server environment to host the database/s of Application123. Once you’ve identified the server onto which the instance will be installed there are a number of checks I would suggest, or at least these are the ones I follow. You will observe that...
       
       
-        <a href="http://0.0.0.0:4000/blog/index.php/2012/12/instance-pre-installation-checklist/" class="post-read-more">[Read&nbsp;More]</a>
+        <a href="/blog/index.php/2012/12/instance-pre-installation-checklist/" class="post-read-more">[Read&nbsp;More]</a>
       
     </div>
     
@@ -229,25 +319,25 @@
     <div class="blog-tags">
       <span>Tags:</span>
       
-      <a href="http://0.0.0.0:4000/tags#Architecture">Architecture</a>
+      <a href="/tags#Architecture">Architecture</a>
       
-      <a href="http://0.0.0.0:4000/tags#Database Administration">Database Administration</a>
+      <a href="/tags#Database Administration">Database Administration</a>
       
-      <a href="http://0.0.0.0:4000/tags#Virtualization">Virtualization</a>
+      <a href="/tags#Virtualization">Virtualization</a>
       
-      <a href="http://0.0.0.0:4000/tags#Backup">Backup</a>
+      <a href="/tags#Backup">Backup</a>
       
-      <a href="http://0.0.0.0:4000/tags#Listening Ports">Listening Ports</a>
+      <a href="/tags#Listening Ports">Listening Ports</a>
       
-      <a href="http://0.0.0.0:4000/tags#Microsoft Cluster">Microsoft Cluster</a>
+      <a href="/tags#Microsoft Cluster">Microsoft Cluster</a>
       
-      <a href="http://0.0.0.0:4000/tags#SQL Server">SQL Server</a>
+      <a href="/tags#SQL Server">SQL Server</a>
       
-      <a href="http://0.0.0.0:4000/tags#Windows">Windows</a>
+      <a href="/tags#Windows">Windows</a>
       
-      <a href="http://0.0.0.0:4000/tags#Upgrade">Upgrade</a>
+      <a href="/tags#Upgrade">Upgrade</a>
       
-      <a href="http://0.0.0.0:4000/tags#Testing">Testing</a>
+      <a href="/tags#Testing">Testing</a>
       
     </div>
     
@@ -259,7 +349,7 @@
 
     
 
-    <a href="http://0.0.0.0:4000/blog/index.php/2012/12/configuring-the-scom-2012-sql-server-management-pack-for-low-privilege-access/">
+    <a href="/blog/index.php/2012/12/configuring-the-scom-2012-sql-server-management-pack-for-low-privilege-access/">
       <h2 class="post-title">Configuring the SCOM 2012 SQL Server Management Pack for Low-Privilege Access</h2>
 
       
@@ -280,7 +370,7 @@
       The System Center Operations Manager 2012 is Microsoft’s flagship product to monitor various aspects of the infrastructure.  Specific details about the product can be found in the TechNet at http://technet.microsoft.com/en-us/library/hh205987.aspx.  Monitoring can be “extended” to SQL Server instances (2005 and later versions only) using the System Center Monitoring pack for...
       
       
-        <a href="http://0.0.0.0:4000/blog/index.php/2012/12/configuring-the-scom-2012-sql-server-management-pack-for-low-privilege-access/" class="post-read-more">[Read&nbsp;More]</a>
+        <a href="/blog/index.php/2012/12/configuring-the-scom-2012-sql-server-management-pack-for-low-privilege-access/" class="post-read-more">[Read&nbsp;More]</a>
       
     </div>
     
@@ -289,25 +379,25 @@
     <div class="blog-tags">
       <span>Tags:</span>
       
-      <a href="http://0.0.0.0:4000/tags#Architecture">Architecture</a>
+      <a href="/tags#Architecture">Architecture</a>
       
-      <a href="http://0.0.0.0:4000/tags#Database Administration">Database Administration</a>
+      <a href="/tags#Database Administration">Database Administration</a>
       
-      <a href="http://0.0.0.0:4000/tags#SQL Tools">SQL Tools</a>
+      <a href="/tags#SQL Tools">SQL Tools</a>
       
-      <a href="http://0.0.0.0:4000/tags#Virtualization">Virtualization</a>
+      <a href="/tags#Virtualization">Virtualization</a>
       
-      <a href="http://0.0.0.0:4000/tags#Security">Security</a>
+      <a href="/tags#Security">Security</a>
       
-      <a href="http://0.0.0.0:4000/tags#SQL Server 2005">SQL Server 2005</a>
+      <a href="/tags#SQL Server 2005">SQL Server 2005</a>
       
-      <a href="http://0.0.0.0:4000/tags#SQL Server 2008">SQL Server 2008</a>
+      <a href="/tags#SQL Server 2008">SQL Server 2008</a>
       
-      <a href="http://0.0.0.0:4000/tags#SQL Server 2008 R2">SQL Server 2008 R2</a>
+      <a href="/tags#SQL Server 2008 R2">SQL Server 2008 R2</a>
       
-      <a href="http://0.0.0.0:4000/tags#SQL Server 2012">SQL Server 2012</a>
+      <a href="/tags#SQL Server 2012">SQL Server 2012</a>
       
-      <a href="http://0.0.0.0:4000/tags#Windows">Windows</a>
+      <a href="/tags#Windows">Windows</a>
       
     </div>
     
@@ -319,7 +409,7 @@
 
     
 
-    <a href="http://0.0.0.0:4000/blog/index.php/2012/12/remote-statistics-not-available-errors/">
+    <a href="/blog/index.php/2012/12/remote-statistics-not-available-errors/">
       <h2 class="post-title">Remote Statistics Not Available Errors</h2>
 
       
@@ -342,7 +432,7 @@
 
       
       
-        <a href="http://0.0.0.0:4000/blog/index.php/2012/12/remote-statistics-not-available-errors/" class="post-read-more">[Read&nbsp;More]</a>
+        <a href="/blog/index.php/2012/12/remote-statistics-not-available-errors/" class="post-read-more">[Read&nbsp;More]</a>
       
     </div>
     
@@ -351,31 +441,31 @@
     <div class="blog-tags">
       <span>Tags:</span>
       
-      <a href="http://0.0.0.0:4000/tags#Architecture">Architecture</a>
+      <a href="/tags#Architecture">Architecture</a>
       
-      <a href="http://0.0.0.0:4000/tags#Database Administration">Database Administration</a>
+      <a href="/tags#Database Administration">Database Administration</a>
       
-      <a href="http://0.0.0.0:4000/tags#Database Design">Database Design</a>
+      <a href="/tags#Database Design">Database Design</a>
       
-      <a href="http://0.0.0.0:4000/tags#T-SQL Programming">T-SQL Programming</a>
+      <a href="/tags#T-SQL Programming">T-SQL Programming</a>
       
-      <a href="http://0.0.0.0:4000/tags#Coding Practices">Coding Practices</a>
+      <a href="/tags#Coding Practices">Coding Practices</a>
       
-      <a href="http://0.0.0.0:4000/tags#Development">Development</a>
+      <a href="/tags#Development">Development</a>
       
-      <a href="http://0.0.0.0:4000/tags#Linked Servers">Linked Servers</a>
+      <a href="/tags#Linked Servers">Linked Servers</a>
       
-      <a href="http://0.0.0.0:4000/tags#SQL Server 2005">SQL Server 2005</a>
+      <a href="/tags#SQL Server 2005">SQL Server 2005</a>
       
-      <a href="http://0.0.0.0:4000/tags#SQL Server 2008 R2">SQL Server 2008 R2</a>
+      <a href="/tags#SQL Server 2008 R2">SQL Server 2008 R2</a>
       
-      <a href="http://0.0.0.0:4000/tags#SQL Server 2008">SQL Server 2008</a>
+      <a href="/tags#SQL Server 2008">SQL Server 2008</a>
       
-      <a href="http://0.0.0.0:4000/tags#SQL Server 2012">SQL Server 2012</a>
+      <a href="/tags#SQL Server 2012">SQL Server 2012</a>
       
-      <a href="http://0.0.0.0:4000/tags#Upgrade">Upgrade</a>
+      <a href="/tags#Upgrade">Upgrade</a>
       
-      <a href="http://0.0.0.0:4000/tags#Testing">Testing</a>
+      <a href="/tags#Testing">Testing</a>
       
     </div>
     
@@ -387,7 +477,7 @@
 
     
 
-    <a href="http://0.0.0.0:4000/blog/index.php/2012/11/percent-complete-and-estimated-completion-time-for-backup-processes/">
+    <a href="/blog/index.php/2012/11/percent-complete-and-estimated-completion-time-for-backup-processes/">
       <h2 class="post-title">Percent Complete and Estimated Completion Time for Backup Processes</h2>
 
       
@@ -410,7 +500,7 @@
 
       
       
-        <a href="http://0.0.0.0:4000/blog/index.php/2012/11/percent-complete-and-estimated-completion-time-for-backup-processes/" class="post-read-more">[Read&nbsp;More]</a>
+        <a href="/blog/index.php/2012/11/percent-complete-and-estimated-completion-time-for-backup-processes/" class="post-read-more">[Read&nbsp;More]</a>
       
     </div>
     
@@ -419,97 +509,25 @@
     <div class="blog-tags">
       <span>Tags:</span>
       
-      <a href="http://0.0.0.0:4000/tags#DMV">DMV</a>
+      <a href="/tags#DMV">DMV</a>
       
-      <a href="http://0.0.0.0:4000/tags#Backup and Recovery">Backup and Recovery</a>
+      <a href="/tags#Backup and Recovery">Backup and Recovery</a>
       
-      <a href="http://0.0.0.0:4000/tags#Database Administration">Database Administration</a>
+      <a href="/tags#Database Administration">Database Administration</a>
       
-      <a href="http://0.0.0.0:4000/tags#Performance">Performance</a>
+      <a href="/tags#Performance">Performance</a>
       
-      <a href="http://0.0.0.0:4000/tags#SQL Server 2005">SQL Server 2005</a>
+      <a href="/tags#SQL Server 2005">SQL Server 2005</a>
       
-      <a href="http://0.0.0.0:4000/tags#SQL Server 2008">SQL Server 2008</a>
+      <a href="/tags#SQL Server 2008">SQL Server 2008</a>
       
-      <a href="http://0.0.0.0:4000/tags#SQL Server 2008 R2">SQL Server 2008 R2</a>
+      <a href="/tags#SQL Server 2008 R2">SQL Server 2008 R2</a>
       
-      <a href="http://0.0.0.0:4000/tags#SQL Server 2012">SQL Server 2012</a>
+      <a href="/tags#SQL Server 2012">SQL Server 2012</a>
       
-      <a href="http://0.0.0.0:4000/tags#Indexes">Indexes</a>
+      <a href="/tags#Indexes">Indexes</a>
       
-      <a href="http://0.0.0.0:4000/tags#Backup">Backup</a>
-      
-    </div>
-    
-
-   </article>
-  
-  <article class="post-preview">
-    
-
-    
-
-    <a href="http://0.0.0.0:4000/blog/index.php/2012/11/table-counts-plus-space-used-by-data-and-indexes/">
-      <h2 class="post-title">Table Counts plus Space Used by Data and Indexes</h2>
-
-      
-    </a>
-
-    <p class="post-meta">
-      
-      Posted on November 17, 2012
-    </p>
-
-    
-
-    
-    
-
-    <div class="post-entry">
-      
-      I was recently reviewing some of the Dynamic Management Views (DMVs) available since SQL Server 2005 and came across the interesting and useful sys.dm_db_partition_stats DMV.  The documentation states that this DMV will return “page and row-count information for every partition in the current database”.  In the Space Used by Filegroup...
-      
-      
-        <a href="http://0.0.0.0:4000/blog/index.php/2012/11/table-counts-plus-space-used-by-data-and-indexes/" class="post-read-more">[Read&nbsp;More]</a>
-      
-    </div>
-    
-
-    
-    <div class="blog-tags">
-      <span>Tags:</span>
-      
-      <a href="http://0.0.0.0:4000/tags#Database Documentation">Database Documentation</a>
-      
-      <a href="http://0.0.0.0:4000/tags#Backup and Recovery">Backup and Recovery</a>
-      
-      <a href="http://0.0.0.0:4000/tags#Database Administration">Database Administration</a>
-      
-      <a href="http://0.0.0.0:4000/tags#Database Documentation">Database Documentation</a>
-      
-      <a href="http://0.0.0.0:4000/tags#Virtualization">Virtualization</a>
-      
-      <a href="http://0.0.0.0:4000/tags#Database Migration">Database Migration</a>
-      
-      <a href="http://0.0.0.0:4000/tags#Data Maintenance">Data Maintenance</a>
-      
-      <a href="http://0.0.0.0:4000/tags#Development">Development</a>
-      
-      <a href="http://0.0.0.0:4000/tags#DMV">DMV</a>
-      
-      <a href="http://0.0.0.0:4000/tags#Indexes">Indexes</a>
-      
-      <a href="http://0.0.0.0:4000/tags#SQL Server 2005">SQL Server 2005</a>
-      
-      <a href="http://0.0.0.0:4000/tags#SQL Server 2008">SQL Server 2008</a>
-      
-      <a href="http://0.0.0.0:4000/tags#SQL Server 2008 R2">SQL Server 2008 R2</a>
-      
-      <a href="http://0.0.0.0:4000/tags#SQL Server 2012">SQL Server 2012</a>
-      
-      <a href="http://0.0.0.0:4000/tags#Storage">Storage</a>
-      
-      <a href="http://0.0.0.0:4000/tags#Upgrade">Upgrade</a>
+      <a href="/tags#Backup">Backup</a>
       
     </div>
     
@@ -522,12 +540,12 @@
 <ul class="pagination main-pager">
   
   <li class="page-item previous">
-    <a class="page-link" href="http://0.0.0.0:4000/">&larr; Newer Posts</a>
+    <a class="page-link" href="/">&larr; Newer Posts</a>
   </li>
   
   
   <li class="page-item next">
-    <a class="page-link" href="http://0.0.0.0:4000/page3">Older Posts &rarr;</a>
+    <a class="page-link" href="/page3">Older Posts &rarr;</a>
   </li>
   
 </ul>
@@ -587,12 +605,12 @@
         Reuben Sultana
         &nbsp;&bull;&nbsp;
       
-      2020
+      2021
 
       
         &nbsp;&bull;&nbsp;
         <span class="author-site">
-          <a href="http://0.0.0.0:4000/">sqlserverdiaries.com</a>
+          <a href="">sqlserverdiaries.com</a>
         </span>
       
 

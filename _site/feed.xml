@@ -7,9 +7,31 @@
     
     <description>Or How I Did It</description>
     
-    <link>http://0.0.0.0:4000/</link>
-    <atom:link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <link></link>
+    <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
     
+    
+      <item>
+        <title>Online</title>
+        <description>
+          
+          It’s been a while since my last post. Eight years actually. Unfortunately when the blog went offline back in January 2013 I lost my muse for a while. Like all IT professionals working in Ops, I did still write the occasional “TL;DR” email or publish an article in my workplaces’...
+        </description>
+        <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
+        <link>/blog/index.php/2021/01/back-on/</link>
+        <guid isPermaLink="true">/blog/index.php/2021/01/back-on/</guid>
+      </item>
+    
+      <item>
+        <title>Readme</title>
+        <description>
+          
+          NOTES FOR NEW ARTICLES Ideas Add Comedy section - send your stories URL rewriting using Jekyll - avoid Wordpress structure but retain old URLs Crete a Picture Gallery - SQL-related pictures List of (favourite) Podcasts Ghost is taking full backup and breaking my backup chain . Be careful with Azure...
+        </description>
+        <pubDate>Mon, 07 Sep 2020 04:53:14 +0100</pubDate>
+        <link>/2020-09-07-README/</link>
+        <guid isPermaLink="true">/2020-09-07-README/</guid>
+      </item>
     
       <item>
         <title>Holding On</title>
@@ -21,8 +43,8 @@ Some of my blog posts are available in an almost original format on the Internet
 
         </description>
         <pubDate>Fri, 01 Mar 2013 00:00:00 +0000</pubDate>
-        <link>http://0.0.0.0:4000/blog/2013/03/holding-on/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/2013/03/holding-on/</guid>
+        <link>/blog/2013/03/holding-on/</link>
+        <guid isPermaLink="true">/blog/2013/03/holding-on/</guid>
       </item>
     
       <item>
@@ -32,8 +54,8 @@ Some of my blog posts are available in an almost original format on the Internet
           After two years of writing, my (previous…) hosting provider unfortunately managed to lose all my articles; they couldn’t even recover the configuration from their own backup! I did recover all of the content from my own backups and will re-post all articles in due course. I hope to be back...
         </description>
         <pubDate>Fri, 01 Feb 2013 00:00:00 +0000</pubDate>
-        <link>http://0.0.0.0:4000/blog/2013/02/blog-offline/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/2013/02/blog-offline/</guid>
+        <link>/blog/2013/02/blog-offline/</link>
+        <guid isPermaLink="true">/blog/2013/02/blog-offline/</guid>
       </item>
     
       <item>
@@ -43,8 +65,8 @@ Some of my blog posts are available in an almost original format on the Internet
           In last weeks Deploy or Migrate a Database using Scripts - part 1 article we saw the first steps that will lead to a successful database deployment or migration project. So far we’ve covered the following scripts or instructions: 00 Build Database Creation.txt 01 Create Database Trigger(s).txt 02 Create User-Defined...
         </description>
         <pubDate>Sat, 05 Jan 2013 00:00:00 +0000</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/12/deploy-or-migrate-a-database-using-scripts-part-2/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/12/deploy-or-migrate-a-database-using-scripts-part-2/</guid>
+        <link>/blog/index.php/2012/12/deploy-or-migrate-a-database-using-scripts-part-2/</link>
+        <guid isPermaLink="true">/blog/index.php/2012/12/deploy-or-migrate-a-database-using-scripts-part-2/</guid>
       </item>
     
       <item>
@@ -54,8 +76,8 @@ Some of my blog posts are available in an almost original format on the Internet
           A database migration is always a headache for DBAs.  There are different approaches one may take, some being simpler than others. A couple of weeks ago, in the Migrate Databases Using Backup-Restore article, I explained how a database migration can be carried out effortlessly and with minimal downtime.  This is...
         </description>
         <pubDate>Sat, 29 Dec 2012 00:00:00 +0000</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/12/deploy-or-migrate-a-database-using-scripts-part-1/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/12/deploy-or-migrate-a-database-using-scripts-part-1/</guid>
+        <link>/blog/index.php/2012/12/deploy-or-migrate-a-database-using-scripts-part-1/</link>
+        <guid isPermaLink="true">/blog/index.php/2012/12/deploy-or-migrate-a-database-using-scripts-part-1/</guid>
       </item>
     
       <item>
@@ -65,8 +87,8 @@ Some of my blog posts are available in an almost original format on the Internet
           I don’t think I’d be wrong in stating that almost all transactional and analytical systems store or make use of date, time, or parts of to achieve the respective functional targets.  A task I had to complete once was to find a way to retrieve data based on the period...
         </description>
         <pubDate>Sat, 22 Dec 2012 00:00:00 +0000</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/12/t-sql-to-transfer-data-based-on-periodic-date-ranges/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/12/t-sql-to-transfer-data-based-on-periodic-date-ranges/</guid>
+        <link>/blog/index.php/2012/12/t-sql-to-transfer-data-based-on-periodic-date-ranges/</link>
+        <guid isPermaLink="true">/blog/index.php/2012/12/t-sql-to-transfer-data-based-on-periodic-date-ranges/</guid>
       </item>
     
       <item>
@@ -76,8 +98,8 @@ Some of my blog posts are available in an almost original format on the Internet
           You have been requested to provide an SQL Server environment to host the database/s of Application123. Once you’ve identified the server onto which the instance will be installed there are a number of checks I would suggest, or at least these are the ones I follow. You will observe that...
         </description>
         <pubDate>Sat, 15 Dec 2012 00:00:00 +0000</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/12/instance-pre-installation-checklist/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/12/instance-pre-installation-checklist/</guid>
+        <link>/blog/index.php/2012/12/instance-pre-installation-checklist/</link>
+        <guid isPermaLink="true">/blog/index.php/2012/12/instance-pre-installation-checklist/</guid>
       </item>
     
       <item>
@@ -87,8 +109,8 @@ Some of my blog posts are available in an almost original format on the Internet
           The System Center Operations Manager 2012 is Microsoft’s flagship product to monitor various aspects of the infrastructure.  Specific details about the product can be found in the TechNet at http://technet.microsoft.com/en-us/library/hh205987.aspx.  Monitoring can be “extended” to SQL Server instances (2005 and later versions only) using the System Center Monitoring pack for...
         </description>
         <pubDate>Sat, 08 Dec 2012 00:00:00 +0000</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/12/configuring-the-scom-2012-sql-server-management-pack-for-low-privilege-access/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/12/configuring-the-scom-2012-sql-server-management-pack-for-low-privilege-access/</guid>
+        <link>/blog/index.php/2012/12/configuring-the-scom-2012-sql-server-management-pack-for-low-privilege-access/</link>
+        <guid isPermaLink="true">/blog/index.php/2012/12/configuring-the-scom-2012-sql-server-management-pack-for-low-privilege-access/</guid>
       </item>
     
       <item>
@@ -98,8 +120,8 @@ Some of my blog posts are available in an almost original format on the Internet
           Before explaining what the errors were I will first explain the environment configuration. Third parties required access to company data from various databases in order to build a Reporting Solution however the company security policies prevented the third-parties from accessing the source databases directly.  An obvious solution would have been...
         </description>
         <pubDate>Sat, 01 Dec 2012 00:00:00 +0000</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/12/remote-statistics-not-available-errors/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/12/remote-statistics-not-available-errors/</guid>
+        <link>/blog/index.php/2012/12/remote-statistics-not-available-errors/</link>
+        <guid isPermaLink="true">/blog/index.php/2012/12/remote-statistics-not-available-errors/</guid>
       </item>
     
       <item>
@@ -109,8 +131,8 @@ Some of my blog posts are available in an almost original format on the Internet
           The more I learn about SQL Server the more I realise how little I know.  While delving in the output of some DMVs I noticed that the sys.dm_exec_requests can be used to find the percentage completed for a backup operation, as well as the estimated time of completion. The sys.dm_exec_requests...
         </description>
         <pubDate>Sun, 25 Nov 2012 00:00:00 +0000</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/11/percent-complete-and-estimated-completion-time-for-backup-processes/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/11/percent-complete-and-estimated-completion-time-for-backup-processes/</guid>
+        <link>/blog/index.php/2012/11/percent-complete-and-estimated-completion-time-for-backup-processes/</link>
+        <guid isPermaLink="true">/blog/index.php/2012/11/percent-complete-and-estimated-completion-time-for-backup-processes/</guid>
       </item>
     
       <item>
@@ -120,8 +142,8 @@ Some of my blog posts are available in an almost original format on the Internet
           I was recently reviewing some of the Dynamic Management Views (DMVs) available since SQL Server 2005 and came across the interesting and useful sys.dm_db_partition_stats DMV.  The documentation states that this DMV will return “page and row-count information for every partition in the current database”.  In the Space Used by Filegroup...
         </description>
         <pubDate>Sat, 17 Nov 2012 00:00:00 +0000</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/11/table-counts-plus-space-used-by-data-and-indexes/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/11/table-counts-plus-space-used-by-data-and-indexes/</guid>
+        <link>/blog/index.php/2012/11/table-counts-plus-space-used-by-data-and-indexes/</link>
+        <guid isPermaLink="true">/blog/index.php/2012/11/table-counts-plus-space-used-by-data-and-indexes/</guid>
       </item>
     
       <item>
@@ -131,8 +153,8 @@ Some of my blog posts are available in an almost original format on the Internet
           Migrating a database can be a major headache, especially due to the downtime or outage incurred by all systems accessing the database.  This is exacerbated when the data files which have to be moved are considerably large.  Obtaining approval for a suitable and longish downtime might not always be possible...
         </description>
         <pubDate>Sat, 10 Nov 2012 00:00:00 +0000</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/11/migrate-databases-using-backup-restore/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/11/migrate-databases-using-backup-restore/</guid>
+        <link>/blog/index.php/2012/11/migrate-databases-using-backup-restore/</link>
+        <guid isPermaLink="true">/blog/index.php/2012/11/migrate-databases-using-backup-restore/</guid>
       </item>
     
       <item>
@@ -142,8 +164,8 @@ Some of my blog posts are available in an almost original format on the Internet
           It is a well known fact that SQL Server is a “memory junkie” – with the default settings it will consume and reserve all the available memory until the service or the server is restarted.  This may cause a problem on servers which have other services or applications running (such...
         </description>
         <pubDate>Sat, 03 Nov 2012 00:00:00 +0000</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/11/deciding-on-min-and-max-memory-configuration-settings/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/11/deciding-on-min-and-max-memory-configuration-settings/</guid>
+        <link>/blog/index.php/2012/11/deciding-on-min-and-max-memory-configuration-settings/</link>
+        <guid isPermaLink="true">/blog/index.php/2012/11/deciding-on-min-and-max-memory-configuration-settings/</guid>
       </item>
     
       <item>
@@ -153,8 +175,8 @@ Some of my blog posts are available in an almost original format on the Internet
           I was recently discussing with one of my peers the fact that following a periodical reindexing/index rebuild, the overall database performance was better when the old syntax was executed. To put you in the picture, until the SQL Server 2000 version, index fragmentation was handled using the DBCC DBREINDEX and...
         </description>
         <pubDate>Sat, 27 Oct 2012 00:00:00 +0100</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/10/one-difference-between-dbcx-dbreindec-and-alter-index/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/10/one-difference-between-dbcx-dbreindec-and-alter-index/</guid>
+        <link>/blog/index.php/2012/10/one-difference-between-dbcx-dbreindec-and-alter-index/</link>
+        <guid isPermaLink="true">/blog/index.php/2012/10/one-difference-between-dbcx-dbreindec-and-alter-index/</guid>
       </item>
     
       <item>
@@ -164,8 +186,8 @@ Some of my blog posts are available in an almost original format on the Internet
           Two weeks ago, in the Data Driven Account Management – part 1 article, I demonstrated how a number of basic account management functions can be implemented for an SQL Server (2005 and later) database without granting elevated priviliges to end users.  The article and attached script showed how logins, users and...
         </description>
         <pubDate>Sat, 20 Oct 2012 00:00:00 +0100</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/10/data-driven-account-management-part-2/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/10/data-driven-account-management-part-2/</guid>
+        <link>/blog/index.php/2012/10/data-driven-account-management-part-2/</link>
+        <guid isPermaLink="true">/blog/index.php/2012/10/data-driven-account-management-part-2/</guid>
       </item>
     
       <item>
@@ -175,8 +197,8 @@ Some of my blog posts are available in an almost original format on the Internet
           When implementing and configuring a Two-Node Active/Active SQL Server Cluster you have to ensure that the memory allocation will suffice for the operating system and other services (a minimum of 2GB is reccomended), as well as for the eventuality when all instances would be on the same physical node. This...
         </description>
         <pubDate>Sat, 13 Oct 2012 00:00:00 +0100</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/10/maximise-memory-usage-in-a-two-node-activeactive-cluster/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/10/maximise-memory-usage-in-a-two-node-activeactive-cluster/</guid>
+        <link>/blog/index.php/2012/10/maximise-memory-usage-in-a-two-node-activeactive-cluster/</link>
+        <guid isPermaLink="true">/blog/index.php/2012/10/maximise-memory-usage-in-a-two-node-activeactive-cluster/</guid>
       </item>
     
       <item>
@@ -186,8 +208,8 @@ Some of my blog posts are available in an almost original format on the Internet
           In previous posts I mention that Windows Authentication should be used and account management functions should be delegated to the domain (e.g. Active Directory). This however is not possible in all cases. Sometimes, due to specific application requirements, SQL Authentication has to be used. Account names (logins/users) should preferably follow...
         </description>
         <pubDate>Sat, 06 Oct 2012 00:00:00 +0100</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/10/data-driven-account-management-part-1/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/10/data-driven-account-management-part-1/</guid>
+        <link>/blog/index.php/2012/10/data-driven-account-management-part-1/</link>
+        <guid isPermaLink="true">/blog/index.php/2012/10/data-driven-account-management-part-1/</guid>
       </item>
     
       <item>
@@ -197,8 +219,8 @@ Some of my blog posts are available in an almost original format on the Internet
           I am usually quite cautious when mentioning third-party tools since I don’t have any affiliations with any company or product mentioned.  In this case I want to make an exception.  I recently came across an SSMS addin called SQL Code Guard. The addin is free and, according to the author...
         </description>
         <pubDate>Sat, 29 Sep 2012 00:00:00 +0100</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/09/semi-automated-t-sql-code-reviews/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/09/semi-automated-t-sql-code-reviews/</guid>
+        <link>/blog/index.php/2012/09/semi-automated-t-sql-code-reviews/</link>
+        <guid isPermaLink="true">/blog/index.php/2012/09/semi-automated-t-sql-code-reviews/</guid>
       </item>
     
       <item>
@@ -208,30 +230,8 @@ Some of my blog posts are available in an almost original format on the Internet
           User-defined data types (UDT) were introduced with SQL Server 2000.  UDTs provide Database Designers, Developers, and DBAs functionality with which a custom data type can be created and which is based on one of the SQL Server system data types.  If you think of this as an approach to standardise...
         </description>
         <pubDate>Sat, 22 Sep 2012 00:00:00 +0100</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/09/why-i-avoid-using-user-defined-data-types/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/09/why-i-avoid-using-user-defined-data-types/</guid>
-      </item>
-    
-      <item>
-        <title>Per Server + CAL Licensing Model For Small Business' Development Environments</title>
-        <description>
-          
-          Whenever a new SQL Server version is released, unless an organisation is forking out the [slightly steep annual cost of] Software Assurance, a DBA has to build a business case to upgrade to the latest database platform.  This because, at the end of the day the licence cost has to...
-        </description>
-        <pubDate>Sat, 15 Sep 2012 00:00:00 +0100</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/09/per-server-cal-licensing-model-for-small-business-development-environments/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/09/per-server-cal-licensing-model-for-small-business-development-environments/</guid>
-      </item>
-    
-      <item>
-        <title>Script User-Defined Data Types</title>
-        <description>
-          
-          Continuing with the “database migration using scripting” series, this week I am publishing a script that’ll script user-defined data types. The script reads columns from the sys.types and sys.schemas DMVs to build the DROP TYPE and CREATE TYPE statements. Special attention is given to UDTs based on character, decimal, numeric,...
-        </description>
-        <pubDate>Sat, 08 Sep 2012 00:00:00 +0100</pubDate>
-        <link>http://0.0.0.0:4000/blog/index.php/2012/09/script-user-defined-data-types/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/blog/index.php/2012/09/script-user-defined-data-types/</guid>
+        <link>/blog/index.php/2012/09/why-i-avoid-using-user-defined-data-types/</link>
+        <guid isPermaLink="true">/blog/index.php/2012/09/why-i-avoid-using-user-defined-data-types/</guid>
       </item>
     
   </channel>
