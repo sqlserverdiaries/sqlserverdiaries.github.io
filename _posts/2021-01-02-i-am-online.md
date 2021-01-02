@@ -2,7 +2,7 @@
 layout: post
 date:   2021-01-02
 title:  "I Am Online"
-permalink: ./blog/index.php/2021/01/back-on/
+permalink: ./blog/index.php/2021/01/i-am-online/
 categories: blog
 published: true
 tags: [Uncategorized]
