@@ -11,7 +11,7 @@ comments: false
 When implementing and configuring a Two-Node Active/Active SQL Server Cluster you have to ensure that the memory allocation will suffice for the operating system and other services (a minimum of 2GB is reccomended), as well as for the eventuality when all instances would be on the same physical node. This means that if, for example, you purchased each of your nodes with 32GB of RAM, memory will be allocated as shown in the below table.
 
 Service             | Memory (GB)
-------------------- | ----------:
+------------------- | ----------
 Operating System    | 2
 Instance 1          | 15
 Instance 2          | 15
@@ -23,7 +23,7 @@ As you can see, in an Active-Active state, 15GB of memory are “wasted” for t
 The first step is defining and translating into T-SQL the relatively simple logic that will reconfigure the _“max server memory (MB)”_ option. In a nutshell, the memory configuration combinations are show below:
 
 Instance 1 position     | Instance 2 position   | Memory (GB)
------------------------ | --------------------- | ----------:
+----------------------- | --------------------- | ----------
 Node A                  | Node B                | 30
 Node A                  | Node A                | 15
 Node B                  | Node A                | 30
