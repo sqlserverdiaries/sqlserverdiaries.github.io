@@ -27,7 +27,7 @@ The SQL Server 2012 EULA for all sub-components/products can be found at the [Mi
 
 Other alternatives to using the Developer Edition would be to either purchase a licence identical to the production one, where the costs might be quite high (and you’d need to justify them with whoever authorises the purchase), or procure a Server Licence and separate Client Access Licences (CALs) for each end-user.  This latter option might prove to be much cheaper, though I have to admit that I couldn’t obtain an exact figure.  After using the [Microsoft License Advisor](http://mla.microsoft.com/default.aspx "Microsoft License Advisor") and setting the form with the options shown below I obtained a quote of USD 705.00 for a single Server Licence. I’m still to be convinced it’s the correct one though…
 
-&nbsp;                      | &nbsp;
+Description                 | Value
 --------------------------- | ------------------
 Select a licensing program  | Microsoft Select
 Select organization type    | Corporate
