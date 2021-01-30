@@ -15,6 +15,7 @@ Service             | Memory (GB)
 Operating System    | 2
 Instance 1          | 15
 Instance 2          | 15
+
 &nbsp;
 
 As you can see, in an Active-Active state, 15GB of memory are “wasted” for the “just in case” (or failover) scenario. That is a lot of unused memory, and this amount will be even greater for machines with higher specifications. This solution address this wastage by dynamically reconfiguring the SQL Server instances depending on whether both instances are on the same node or not.
@@ -27,6 +28,7 @@ Node A                  | Node B                | 30
 Node A                  | Node A                | 15
 Node B                  | Node A                | 30
 Node B                  | Node B                | 15
+
 &nbsp;
 
 The stored procedure accepts two input and one output parameters. The @CallingNodeHostName will contain the name of the Node from where the procedure is being called; the @FullMemoryAllocation is the **total** amount of memory allocated for all instances; the value for the @CurrentNodeHostName will be returned by the stored procedure on completion.
