@@ -35,6 +35,7 @@ Select a pricing level      | D
 Select product              | SQL Server 2012 Standard
 Select product type         | License Only
 Enter quantity              | 1
+
 &nbsp;
 
 For further details you may refer to the [Microsoft Volume Licensing website](http://www.microsoft.com/licensing/ "Microsoft Volume Licensing") and contact a local reseller.  Microsoft have also published a 79-page (!!) [Volume Licensing Reference Guide](http://www.microsoft.com/en-us/download/details.aspx?id=11091 "Microsoft Volume Licensing Reference Guide") to provide _“comprehensive guidance to help you select the best options for the size, type, and business needs of your organization”_.
