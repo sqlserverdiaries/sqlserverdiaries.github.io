@@ -21,6 +21,7 @@ Business Intelligence    | X                      |                      | 8,592
 Standard                 |                        | X                    | 1,793         | 448
 Standard                 | X                      |                      | 898           | 225
 CAL                      |                        |                      | 209           | 52
+
 &nbsp;
 
 SQL Server 2008 Editions | Server + CAL Licensing | Processor Based Licensing | License Price | Software Assurance
@@ -30,6 +31,7 @@ Enterprise               | X                      |                           | 
 Standard                 |                        | X                         | 7,171         | 1,793
 Standard                 | X                      |                           | 898           | 225
 CAL                      |                        |                           | 164           | 41
+
 &nbsp;
 
 #### Core-Based Model ####
@@ -47,6 +49,7 @@ Cores per Processor   | 8      | 6      | 4      | 2      | 1
 Enterprise            | 54,992 | 41,244 | 27,496 | 27,496 | 27,496
 Business Intelligence | --     | --     | --     | --     | --
 Standard              | 14,344 | 10,758 | 7,172  | 7,172  | 7,172
+
 &nbsp;
 
 #### SQL Server 2008 Editions ####
@@ -55,6 +58,7 @@ Cores per Processor   | 8      | 6      | 4      | 2      | 1
 -------------------   | -----: | -----: | -----: | -----: | ------:
 Enterprise            | 27,495 | 27,495 | 27,495 | 27,495 | 27,495
 Standard              | 7,171  | 7,171  | 7,171  | 7,171  | 7,171
+
 &nbsp;
 
 As you can see from the above table, when comparing the cost for a Standard or Enterprise Edition of SQL Server 2008 to SQL Server 2012 the cost remains the same for both versions as long as you're using quad-core processors in your server. The license cost increases for hexa-core processors and practically doubles for octa-core processor machines.
@@ -67,6 +71,7 @@ Number of CALs  | 10    | 15    | 25    | 50     | 100    | 200    | 500     | 1
 --------------- | ----: | ----: | ----: | -----: | -----: | -----: | ------: | ------:
 SQL Server 2012 | 2,988 | 4,033 | 6,123 | 11,348 | 21,798 | 42,698 | 105,398 | 209,898
 SQL Server 2008 | 2,538 | 3,358 | 4,998 | 9,098  | 17,298 | 33,698 | 82,898  | 164,898
+
 &nbsp;
 
 As shown in the datasheet, I am not considering another important variable. The CAL is purchased for a user and, from a licensing perspective, allows the user to connect to any number of SQL Server machines. Small business might make considerable savings when adopting the Server+CAL based licensing. On the other hand, in an scenario where a business has (for example) 40 servers or more and a large number of users (say, over 1,200) it might be more feasible to consider a purely core-based approach. In reality most large businesses will have a mix of both environments accessed by a defined number of users (such as in client-server application implementations), and environments where the number of users will not be known (internet facing).
@@ -114,6 +119,7 @@ Server Hosts                          | 5     | 40        | -                   
 Software Assurance (Annual Estimate)  | -     | 40        | -                   | -                   | 68,740
 Total (USD)                           |       |           | -                   | -                   | 343,700
 Total (EUR)                           |       |           | -                   | -                   | 253,069
+
 &nbsp;
 
 **NOTE:** All prices are in USD and were obtained from the [Microsoft website](http://www.microsoft.com/sqlserver/en/us/get-sql-server/how-to-buy.aspx). Where the price is shown in Euro, the curency was converted using a rate of US$ 1 = EUR 0.73631 from [XE.com](http://www.xe.com) as at 10 November 2011.
