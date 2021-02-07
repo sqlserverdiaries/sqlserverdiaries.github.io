@@ -1,6 +1,6 @@
 ---
 layout: post
-date:   2021-02-13
+date:   2021-02-07
 title:  "Execute TSQL scripts in sequence using PowerShell"
 permalink: ./blog/index.php/2021/02/execute-tsql-scripts-in-sequence-using-powershell/
 categories: blog
