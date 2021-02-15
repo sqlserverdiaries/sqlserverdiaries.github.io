@@ -77,3 +77,10 @@ I am toying with a couple of ideas for the next version/s, such as removing the 
 If you have any suggestions feel free to contact me, or just fork the repo and contribute.
 
 The final version of the script can be found in the GitHub Repository at [Scripts-Deployment](https://github.com/reubensultana/Scripts-Deployment)
+
+&nbsp;
+
+-----
+
+Edit: 2021-02-15  
+Last week I used this script to deploy or update the [sp_WhoIsActive](http://whoisactive.com/) stored procedure on more than 650 SQL Server instances spread across a number of continents. The entire process completed in just over 600 seconds, meaning that the average deploy time was under 1 second! That saved me tons of work and I know that the latest version of the stored procedure is avilable should I need to do troubleshooting.
