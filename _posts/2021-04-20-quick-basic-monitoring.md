@@ -130,10 +130,10 @@ cteWhoIsActiveGrouped AS (
     SELECT 
         MAX([dd hh:mm:ss.mss]) AS [dd hh:mm:ss.mss]
         ,[session_id]
-        ,CAST([sql_text] AS varchar(max)) AS [sql_text]
-        ,CAST([sql_command] AS varchar(max)) AS [sql_command]
+        ,CAST([sql_text] AS nvarchar(max)) AS [sql_text]
+        ,CAST([sql_command] AS nvarchar(max)) AS [sql_command]
         ,[login_name]
-        ,CAST([query_plan] AS varchar(max)) AS [query_plan]
+        ,CAST([query_plan] AS nvarchar(max)) AS [query_plan]
         ,[host_name]
         ,[database_name]
         ,[program_name]
@@ -146,10 +146,10 @@ cteWhoIsActiveGrouped AS (
     
     GROUP BY
         [session_id]
-        ,CAST([sql_text] AS varchar(max))
-        ,CAST([sql_command] AS varchar(max))
+        ,CAST([sql_text] AS nvarchar(max))
+        ,CAST([sql_command] AS nvarchar(max))
         ,[login_name]
-        ,CAST([query_plan] AS varchar(max))
+        ,CAST([query_plan] AS nvarchar(max))
         ,[host_name]
         ,[database_name]
         ,[program_name]
