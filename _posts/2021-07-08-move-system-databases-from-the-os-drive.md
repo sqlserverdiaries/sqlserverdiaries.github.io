@@ -8,7 +8,6 @@ published: true
 tags: [PowerShell, TSQL, TEMPDB]
 comments: true
 ---
-## Introduction
 
 When creating an SQL Server environment using the Azure template, and after running the following query, it is observed that the system databases will be located on the OS partition. For reasons of performance and for example to avoid that the TEMPDB causes a server outage, these must be moved to alternate locations before we start using the server.
 
