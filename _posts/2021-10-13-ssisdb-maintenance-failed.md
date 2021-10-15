@@ -83,7 +83,7 @@ BEGIN TRY
 
         -- batch delete the Row ID's which exceed the date threshold
         BEGIN TRANSACTION
-            SELECT FROM [internal].[operations] WHERE [operation_id] IN ( SELECT [RowID] FROM #RowsToDelete );
+            DELETE FROM [internal].[operations] WHERE [operation_id] IN ( SELECT [RowID] FROM #RowsToDelete );
             SET @rows_affected = @@ROWCOUNT;
         COMMIT TRANSACTION
     END
