@@ -8,7 +8,7 @@
 title: SQL Server Diaries
 
 # Short description of your site
-description: Or How I Did It
+description: Problems, Solved, and Lessons Learnt
 
 # Your name to show in the footer
 author: "Reuben Sultana"
@@ -17,7 +17,7 @@ author: "Reuben Sultana"
 
 navbar-links:
   Home: "/"
-  About Me: "about"
+  About Me: "aboutme"
   Tags: "tags"
 #  Resources:
 #    - Microsoft SQL Server: "https://www.microsoft.com/sql"
@@ -70,7 +70,7 @@ social-network-links:
 
 # If you want to show a link to an RSS in the footer, add the site description here.
 # If you don't want to show an RSS link, remove the following line.
-rss-description: Or How I Did It
+rss-description: Problems, Solved, and Lessons Learnt
 
 # --- General options --- #
 
