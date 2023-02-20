@@ -4,7 +4,7 @@
 # the initial set up you won't need to come back to this file often.
 
 # --- Required options --- #
-                                                                      # Name of website
+# Name of website
 title: SQL Server Diaries
 
 # Short description of your site
@@ -22,7 +22,7 @@ navbar-links:
 #  Resources:
 #    - Microsoft SQL Server: "https://www.microsoft.com/sql"
 #    - TSQL for Beginners: "https://litknd.github.io/TSQLBeginners/"
-  Author's home: "http://www.reubensultana.com"
+  Author's home: "https://reubensultana.com/"
 
 # --- Logo --- #
 
@@ -70,7 +70,7 @@ social-network-links:
 
 # If you want to show a link to an RSS in the footer, add the site description here.
 # If you don't want to show an RSS link, remove the following line.
-rss-description: Problems, Solved, and Lessons Learnt
+rss-description: Nothing you learn is of any value unless you're willing to share it with others
 
 # --- General options --- #
 
