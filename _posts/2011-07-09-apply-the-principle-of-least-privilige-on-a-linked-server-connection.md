@@ -1,16 +1,16 @@
 ---
 layout: post
 date:   2011-07-09
-title:  "Apply the principle of least privilige on a Linked Server connection"
-permalink: ./blog/index.php/2011/07/apply-the-principle-of-least-privilige-on-a-linked-server-connection/
+title:  "Apply the principle of least privilege on a Linked Server connection"
+permalink: ./blog/index.php/2011/07/apply-the-principle-of-least-privilege-on-a-linked-server-connection/
 categories: blog
 published: true
 tags: [Security, Database Administration, Architecture, Connection Strings, Development, Linked Servers]
 comments: false
 ---
-Linked Servers are easy to set up in all versions of SQL Server.  Using a Linked Server one can connect to databases on the same SQL Server instance, on other instances, other DBMSs such as Oracle, MySQL, Informix and using the appropriae driver (e.g. OLEDB, ODBC, etc.), even Microsoft Access or Excel files.  Details on the architecture of [Linked Servers](http://msdn.microsoft.com/en-us/library/ms188279.aspx) can be found in the SQL Server BOL.
+Linked Servers are easy to set up in all versions of SQL Server.  Using a Linked Server one can connect to databases on the same SQL Server instance, on other instances, other DBMSs such as Oracle, MySQL, Informix and using the appropriate driver (e.g. OLEDB, ODBC, etc.), even Microsoft Access or Excel files.  Details on the architecture of [Linked Servers](http://msdn.microsoft.com/en-us/library/ms188279.aspx) can be found in the SQL Server BOL.
 
-This post will focus on a how to apply the principle of least privilige on a Linked Server connection.  The first step is to create the actual Linked Server.
+This post will focus on a how to apply the principle of least privilege on a Linked Server connection.  The first step is to create the actual Linked Server.
 
 ``` sql
 EXEC MASTER.dbo.sp_addlinkedserver
@@ -21,7 +21,7 @@ EXEC MASTER.dbo.sp_addlinkedserver
     @catalog=N'AdventureWorks';
 ```
 
-The above will create the _AWConn_ Linked Server whic will redirect Connnections to the SQL Server instance _SQLHost\Inst1_ on port 9356 (alternatively you could use an individual application DNS as explained in [another post](/blog/index.php/2011/04/sql-server-connection-strings-unique-application-dns-and-listening-ports/).  There are other configuration settings which have to be defined however, the most relevant one at this point is the one that allows outbound RPC traffic.
+The above will create the _AWConn_ Linked Server which will redirect connections to the SQL Server instance _SQLHost\Inst1_ on port 9356 (alternatively you could use an individual application DNS as explained in [another post](/blog/index.php/2011/04/sql-server-connection-strings-unique-application-dns-and-listening-ports/).  There are other configuration settings which have to be defined however, the most relevant one at this point is the one that allows outbound RPC traffic.
 
 ``` sql
 EXEC MASTER.dbo.sp_serveroption
@@ -131,4 +131,4 @@ Unfortunately the connection string for the [OPENROWSET (Transact-SQL)](http://m
 
 Another option would be that the application connects directly to the target database, bypassing the current database layer shown above.  In this case the user credentials would have to be stored within a parameter location, external to the application binaries and preferably in encrypted form (e.g. the app.config or the web.config).  Again, in this case the responsibility falls on the developer or application supplier.
 
-In my opinion, a DBA should not sacrifice security over confort.  Although DBAs do not "own" the data, they have the responsibility of making sure that the business' data is secure.  On the other hand, as DBAs we can make our life easier by building a set of scripts to manage or even delegate the assignment of permissions.  That is however another story.
+In my opinion, a DBA should not sacrifice security over comfort.  Although DBAs do not "own" the data, they have the responsibility of making sure that the business' data is secure.  On the other hand, as DBAs we can make our life easier by building a set of scripts to manage or even delegate the assignment of permissions.  That is however another story.

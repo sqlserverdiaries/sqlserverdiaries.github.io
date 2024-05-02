@@ -61,4 +61,4 @@ RECONFIGURE -- Update the currently configured value for this feature
 GO
 ```
 
-The entire script for this stored procedure can be [downloaded here](\assets/article_files/2011-10-dynamically-load-delimited-files-to-a-table/dynamically-load-delimited-files-to-a-table.zip). As a final suggestion, I’d say you go through the code and modify parts of it according to your security procedures before implementing it in a production environment.
+The entire script for this stored procedure can be [downloaded here](/assets/article_files/2011-10-dynamically-load-delimited-files-to-a-table/dynamically-load-delimited-files-to-a-table.zip). As a final suggestion, I’d say you go through the code and modify parts of it according to your security procedures before implementing it in a production environment.

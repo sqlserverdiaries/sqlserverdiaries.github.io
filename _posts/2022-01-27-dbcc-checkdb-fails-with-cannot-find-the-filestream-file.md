@@ -50,7 +50,7 @@ In order to demonstrate the error we'll be expanding on the code samples from th
 
 First we'd have to ensure that the FILESTREAM option is enabled for the Instance. This can be found in the SQL Server Configuration Manager, within the SQL Server service Properties, under the FILESTREAM tab.
 
-![/assets\article_files\2022\01\sql-server-service-properties-filestream.png "sql-server-service-properties-filestream"](/assets\article_files\2022\01\sql-server-service-properties-filestream.png)
+![/assets/article_files/2022/01/sql-server-service-properties-filestream.png "sql-server-service-properties-filestream"](/assets/article_files/2022/01/sql-server-service-properties-filestream.png)
 
 For this example we are going to "Enable FILESTREAM for Transact-SQL access" only.
 
@@ -138,11 +138,11 @@ SELECT * FROM [MyDocuments];
 GO
 ```
 
-![/assets\article_files\2022\01\filestream-sample-data.png "filestream-sample-data"](/assets\article_files\2022\01\filestream-sample-data.png)
+![/assets/article_files/2022/01/filestream-sample-data.png "filestream-sample-data"](/assets/article_files/2022/01/filestream-sample-data.png)
 
 And we can also see the files:
 
-![/assets\article_files\2022\01\filestream-sample-files.png "filestream-sample-files"](/assets\article_files\2022\01\filestream-sample-files.png)
+![/assets/article_files/2022/01/filestream-sample-files.png "filestream-sample-files"](/assets/article_files/2022/01/filestream-sample-files.png)
 
 Running `DBCC CHECKDB`, as a baseline, shows that the database is in fact intact:
 
@@ -155,7 +155,7 @@ GO
 
 Now, if we go back to our Command Prompt, delete one of the files, then run the `DBCC` command again we get this error message:
 
-![/assets\article_files\2022\01\filestream-dbcc-checkdb-error.png "filestream-dbcc-checkdb-error"](/assets\article_files\2022\01\filestream-dbcc-checkdb-error.png)
+![/assets/article_files/2022/01/filestream-dbcc-checkdb-error.png "filestream-dbcc-checkdb-error"](/assets/article_files/2022/01/filestream-dbcc-checkdb-error.png)
 
 We have just replicated what the Antivirus did when it moved the file/s to Quarantine.
 
@@ -174,7 +174,7 @@ Bear in mind that the `DBCC PAGE` command would return a sizeable amount of info
 
 The output will be similar to this:
 
-![/assets\article_files\2022\01\filestream-dbcc-page-output.png "filestream-dbcc-page-output"](/assets\article_files\2022\01\filestream-dbcc-page-output.png)
+![/assets/article_files/2022/01/filestream-dbcc-page-output.png "filestream-dbcc-page-output"](/assets/article_files/2022/01/filestream-dbcc-page-output.png)
 
 Scrolling through the output to "Slot 0" we can clearly see the GUID used for the record identifier, the original file name, as well as the LSN (Log Sequence Number) of the transaction which was used to generate the FILESTREAM file name "00000024-00000019b-000a".
 
@@ -190,4 +190,4 @@ Unfortunately there is no way that a DBA can know what type of files are being u
 
 &nbsp;
 
-Since the [Microsoft] FILESTREAM white paper mentioned above could be removed at some point, you may also [download it from here](assets\article_files\2022\01\filestreamstorage.docx).
+Since the [Microsoft] FILESTREAM white paper mentioned above could be removed at some point, you may also [download it from here](/assets/article_files/2022/01/filestreamstorage.docx).
